@@ -13,6 +13,14 @@
 /_freeze/
 *_files/
 *.html
+analysis/cache/
+
+# Data + results (keep README files)
+data/raw/
+data/processed/
+results/*
+!data/README.md
+!results/README.md
 
 # LaTeX build artifacts
 *.aux
