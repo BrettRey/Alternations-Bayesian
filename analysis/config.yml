@@ -14,7 +14,13 @@ spacy:
 surprisal:
   model_candidates:
     - Qwen/Qwen2.5-1.5B
-    - google/gemma-2b
     - EleutherAI/pythia-1.4b-v0
   max_tokens: 128
   stride: 64
+  sample_n: 20
+  max_chars: 2000
+  seed: 20260114
+
+model:
+  baseline_sample_n: 20000
+  seed: 20260114

@@ -38,3 +38,11 @@ results/*
 *.snm
 
 **/*.quarto_ipynb
+
+# Stan build artifacts
+stan/*.hpp
+stan/*.o
+stan/*.d
+stan/*.so
+stan/*_model
+stan/baseline_that
