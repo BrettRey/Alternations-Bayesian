@@ -8,12 +8,9 @@ suppressPackageStartupMessages({
 
 cfg <- yaml::read_yaml("analysis/config.yml")
 
-in_path <- file.path(cfg$paths$processed_dir, "oanc-docs.parquet")
+in_path <- file.path(cfg$paths$processed_dir, "oanc-docs.rds")
 out_dir <- file.path(cfg$paths$processed_dir, "oanc-tokens")
 
-if (!requireNamespace("arrow", quietly = TRUE)) {
-  stop("Package 'arrow' is required to read parquet. Install it first.")
-}
 if (!requireNamespace("spacyr", quietly = TRUE)) {
   stop("Package 'spacyr' is required. Install it first.")
 }
@@ -22,12 +19,16 @@ if (!file.exists(in_path)) {
   stop("Missing input: ", in_path, "\nRun analysis/01_ingest_oanc.R first.")
 }
 
-docs <- arrow::read_parquet(in_path)
+docs <- readRDS(in_path)
 if (!dir.exists(out_dir)) {
   dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
 }
 
-spacyr::spacy_initialize(model = cfg$spacy$model)
+python_path <- Sys.which("python")
+if (python_path == "") {
+  stop("No python executable found on PATH.")
+}
+spacyr::spacy_initialize(model = cfg$spacy$model, python_executable = python_path)
 
 chunk_size <- cfg$spacy$batch_size
 n <- nrow(docs)
@@ -50,8 +51,8 @@ for (start in seq(1, n, by = chunk_size)) {
   parsed$corpus <- chunk$corpus[match(parsed$doc_id, chunk$doc_id)]
   parsed$register <- chunk$register[match(parsed$doc_id, chunk$doc_id)]
 
-  out_file <- file.path(out_dir, sprintf("part-%04d.parquet", start))
-  arrow::write_parquet(parsed, out_file)
+  out_file <- file.path(out_dir, sprintf("part-%04d.rds", start))
+  saveRDS(parsed, out_file)
   message("Wrote: ", out_file)
 }
 

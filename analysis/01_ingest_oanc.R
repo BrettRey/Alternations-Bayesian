@@ -8,7 +8,7 @@ suppressPackageStartupMessages({
 
 cfg <- yaml::read_yaml("analysis/config.yml")
 raw_dir <- cfg$paths$raw_oanc_dir
-out_path <- file.path(cfg$paths$processed_dir, "oanc-docs.parquet")
+out_path <- file.path(cfg$paths$processed_dir, "oanc-docs.rds")
 
 files <- list.files(raw_dir, pattern = "\\.txt$", recursive = TRUE, full.names = TRUE)
 files <- files[grepl("/data/", files)]
@@ -30,7 +30,8 @@ path <- files
 raw_norm <- normalizePath(raw_dir, winslash = "/", mustWork = FALSE)
 rel_path <- sub(paste0("^", raw_norm, "/?"), "", path)
 register <- ifelse(grepl("/data/", rel_path), sub("^.*?/data/([^/]+)/.*$", "\\1", rel_path), NA_character_)
-doc_id <- tools::file_path_sans_ext(basename(files))
+rel_noext <- tools::file_path_sans_ext(rel_path)
+doc_id <- gsub("[^A-Za-z0-9_\\-]+", "_", rel_noext)
 text <- vapply(files, read_text, character(1))
 
 out <- data.frame(
@@ -42,9 +43,5 @@ out <- data.frame(
   stringsAsFactors = FALSE
 )
 
-if (!requireNamespace("arrow", quietly = TRUE)) {
-  stop("Package 'arrow' is required to write parquet. Install it first.")
-}
-
-arrow::write_parquet(out, out_path)
+saveRDS(out, out_path)
 message("Wrote: ", out_path)

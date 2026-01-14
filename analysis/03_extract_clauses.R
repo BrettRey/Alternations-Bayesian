@@ -9,11 +9,7 @@ suppressPackageStartupMessages({
 cfg <- yaml::read_yaml("analysis/config.yml")
 
 in_dir <- file.path(cfg$paths$processed_dir, "oanc-tokens")
-out_path <- file.path(cfg$paths$processed_dir, "oanc-clauses.parquet")
-
-if (!requireNamespace("arrow", quietly = TRUE)) {
-  stop("Package 'arrow' is required to read parquet. Install it first.")
-}
+out_path <- file.path(cfg$paths$processed_dir, "oanc-clauses.rds")
 if (!requireNamespace("data.table", quietly = TRUE)) {
   stop("Package 'data.table' is required. Install it first.")
 }
@@ -22,9 +18,14 @@ if (!dir.exists(in_dir)) {
   stop("Missing input dir: ", in_dir, "\nRun analysis/02_parse_spacy.R first.")
 }
 
+parts <- list.files(in_dir, pattern = "\\.rds$", full.names = TRUE)
+if (length(parts) == 0) {
+  stop("No token shards found in ", in_dir)
+}
+
 # Load all token parts (for now; can be optimized later).
-tokens <- arrow::open_dataset(in_dir) |> arrow::collect()
-DT <- data.table::as.data.table(tokens)
+tokens_list <- lapply(parts, readRDS)
+DT <- data.table::rbindlist(tokens_list, fill = TRUE)
 
 required_cols <- c("doc_id", "sentence_id", "token_id", "head_token_id", "lemma", "pos", "dep_rel")
 missing_cols <- setdiff(required_cols, names(DT))
@@ -95,8 +96,5 @@ for (sent in sent_groups) {
 
 out <- data.table::rbindlist(out_rows, fill = TRUE)
 
-if (!requireNamespace("arrow", quietly = TRUE)) {
-  stop("Package 'arrow' is required to write parquet. Install it first.")
-}
-arrow::write_parquet(out, out_path)
+saveRDS(out, out_path)
 message("Wrote: ", out_path)

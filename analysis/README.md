@@ -10,7 +10,7 @@ R/Stan scripts, preprocessing, and reproducible notebooks live here. Keep runs d
 6) (Optional) `Rscript analysis/04_surprisal.R` to select a surprisal model.
 
 ## Dependencies
-R packages: `yaml`, `arrow`, `spacyr`, `data.table`, `jsonlite`.
+R packages: `yaml`, `spacyr`, `data.table`, `jsonlite`.
 Python packages: `spacy`, `transformers`, `torch`.
 
 spaCy model (default): `en_core_web_sm` (set in `analysis/config.yml`).

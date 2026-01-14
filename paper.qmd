@@ -19,6 +19,9 @@ TBD.
 ## Model
 TBD.
 
+## Bayesian workflow
+TBD. (Will include prior predictive checks, posterior predictive checks, and out-of-sample validation.)
+
 ## Results
 TBD.
 

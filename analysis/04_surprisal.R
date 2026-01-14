@@ -8,13 +8,10 @@ suppressPackageStartupMessages({
 
 cfg <- yaml::read_yaml("analysis/config.yml")
 
-in_path <- file.path(cfg$paths$processed_dir, "oanc-docs.parquet")
+in_path <- file.path(cfg$paths$processed_dir, "oanc-docs.rds")
 cache_dir <- "analysis/cache"
 if (!dir.exists(cache_dir)) dir.create(cache_dir, recursive = TRUE, showWarnings = FALSE)
 
-if (!requireNamespace("arrow", quietly = TRUE)) {
-  stop("Package 'arrow' is required to read parquet. Install it first.")
-}
 if (!requireNamespace("jsonlite", quietly = TRUE)) {
   stop("Package 'jsonlite' is required. Install it first.")
 }
@@ -24,7 +21,7 @@ if (!file.exists(in_path)) {
 }
 
 # Sample documents for perplexity evaluation.
-docs <- arrow::read_parquet(in_path)
+docs <- readRDS(in_path)
 if (nrow(docs) == 0) stop("No documents found in ", in_path)
 
 sample_n <- min(200, nrow(docs))

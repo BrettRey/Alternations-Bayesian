@@ -34,13 +34,22 @@ def compute_ppl(texts, model_id, max_length=128, stride=64):
 
             with torch.no_grad():
                 outputs = model(input_ids_slice, labels=target_ids)
-                neg_log_likelihood = outputs.loss * trg_len
+                loss = outputs.loss
+                if not torch.isfinite(loss):
+                    continue
+                neg_log_likelihood = loss * trg_len
 
             nlls.append(neg_log_likelihood)
             total_tokens += trg_len
 
+    if total_tokens == 0 or len(nlls) == 0:
+        return None
+
     ppl = torch.exp(torch.stack(nlls).sum() / total_tokens)
-    return float(ppl.item())
+    value = float(ppl.item())
+    if math.isnan(value) or math.isinf(value):
+        return None
+    return value
 
 
 def main():
@@ -57,10 +66,11 @@ def main():
 
     ppl = compute_ppl(texts, args.model, max_length=args.max_tokens, stride=args.stride)
 
+    payload = {"model": args.model, "perplexity": ppl}
     with open(args.out, "w", encoding="utf-8") as f:
-        json.dump({"model": args.model, "perplexity": ppl}, f, indent=2)
+        json.dump(payload, f, indent=2)
 
-    print(json.dumps({"model": args.model, "perplexity": ppl}))
+    print(json.dumps(payload))
 
 
 if __name__ == "__main__":
