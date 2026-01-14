@@ -1,7 +1,7 @@
 # STATUS.md - Alternations-Bayesian
 
 ## Project State
-**Phase**: Initial planning
+**Phase**: Initial analysis pipeline
 **Last updated**: 2026-01-14
 
 ## Goal
@@ -11,19 +11,24 @@ Bayesian model of English alternations (subordinator realization as initial test
 - `../Unsolved-problems-linguistics/` - this project tackles problem #1 from that survey
 
 ## Current Status
-- Background materials saved from ChatGPT brainstorming session
-- No code or manuscript yet
+- OANC downloaded and extracted (GrAF release)
+- Ingested document table built
+- spaCy parsing completed (token shards)
+- Clause dataset extracted (ccomp-based first pass)
+- Fast-pass surprisal comparison run: Qwen2.5-1.5B outperforms Pythia-1.4B (perplexity)
+- Baseline hierarchical model fit completed (CmdStanR)
+- Diagnostics + PPC outputs generated in `results/`
 
 ## Next Steps
-1. Decide on corpus/data source for subordinator realization
-2. Set up R/Stan infrastructure
-3. Operationalize predictors (distance, weight, surprisal, register)
-4. Build initial model
+1. Review diagnostics and PPC outputs; decide if baseline model needs revisions
+2. Add surprisal computation at clause level and refit with surprisal predictor
+3. Expand extraction rules beyond `ccomp` as needed (e.g., clause type coverage)
+4. Draft manuscript sections for data + baseline results
 
 ## Open Questions
-- Which corpus? (ICE, BNC, Switchboard, combination?)
-- How to compute surprisal? (GPT-2, custom LM?)
-- Start with content clauses only, or include relatives from the start?
+- Which corpus/register subsets to hold out for validation?
+- How to compute surprisal span for the content clause (full clause vs first N tokens)?
+- Should we incorporate additional predictors (e.g., discourse givenness) in v1?
 
 ## Session Log
 
@@ -33,3 +38,5 @@ Bayesian model of English alternations (subordinator realization as initial test
   - Unsolved problems survey (12 problems, solubility ranking)
   - Solution sketch (unified mechanism, predictions)
   - CGEL/Gelman model specification
+- OANC pipeline implemented and run
+- Baseline model + diagnostics completed
