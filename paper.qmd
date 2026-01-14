@@ -4,6 +4,7 @@ subtitle: "Bayesian modeling of subordinator realization"
 author: "TBD"
 date: "last-modified"
 format: html
+bibliography: references.bib
 ---
 
 ## Abstract

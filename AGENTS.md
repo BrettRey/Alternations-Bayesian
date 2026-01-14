@@ -2,18 +2,25 @@
 
 ## Project Structure & Module Organization
 Root files:
+- `index.qmd`: landing page for the Quarto preview root.
 - `STATUS.md`: project state and next steps.
 - `solution-sketch.md`: mechanism and predictions.
 - `cgel-gelman-model.md`: model spec and workflow.
 - `CLAUDE.md`: commitments and house style reference.
 - `paper.qmd`: Quarto manuscript.
+- `references.bib`: bibliography entries.
 - `_quarto.yml`: Quarto project settings.
 - `styles/house-style.css`: HTML typography to mirror house style.
 
-There are no `src/` or `tests/` dirs yet. If you add code/data, use top-level folders such as `analysis/`, `stan/`, `data/`, and `results/`, and document them here.
+Top-level directories:
+- `analysis/`: scripts, preprocessing, notebooks.
+- `stan/`: Stan programs.
+- `data/`: raw/processed datasets (add `data/raw/` and `data/processed/` as needed).
+- `results/`: model outputs, tables, figures.
 
 ## Build, Test, and Development Commands
-- `quarto preview`: live preview of `paper.qmd`.
+- `quarto preview`: live preview of the project (serves `index.qmd` at `/`).
+- `quarto preview paper.qmd`: preview just the manuscript.
 - `quarto render`: render the project to HTML.
 - `quarto render paper.qmd --to pdf`: render PDF (requires LaTeX).
 - `quarto render paper.qmd --to latex` then `python ../../.house-style/check-style.py paper.tex`: run the house-style linter on the generated LaTeX.
