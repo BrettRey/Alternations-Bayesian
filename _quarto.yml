@@ -1,0 +1,7 @@
+project:
+  type: default
+
+format:
+  html:
+    toc: true
+    number-sections: true

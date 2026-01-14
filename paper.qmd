@@ -1,0 +1,34 @@
+---
+title: "Alternations as Constrained Choice"
+subtitle: "Bayesian modeling of subordinator realization"
+author: "TBD"
+date: "last-modified"
+format: html
+---
+
+## Abstract
+TBD.
+
+## Introduction
+TBD.
+
+## Data
+TBD.
+
+## Model
+TBD.
+
+## Results
+TBD.
+
+## Discussion
+TBD.
+
+## Notes
+
+```{r}
+#| label: session-info
+#| eval: false
+# Keep model provenance transparent once analysis begins.
+# sessionInfo()
+```
