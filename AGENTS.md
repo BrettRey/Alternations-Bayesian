@@ -35,7 +35,7 @@ Top-level directories:
 ## Typography & House Style
 House typography lives in `/Users/brettreynolds/Documents/LLM-CLI-projects/.house-style/`:
 - `style-guide.md` (human rules), `style-rules.yaml` (machine rules), `preamble.tex` (LaTeX macros), `check-style.py` (linter).
-HTML styling for this repo is in `styles/house-style.css` and is referenced from `_quarto.yml`.
+HTML styling for this repo is in `styles/house-style.css` and is referenced from `_quarto.yml` (web fonts loaded there).
 
 Key conventions to apply in LaTeX/Quarto output:
 - Fonts: EB Garamond (text), Charis SIL (IPA).
