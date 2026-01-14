@@ -12,6 +12,7 @@
 /_site/
 /_freeze/
 *_files/
+*.html
 
 # LaTeX build artifacts
 *.aux
@@ -27,3 +28,5 @@
 *.lot
 *.nav
 *.snm
+
+**/*.quarto_ipynb

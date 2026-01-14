@@ -14,7 +14,8 @@ body {
   font-size: 1.05rem;
 }
 
-a {
+a,
+a:visited {
   color: var(--color-link);
   text-decoration-thickness: 0.08em;
   text-underline-offset: 0.12em;
@@ -24,14 +25,33 @@ a:hover {
   text-decoration: underline;
 }
 
-h2 {
+/* House rule: avoid bold in prose and headings. */
+strong,
+b {
+  font-weight: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+#toc-title {
+  font-size: inherit;
+  font-weight: normal;
+  margin-top: 1.6rem;
+  margin-bottom: 0.6rem;
+}
+
+h2,
+#toc-title {
   font-variant: small-caps;
   letter-spacing: 0.03em;
 }
 
 h3 {
   font-style: italic;
-  font-weight: 500;
 }
 
 .ipa,
@@ -44,4 +64,39 @@ blockquote {
   border-left: 3px solid #d3c1c6;
   padding-left: 1rem;
   color: #3a2f30;
+}
+
+/* Hanging section numbers in main content. */
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6 {
+  position: relative;
+}
+
+.content h2 .header-section-number,
+.content h3 .header-section-number,
+.content h4 .header-section-number,
+.content h5 .header-section-number,
+.content h6 .header-section-number {
+  position: absolute;
+  left: -2.6em;
+  width: 2.2em;
+  text-align: right;
+}
+
+#TOC {
+  font-size: inherit;
+}
+
+#TOC * {
+  font-weight: normal;
+}
+
+#TOC .header-section-number {
+  display: inline-block;
+  width: 2.2em;
+  text-align: right;
+  margin-right: 0.4em;
 }
