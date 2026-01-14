@@ -8,6 +8,7 @@ Root files:
 - `CLAUDE.md`: commitments and house style reference.
 - `paper.qmd`: Quarto manuscript.
 - `_quarto.yml`: Quarto project settings.
+- `styles/house-style.css`: HTML typography to mirror house style.
 
 There are no `src/` or `tests/` dirs yet. If you add code/data, use top-level folders such as `analysis/`, `stan/`, `data/`, and `results/`, and document them here.
 
@@ -27,6 +28,7 @@ There are no `src/` or `tests/` dirs yet. If you add code/data, use top-level fo
 ## Typography & House Style
 House typography lives in `/Users/brettreynolds/Documents/LLM-CLI-projects/.house-style/`:
 - `style-guide.md` (human rules), `style-rules.yaml` (machine rules), `preamble.tex` (LaTeX macros), `check-style.py` (linter).
+HTML styling for this repo is in `styles/house-style.css` and is referenced from `_quarto.yml`.
 
 Key conventions to apply in LaTeX/Quarto output:
 - Fonts: EB Garamond (text), Charis SIL (IPA).

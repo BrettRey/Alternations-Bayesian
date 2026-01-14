@@ -1,0 +1,47 @@
+:root {
+  --font-body: "EB Garamond", "Garamond", "Times New Roman", serif;
+  --font-ipa: "Charis SIL", "Doulos SIL", "Times New Roman", serif;
+  --color-text: #1b1b1b;
+  --color-link: #800020;
+  --color-bg: #fbfaf7;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.5;
+  font-size: 1.05rem;
+}
+
+a {
+  color: var(--color-link);
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.12em;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h2 {
+  font-variant: small-caps;
+  letter-spacing: 0.03em;
+}
+
+h3 {
+  font-style: italic;
+  font-weight: 500;
+}
+
+.ipa,
+span.ipa,
+span[lang="ipa"] {
+  font-family: var(--font-ipa);
+}
+
+blockquote {
+  border-left: 3px solid #d3c1c6;
+  padding-left: 1rem;
+  color: #3a2f30;
+}
