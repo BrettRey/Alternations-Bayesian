@@ -3,7 +3,7 @@ R/Stan scripts, preprocessing, and reproducible notebooks live here. Keep runs d
 
 ## Pipeline (initial)
 1) `Rscript analysis/00_setup.R`
-2) Place OANC text files under `data/raw/oanc/` (export as `.txt`).
+2) `Rscript analysis/00_download_oanc.R`
 3) `Rscript analysis/01_ingest_oanc.R`
 4) Install spaCy + model, then `Rscript analysis/02_parse_spacy.R`
 5) `Rscript analysis/03_extract_clauses.R`

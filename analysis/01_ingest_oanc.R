@@ -11,6 +11,7 @@ raw_dir <- cfg$paths$raw_oanc_dir
 out_path <- file.path(cfg$paths$processed_dir, "oanc-docs.parquet")
 
 files <- list.files(raw_dir, pattern = "\\.txt$", recursive = TRUE, full.names = TRUE)
+files <- files[grepl("/data/", files)]
 
 if (length(files) == 0) {
   stop(
@@ -26,7 +27,9 @@ read_text <- function(path) {
 
 corpus <- rep("OANC", length(files))
 path <- files
-register <- basename(dirname(files))
+raw_norm <- normalizePath(raw_dir, winslash = "/", mustWork = FALSE)
+rel_path <- sub(paste0("^", raw_norm, "/?"), "", path)
+register <- ifelse(grepl("/data/", rel_path), sub("^.*?/data/([^/]+)/.*$", "\\1", rel_path), NA_character_)
 doc_id <- tools::file_path_sans_ext(basename(files))
 text <- vapply(files, read_text, character(1))
 

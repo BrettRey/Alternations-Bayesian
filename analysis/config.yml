@@ -3,6 +3,10 @@ paths:
   processed_dir: data/processed
   results_dir: results
 
+oanc:
+  download_url: https://www.anc.org/OANC/OANC_GrAF.tgz
+  archive_name: OANC_GrAF.tgz
+
 spacy:
   model: en_core_web_sm
   batch_size: 2000
