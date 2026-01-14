@@ -1,0 +1,16 @@
+---
+title: "Alternations-Bayesian"
+subtitle: "Repository landing page"
+format:
+  html:
+    toc: false
+---
+
+This repository contains the working manuscript and planning documents for a Bayesian account of English alternations.
+
+- Read the manuscript: [paper](paper.html)
+- Project status: [STATUS](STATUS.html)
+- Model spec: [cgel-gelman-model](cgel-gelman-model.html)
+- Solution sketch: [solution-sketch](solution-sketch.html)
+- Collaboration guide: [AGENTS](AGENTS.html)
+- Project commitments: [CLAUDE](CLAUDE.html)
