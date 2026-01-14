@@ -1,35 +1,45 @@
 # Repository Guidelines
 
 ## Project Structure & Module Organization
-This repository contains planning/spec documents and a Quarto manuscript in the repo root:
-- `STATUS.md` — current phase, next steps, and open questions.
-- `solution-sketch.md` — conceptual mechanism and predictions.
-- `cgel-gelman-model.md` — model specification and workflow.
-- `CLAUDE.md` — project commitments and house style notes.
-- `paper.qmd` — manuscript draft (Quarto).
-- `_quarto.yml` — Quarto project settings.
+Root files:
+- `STATUS.md`: project state and next steps.
+- `solution-sketch.md`: mechanism and predictions.
+- `cgel-gelman-model.md`: model spec and workflow.
+- `CLAUDE.md`: commitments and house style reference.
+- `paper.qmd`: Quarto manuscript.
+- `_quarto.yml`: Quarto project settings.
 
-There are no `src/` or `tests/` directories yet. If you add code or data, use top-level folders such as `analysis/`, `stan/`, `data/`, and `results/`, and document them here.
+There are no `src/` or `tests/` dirs yet. If you add code/data, use top-level folders such as `analysis/`, `stan/`, `data/`, and `results/`, and document them here.
 
 ## Build, Test, and Development Commands
-- `quarto preview` — live preview of `paper.qmd` with auto-refresh.
-- `quarto render` — render the project to HTML using `_quarto.yml`.
-- `quarto render paper.qmd --to pdf` — render a PDF (requires LaTeX).
-- R/Stan execution should run through Quarto chunks or dedicated scripts in `analysis/` once added.
+- `quarto preview`: live preview of `paper.qmd`.
+- `quarto render`: render the project to HTML.
+- `quarto render paper.qmd --to pdf`: render PDF (requires LaTeX).
+- `quarto render paper.qmd --to latex` then `python ../../.house-style/check-style.py paper.tex`: run the house-style linter on the generated LaTeX.
+- R/Stan execution should run via Quarto chunks or scripts in `analysis/` once added.
 
 ## Coding Style & Naming Conventions
-- **Terminology:** Use CGEL terms (e.g., “subordinator,” not “complementizer”). See `CLAUDE.md`.
-- **Workflow norms:** Follow the Gelman-style Bayesian workflow (prior/posterior predictive checks, out-of-sample validation).
-- **Numbers:** Any reported statistics must come from actual output files; do not invent or approximate values.
-- **R/Stan style:** 2-space indentation, `snake_case` for objects/parameters, and explicit seeds for simulations.
-- **Files:** Use descriptive, lowercase, hyphenated filenames for docs (matches existing files).
-- **Typesetting:** Follow the portfolio `.house-style/` conventions referenced in `CLAUDE.md` when LaTeX is introduced.
+- Use CGEL terminology (e.g., "subordinator," not "complementizer").
+- Follow the Gelman-style Bayesian workflow (prior/posterior checks, held-out validation).
+- R/Stan: 2-space indentation, `snake_case`, explicit seeds for simulations.
+- Use descriptive, lowercase, hyphenated filenames for docs.
+
+## Typography & House Style
+House typography lives in `/Users/brettreynolds/Documents/LLM-CLI-projects/.house-style/`:
+- `style-guide.md` (human rules), `style-rules.yaml` (machine rules), `preamble.tex` (LaTeX macros), `check-style.py` (linter).
+
+Key conventions to apply in LaTeX/Quarto output:
+- Fonts: EB Garamond (text), Charis SIL (IPA).
+- Headings: small-caps sections; italic subsections.
+- Links: dark maroon.
+- Semantic macros: `\term{}`, `\mention{}`, `\mentionh{}`, `\olang{}`, `\enquote{}`.
+- Examples: `langsci-gb4e` (no `exe` environment); use en-dashes, not em-dashes.
 
 ## Testing Guidelines
-No automated test suite yet. Treat model checks as required tests (prior predictive checks, posterior predictive checks, and held-out validation) and document how to run them alongside the analysis code.
+No automated test suite yet. Treat model checks as required tests and document how to run them with the analysis code.
 
 ## Commit & Pull Request Guidelines
-Keep commits small and descriptive (imperative subject lines, ≤72 chars). In commit bodies, note data sources, random seeds, and any generated outputs. For PRs, include a short summary, the commands used (e.g., `quarto render`), and attach or link to key rendered figures or tables.
+Keep commits small and descriptive (imperative subject lines, <=72 chars). In commit bodies, note data sources, random seeds, and generated outputs. For PRs, include a short summary, the commands used (e.g., `quarto render`), and link/attach key figures or tables.
 
 ## Agent-Specific Instructions
-Keep the project’s statistical grounding intact: all reported results must be traceable to saved model outputs, and documentation should remain concise and directly tied to the files in this repository.
+All reported statistics must be traceable to saved model outputs; keep documentation concise and grounded in repository files.

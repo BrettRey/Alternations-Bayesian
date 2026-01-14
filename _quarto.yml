@@ -5,3 +5,6 @@ format:
   html:
     toc: true
     number-sections: true
+  pdf:
+    include-in-header: ../../.house-style/preamble.tex
+    number-sections: true
