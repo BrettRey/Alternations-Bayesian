@@ -172,6 +172,9 @@ if (!is.null(ppc_by_reg) && nrow(ppc_by_reg) > 0) {
          xlab = expression(paste("Predicted ", italic(that), "-content clause rate")),
          xlim = ppc_xlim)
     abline(v = obs, col = "firebrick", lwd = 2)
+    legend("topright", legend = c("Posterior predictive", sprintf("Observed = %.3f", obs)),
+           fill = c("grey85", NA), border = c("grey85", NA),
+           lwd = c(NA, 2), col = c(NA, "firebrick"), bty = "n")
     dev.off()
 
     png(file.path(fig_dir, paste0("ppc_by_register_", slug, "_zoom.png")), width = 900, height = 600)
@@ -180,6 +183,9 @@ if (!is.null(ppc_by_reg) && nrow(ppc_by_reg) > 0) {
          xlab = expression(paste("Predicted ", italic(that), "-content clause rate")),
          xlim = zoom_xlim(obs))
     abline(v = obs, col = "firebrick", lwd = 2)
+    legend("topright", legend = c("Posterior predictive", sprintf("Observed = %.3f", obs)),
+           fill = c("grey85", NA), border = c("grey85", NA),
+           lwd = c(NA, 2), col = c(NA, "firebrick"), bty = "n")
     dev.off()
   }
 }
@@ -249,6 +255,9 @@ if (!is.null(oos_ppc_by_reg) && nrow(oos_ppc_by_reg) > 0) {
          xlab = expression(paste("Predicted ", italic(that), "-content clause rate")),
          xlim = ppc_xlim)
     abline(v = obs, col = "firebrick", lwd = 2)
+    legend("topright", legend = c("Posterior predictive", sprintf("Observed = %.3f", obs)),
+           fill = c("grey85", NA), border = c("grey85", NA),
+           lwd = c(NA, 2), col = c(NA, "firebrick"), bty = "n")
     dev.off()
 
     png(file.path(fig_dir, paste0("oos_ppc_by_register_", slug, "_zoom.png")), width = 900, height = 600)
@@ -257,6 +266,9 @@ if (!is.null(oos_ppc_by_reg) && nrow(oos_ppc_by_reg) > 0) {
          xlab = expression(paste("Predicted ", italic(that), "-content clause rate")),
          xlim = zoom_xlim(obs))
     abline(v = obs, col = "firebrick", lwd = 2)
+    legend("topright", legend = c("Posterior predictive", sprintf("Observed = %.3f", obs)),
+           fill = c("grey85", NA), border = c("grey85", NA),
+           lwd = c(NA, 2), col = c(NA, "firebrick"), bty = "n")
     dev.off()
   }
 }
