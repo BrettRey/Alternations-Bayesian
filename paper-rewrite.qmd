@@ -170,7 +170,7 @@ questions. Technical details appear in the Appendix. For broad introductions tai
 
 ### Why Not Traditional Statistics?
 
-Most linguistic research uses significance tests. You fit a model, get a
+Quantitative linguistic research has typically relied on significance tests. You fit a model, get a
 *p*-value, and conclude that the effect is "significant" or not. This approach
 has served linguistics well, but it has limitations.
 
