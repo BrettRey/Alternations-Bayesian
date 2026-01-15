@@ -75,7 +75,7 @@ below. This is where the action is.
 
 In [extraposed]{.smallcaps} position, content clauses also show variation, though the patterns differ from non-extraposed complements. *It's clear that she left* and *It's clear she left* are both acceptable. As detailed in the Data section, extraposed constructions generally show higher rates of overt *that* than their in-situ counterparts.
 
-The present analysis focuses on complement content clauses (both *in situ* and extraposed)&nbsp;-- the position where variation is most productive. Subject clauses, where *that* is near-obligatory, are excluded. This scoping reflects the fact that grammar has two components: categorical constraints (subjects require *that*) and probabilistic preferences (complements vary). Both are grammatical knowledge. The categorical constraints aren't in dispute. The probabilistic preferences are less understood&nbsp;-- and that's what we're investigating. The rationale for this scoping decision is discussed further under "Envelope of Variation" in the Data section.
+The present analysis focuses on complement content clauses (both *in situ* and extraposed)&nbsp;-- the position where variation is most productive. Subject clauses, where *that* is near-obligatory, are excluded. This scoping reflects the fact that grammar has two components: categorical constraints (subjects require *that*) and probabilistic preferences (complements vary). Both are linguistic knowledge. The categorical constraints aren't in dispute. The probabilistic preferences are less understood&nbsp;-- and that's what we're investigating. The rationale for this scoping decision is discussed further under "Envelope of Variation" in the Data section.
 
 ### Conditioning factors from prior research
 
@@ -111,13 +111,13 @@ probabilities through exposure. Third, they're [predictive]{.smallcaps}: a model
 trained on one dataset generalizes to held-out data, showing that the patterns
 capture something stable rather than fitting noise.
 
-What makes this "grammatical" rather than "pragmatic" or "stylistic"? The
+What makes this "morphosyntactic knowledge" rather than purely pragmatic or stylistic variation? The
 distinction isn't a sharp boundary. Rather, I argue that the alternation is
-grammatical insofar as it is *causally entrenched* and *projectible*: it recurs
+morphosyntactic insofar as it is *causally entrenched* and *projectible*: it recurs
 across speakers and settings in ways that support reliable prediction and
 explanation, and it is sensitive to manipulable variables (register/genre
 practices, clause complexity, lemma-specific routines). The question isn't
-whether to draw a line between grammar and pragmatics, but whether this
+whether to draw a line between morphosyntax and pragmatics, but whether this
 phenomenon belongs to a stable node in the causal network that constitutes
 linguistic knowledge.
 
