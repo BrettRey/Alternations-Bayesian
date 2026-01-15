@@ -278,7 +278,7 @@ For out-of-sample validation, I hold out 20% of documents (stratified by registe
 ![Out-of-sample PPC: zoomed](results/figures/oos_ppc_overall_zoom.png)
 :::
 
-This underprediction suggests missing predictors -- perhaps discourse factors like givenness or information structure -- but the overall fit is strong.
+The discrepancies are small and mixed in direction, suggesting the model captures the main effects well. The academic underprediction may reflect missing predictors -- perhaps discourse factors like givenness or information structure that are more prominent in academic prose -- but the overall fit is strong.
 
 ## Discussion
 
