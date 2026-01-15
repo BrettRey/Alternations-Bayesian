@@ -5,7 +5,7 @@
 **Last updated**: 2026-01-14
 
 ## Goal
-Bayesian model of English alternations (subordinator realization as initial test case), CGEL-compatible terminology, Gelman-style workflow.
+Bayesian model of English alternations (subordinator realization as initial test case), *CGEL*-compatible terminology, Gelman-style workflow.
 
 ## Related Projects
 - `../Unsolved-problems-linguistics/` - this project tackles problem #1 from that survey
@@ -17,7 +17,10 @@ Bayesian model of English alternations (subordinator realization as initial test
 - Clause dataset extracted (ccomp-based first pass)
 - Fast-pass surprisal comparison run: Qwen2.5-1.5B outperforms Pythia-1.4B (perplexity)
 - Baseline hierarchical model fit completed (CmdStanR)
-- Diagnostics + PPC outputs generated in `results/`
+- Baseline model updated with register-specific intercepts + register-varying slopes (CmdStanR)
+- Diagnostics + PPC outputs regenerated in `results/` (fit-sample PPCs align with observed rates)
+- Out-of-sample evaluation script added (document-level holdout with PPC + ELPD outputs)
+- Out-of-sample run completed (20% doc holdout; written registers slightly underpredicted)
 - Clause-level surprisal computed on a sampled subset (Qwen2.5‑1.5B, clause-only text)
 
 ## Next Steps
@@ -38,6 +41,6 @@ Bayesian model of English alternations (subordinator realization as initial test
 - Saved background materials from ChatGPT:
   - Unsolved problems survey (12 problems, solubility ranking)
   - Solution sketch (unified mechanism, predictions)
-  - CGEL/Gelman model specification
+  - *CGEL*/Gelman model specification
 - OANC pipeline implemented and run
 - Baseline model + diagnostics completed

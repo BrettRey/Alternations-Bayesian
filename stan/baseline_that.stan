@@ -10,29 +10,35 @@ data {
 }
 
 parameters {
-  real alpha;
   real beta_len;
   real beta_dist;
+  vector[J_reg] alpha_reg;
   vector[J_lemma] alpha_lemma_raw;
-  vector[J_reg] alpha_reg_raw;
+  vector[J_reg] beta_len_reg_raw;
+  vector[J_reg] beta_dist_reg_raw;
   real<lower=0> sigma_lemma;
-  real<lower=0> sigma_reg;
+  real<lower=0> sigma_len_reg;
+  real<lower=0> sigma_dist_reg;
 }
 
 transformed parameters {
   vector[J_lemma] alpha_lemma = sigma_lemma * alpha_lemma_raw;
-  vector[J_reg] alpha_reg = sigma_reg * alpha_reg_raw;
+  vector[J_reg] beta_len_reg = sigma_len_reg * beta_len_reg_raw;
+  vector[J_reg] beta_dist_reg = sigma_dist_reg * beta_dist_reg_raw;
 }
 
 model {
-  alpha ~ normal(0, 1);
+  alpha_reg ~ normal(0, 1.5);
   beta_len ~ normal(0, 1);
   beta_dist ~ normal(0, 1);
   alpha_lemma_raw ~ normal(0, 1);
-  alpha_reg_raw ~ normal(0, 1);
+  beta_len_reg_raw ~ normal(0, 1);
+  beta_dist_reg_raw ~ normal(0, 1);
   sigma_lemma ~ normal(0, 1);
-  sigma_reg ~ normal(0, 1);
+  sigma_len_reg ~ normal(0, 1);
+  sigma_dist_reg ~ normal(0, 1);
 
-  y ~ bernoulli_logit(alpha + alpha_lemma[lemma_id] + alpha_reg[reg_id]
-                      + beta_len * length_std + beta_dist * distance_std);
+  y ~ bernoulli_logit(alpha_reg[reg_id] + alpha_lemma[lemma_id]
+                      + (beta_len + beta_len_reg[reg_id]) .* length_std
+                      + (beta_dist + beta_dist_reg[reg_id]) .* distance_std);
 }

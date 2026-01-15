@@ -6,7 +6,7 @@ doc_id,string,Document identifier,metadata,
 sent_id,string,Sentence identifier,derived,
 head_lemma,string,Matrix head lemma,parsed,
 head_pos,string,Matrix head POS,parsed,
-that_overt,int,1 if overt subordinator "that", 0 otherwise,annotation,
+that_overt,int,1 if that-content clause; 0 if bare content clause,annotation,
 clause_len_tokens,int,Length of content clause (tokens),derived,
 distance_tokens,int,Tokens between head and clause onset,derived,
 intervening_len,int,Intervening material length,derived,Can equal distance_tokens

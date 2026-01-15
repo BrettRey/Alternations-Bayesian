@@ -8,7 +8,7 @@ A paper attempting to "solve" the most tractable unsolved problem in English lin
 
 ## Key Commitments
 
-### Terminological (CGEL)
+### Terminological (*CGEL*)
 - **Subordinator** not "complementizer"
 - **Relative constructions** with *wh*-, *that*-, and bare types
 - Subordination is a function, not invariably marked

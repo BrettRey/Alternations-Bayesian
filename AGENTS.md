@@ -27,7 +27,7 @@ Top-level directories:
 - R/Stan execution should run via Quarto chunks or scripts in `analysis/` once added.
 
 ## Coding Style & Naming Conventions
-- Use CGEL terminology (e.g., "subordinator," not "complementizer").
+- Use *CGEL* terminology (e.g., "subordinator," not "complementizer").
 - Follow the Gelman-style Bayesian workflow (prior/posterior checks, held-out validation).
 - R/Stan: 2-space indentation, `snake_case`, explicit seeds for simulations.
 - Use descriptive, lowercase, hyphenated filenames for docs.

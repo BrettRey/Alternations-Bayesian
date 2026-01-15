@@ -1,16 +1,16 @@
-# CGEL-Compatible Gelman-Style Model
+# *CGEL*-Compatible Gelman-Style Model
 
 Source: ChatGPT conversation, 2026-01-14
 
 ---
 
-## CGEL terminology corrections
+## *CGEL* terminology corrections
 
 - **Subordinator** (not "complementizer") for *that* in content clauses
 - **Relative constructions** with formal types: *wh*-relatives, *that*-relatives (subordinator), bare relatives (gap)
 - Subordination is a constructional relation (function), not invariably signalled by clause-internal structure
 
-CGEL refs:
+*CGEL* refs:
 - Ch 11: Content clauses and reported speech
 - Ch 12: Relative constructions and unbounded dependencies
 
@@ -29,8 +29,8 @@ CGEL refs:
 ## Test case: subordinator realization in declarative content clauses
 
 ### Outcome
-- y = 1: overt subordinator *that*
-- y = 0: no overt subordinator
+- y = 1: *that*-content clause
+- y = 0: bare content clause
 
 ### Data units
 Tokens of declarative content clauses functioning as complement (of verbs/adjectives/nouns)
@@ -74,7 +74,7 @@ Gelman moves:
 
 1. **Prior predictive checks**: simulate y under prior; fix if implausible
 2. **Fit, then posterior predictive checks** targeted to:
-   - Overall overt-*that* rate by register
+   - Overall *that*-content clause rate by register
    - Distribution as function of distance
    - Lemma-to-lemma heterogeneity
    - Interactional patterns
@@ -105,7 +105,7 @@ Model discourse predictors (givenness/accessibility) as noisy measurements - exp
 
 ## Key refs
 
-- CGEL Ch 11, 12
+- *CGEL* Ch 11, 12
 - Gelman et al.: Bayesian Workflow (arXiv:2011.01808)
 - Columbia: Bayesian workflow article
 - Columbia: MRP paper

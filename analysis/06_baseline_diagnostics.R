@@ -73,7 +73,14 @@ if (file.exists(fit_path)) {
   fit <- readRDS(fit_path)
 
   # Parameter summary
-  param_summary <- fit$summary(c("alpha", "beta_len", "beta_dist", "sigma_lemma", "sigma_reg"))
+  param_summary <- fit$summary(c(
+    "alpha_reg",
+    "beta_len",
+    "beta_dist",
+    "sigma_lemma",
+    "sigma_len_reg",
+    "sigma_dist_reg"
+  ))
   write.csv(param_summary, file.path(results_dir, "baseline_param_summary.csv"), row.names = FALSE)
 
   # Diagnostics
@@ -81,41 +88,58 @@ if (file.exists(fit_path)) {
   write.csv(diag, file.path(results_dir, "baseline_diagnostics.csv"), row.names = FALSE)
 
   # Posterior predictive check (overall + by register for top 5)
-  draws <- fit$draws(c("alpha", "beta_len", "beta_dist", "alpha_lemma", "alpha_reg"), format = "draws_matrix")
+  draws <- fit$draws(
+    c("alpha_reg", "beta_len", "beta_dist", "alpha_lemma", "beta_len_reg", "beta_dist_reg"),
+    format = "draws_matrix"
+  )
 
-  # Match scaling used in model
-  DT_valid <- DT[!is.na(head_lemma) & !is.na(register) &
-                   !is.na(clause_len_tokens) & !is.na(distance_tokens)]
-  if (nrow(DT_valid) > 5000) {
-    set.seed(cfg$model$seed %||% 123)
-    DT_valid <- DT_valid[sample(.N, 5000)]
+  # Prefer the exact fit sample if available (keeps lemma/register IDs aligned).
+  fit_data_path <- file.path(results_dir, "baseline_fit", "baseline_data.rds")
+  if (file.exists(fit_data_path)) {
+    DT_valid <- data.table::as.data.table(readRDS(fit_data_path))
+  } else {
+    DT_valid <- DT[!is.na(head_lemma) & !is.na(register) &
+                     !is.na(clause_len_tokens) & !is.na(distance_tokens)]
+    if (nrow(DT_valid) > 5000) {
+      set.seed(cfg$model$seed %||% 123)
+      DT_valid <- DT_valid[sample(.N, 5000)]
+    }
+    DT_valid[, length_std := scale(clause_len_tokens)[, 1]]
+    DT_valid[, distance_std := scale(distance_tokens)[, 1]]
+    DT_valid[, lemma_id := as.integer(factor(head_lemma))]
+    DT_valid[, reg_id := as.integer(factor(register))]
   }
-
-  DT_valid[, length_std := scale(clause_len_tokens)[, 1]]
-  DT_valid[, distance_std := scale(distance_tokens)[, 1]]
-  DT_valid[, lemma_id := as.integer(factor(head_lemma))]
-  DT_valid[, reg_id := as.integer(factor(register))]
 
   # Build lookup for alpha_lemma and alpha_reg columns
   lemma_cols <- paste0("alpha_lemma[", seq_len(max(DT_valid$lemma_id)), "]")
   reg_cols <- paste0("alpha_reg[", seq_len(max(DT_valid$reg_id)), "]")
+  len_reg_cols <- paste0("beta_len_reg[", seq_len(max(DT_valid$reg_id)), "]")
+  dist_reg_cols <- paste0("beta_dist_reg[", seq_len(max(DT_valid$reg_id)), "]")
 
-  alpha <- draws[, "alpha"]
   beta_len <- draws[, "beta_len"]
   beta_dist <- draws[, "beta_dist"]
   alpha_lemma <- draws[, lemma_cols, drop = FALSE]
   alpha_reg <- draws[, reg_cols, drop = FALSE]
+  beta_len_reg <- draws[, len_reg_cols, drop = FALSE]
+  beta_dist_reg <- draws[, dist_reg_cols, drop = FALSE]
 
   n_draws <- nrow(draws)
+  n_obs <- nrow(DT_valid)
 
   # Overall PPC
-  eta <- matrix(alpha, nrow = n_draws, ncol = nrow(DT_valid)) +
+  len_mat <- matrix(DT_valid$length_std, nrow = n_draws, ncol = n_obs, byrow = TRUE)
+  dist_mat <- matrix(DT_valid$distance_std, nrow = n_draws, ncol = n_obs, byrow = TRUE)
+  len_slope <- matrix(beta_len, nrow = n_draws, ncol = n_obs) +
+    beta_len_reg[, DT_valid$reg_id, drop = FALSE]
+  dist_slope <- matrix(beta_dist, nrow = n_draws, ncol = n_obs) +
+    beta_dist_reg[, DT_valid$reg_id, drop = FALSE]
+  eta <- alpha_reg[, DT_valid$reg_id, drop = FALSE] +
     alpha_lemma[, DT_valid$lemma_id, drop = FALSE] +
-    alpha_reg[, DT_valid$reg_id, drop = FALSE] +
-    (beta_len %*% t(DT_valid$length_std)) +
-    (beta_dist %*% t(DT_valid$distance_std))
+    (len_slope * len_mat) +
+    (dist_slope * dist_mat)
 
-  pred_rate <- rowMeans(plogis(eta))
+  probs <- plogis(eta)
+  pred_rate <- rowMeans(probs)
   obs_rate <- mean(DT_valid$that_overt)
 
   ppc_overall <- data.table::data.table(
@@ -143,6 +167,37 @@ if (file.exists(fit_path)) {
   if (length(ppc_by_reg) > 0) {
     ppc_by_reg <- data.table::rbindlist(ppc_by_reg)
     write.csv(ppc_by_reg, file.path(results_dir, "ppc_by_register.csv"), row.names = FALSE)
+  }
+
+  # Document-level PPC (observed vs posterior predictive)
+  if ("doc_id" %in% names(DT_valid)) {
+    doc_index <- as.integer(factor(DT_valid$doc_id))
+    doc_map <- DT_valid[, .(
+      doc_id = doc_id[1],
+      register = register[1],
+      n_tokens = .N,
+      obs_rate = mean(that_overt)
+    ), by = doc_index][order(doc_index)]
+
+    doc_sizes <- doc_map$n_tokens
+    n_docs <- nrow(doc_map)
+    doc_rates_pred <- matrix(NA_real_, nrow = n_draws, ncol = n_docs)
+
+    set.seed((cfg$model$seed %||% 123) + 1)
+    for (d in seq_len(n_draws)) {
+      y_rep <- runif(n_obs) < probs[d, ]
+      counts <- rowsum(as.numeric(y_rep), doc_index, reorder = FALSE)
+      doc_rates_pred[d, ] <- counts / doc_sizes
+    }
+
+    saveRDS(
+      list(
+        obs = doc_map[, .(doc_id, register, n_tokens, obs_rate)],
+        pred = doc_rates_pred,
+        doc_map = doc_map[, .(doc_id, register, n_tokens)]
+      ),
+      file.path(results_dir, "ppc_doc_rates.rds")
+    )
   }
 }
 

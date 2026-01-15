@@ -49,6 +49,10 @@ DT[, distance_std := scale(distance_tokens)[, 1]]
 DT[, lemma_id := as.integer(factor(head_lemma))]
 DT[, reg_id := as.integer(factor(register))]
 
+fit_dir <- file.path(cfg$paths$results_dir, "baseline_fit")
+if (!dir.exists(fit_dir)) dir.create(fit_dir, recursive = TRUE, showWarnings = FALSE)
+saveRDS(DT, file.path(fit_dir, "baseline_data.rds"))
+
 stan_data <- list(
   N = nrow(DT),
   y = as.integer(DT$that_overt),
@@ -61,8 +65,6 @@ stan_data <- list(
 )
 
 model_path <- "stan/baseline_that.stan"
-fit_dir <- file.path(cfg$paths$results_dir, "baseline_fit")
-if (!dir.exists(fit_dir)) dir.create(fit_dir, recursive = TRUE, showWarnings = FALSE)
 
 mod <- cmdstanr::cmdstan_model(model_path)
 fit <- mod$sample(
@@ -71,7 +73,7 @@ fit <- mod$sample(
   parallel_chains = 2,
   iter_warmup = 500,
   iter_sampling = 500,
-  adapt_delta = 0.9,
+  adapt_delta = 0.95,
   refresh = 100
 )
 

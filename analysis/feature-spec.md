@@ -3,7 +3,7 @@
 This file defines how predictors are measured and derived. Update once a corpus and parsing pipeline are chosen.
 
 ## Outcome
-- `that_overt`: 1 if an overt subordinator *that* appears in a declarative content clause; 0 otherwise.
+- `that_overt`: 1 if the clause is a *that*-content clause; 0 if it is a bare content clause.
 
 ## Core predictors
 - `clause_len_tokens`: token count of the content clause (exclude preceding subordinator).

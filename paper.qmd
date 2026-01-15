@@ -5,46 +5,152 @@ author: "TBD"
 date: "last-modified"
 format: html
 bibliography: references.bib
+citeproc: true
 ---
 
 ## Abstract
-TBD.
+I model English subordinator realization in finite content clauses, focusing on the alternation between *that*-content clauses and bare content clauses. Using the Open American National Corpus (OANC, Graph Annotation Framework (GrAF) release) and an extraction pipeline aligned with *The Cambridge Grammar of the English Language* (*CGEL*), I define a token as a \term{ccomp} clause head and mark a *that*-content clause via dependency \term{mark} with lemma *that*. A multilevel Bayesian logistic model with lemma‑level partial pooling and register‑specific effects captures strong lexical conditioning and register differences. In‑sample posterior predictive checks (PPCs) track observed rates closely, while a document‑level holdout shows small but systematic underprediction for written registers. I’m treating this as a baseline and freezing analysis for the current draft.
 
 ## Introduction
-TBD.
+Subordinator realization is a classic alternation in English: finite content clauses may appear as *that*-content clauses or as bare content clauses. This alternation varies by register and by the lexical head that licenses the clause, and it interacts with processing‑related predictors such as clause length and head–clause distance. A multilevel Bayesian approach is a natural fit here because it can pool lexical information without washing out heterogeneity and can frame model critique in predictive terms.
+
+This paper establishes a reproducible baseline: a transparent extraction pipeline from OANC, a compact set of predictors, and a workflow that emphasizes predictive checks over coefficient‑significance narratives. I keep the model small so later expansions stay legible.
+
+Following *CGEL* [@HuddlestonPullum2002], I treat *that* in content clauses as a \term{subordinator} that marks declarative clause type, contrasting with bare declarative content clauses that lack an overt subordinator. *CGEL* also distinguishes content clauses (complements) from relative clauses (modifiers); in NP‑complement environments the string "that + clause" can be ambiguous (e.g., the idea that we advanced). The current extraction uses Universal Dependencies (UD) \term{ccomp} to target clausal complements, so it largely sidesteps relative‑clause cases but does not yet cover ambiguous NP complements.
+
+*CGEL*’s discussion of *that* omission is largely in the domain of non‑wh relatives: *that* is obligatory when the relativized element is the subject, it is not omissible in supplementary relatives, and elsewhere omission is optional but sensitive to constructional context. These constraints mainly diagnose relative‑clause structure, so I treat them as a contrast set rather than as direct predictors in the current content‑clause model.
 
 ## Data
-TBD.
+I use the Open American National Corpus (OANC, Graph Annotation Framework (GrAF) release). I parse documents with spaCy and extract finite content clauses by selecting tokens with dependency label \term{ccomp}. For each clause head, I mark a *that*-content clause when the clause head has a dependent with label \term{mark} and lemma *that*.
+
+The current extraction yields 302,522 tokens. Register counts and *that*-content clause rates are:
+
+- spoken: 136,283 tokens, 0.104
+- written~1~: 106,146 tokens, 0.314
+- written~2~: 60,093 tokens, 0.412
+
+This is a first‑pass extraction. It doesn’t yet cover other clause types (e.g., \term{xcomp}) or edge cases such as fused relatives; those are left for later iterations.
 
 ## Model
-TBD.
+I fit a Bayesian logistic regression with varying effects for lexical heads and register. Predictors are standardized clause length (subtree size) and head–clause distance (linear token distance between the matrix head and the clause head). The model includes:
+
+- lemma‑level random intercepts (partial pooling),
+- register‑specific intercepts,
+- register‑varying slopes for length and distance.
+
+Priors are weakly informative: Normal(0, 1) for standardized slopes and raw varying effects, half‑Normal(0, 1) for scale parameters, and Normal(0, 1.5) for register intercepts.
 
 ## Bayesian workflow
-We follow a Gelman-style Bayesian workflow: start with a generative story, fit a multilevel baseline, and iterate based on predictive checks. Concretely:
+I follow a Gelman‑style Bayesian workflow: start with a generative story, fit a multilevel baseline, and iterate based on predictive checks. In this draft I:
 
 - Standardize predictors and use weakly informative priors.
-- Run prior predictive checks for overall and by-register rates.
-- Fit a baseline hierarchical model with partial pooling by lemma and register.
+- Fit a baseline multilevel model with lemma partial pooling and register‑specific effects.
 - Run posterior predictive checks targeted to the claims (overall, by register, by lemma).
 - Validate out of sample by holding out whole documents or registers.
-- Expand the model only when prediction or interpretation improves.
+- Plan prior predictive checks and model expansion once I add new predictors.
 
 ## Results
-Baseline summary (first pass). The extracted dataset contains 302,522 content-clause tokens with an overall overt-*that* rate of 0.239. A baseline hierarchical logistic model (lemma + register varying intercepts; standardized clause length and head–clause distance) fit to a 20,000‑token sample yields a positive length effect (β_len ≈ 0.51) and a negative distance effect (β_dist ≈ −0.53). Estimated heterogeneity is substantial at the lemma level (σ_lemma ≈ 1.78) and smaller but nontrivial by register (σ_reg ≈ 0.99). Diagnostics for the baseline fit show no divergences; PPC summaries are in `results/`.
+Baseline summary (first pass). The extracted dataset contains 302,522 content-clause tokens with an overall *that*-content clause rate of 0.239. A baseline logistic model with lemma-level partial pooling and register-specific intercepts (plus register-varying length and distance slopes) fit to a 20,000‑token sample yields a positive length effect (β<sub>len</sub> ≈ 0.51) and a negative distance effect (β<sub>dist</sub> ≈ −0.50). Lemma heterogeneity remains large (σ<sub>lemma</sub> ≈ 1.77), while register-specific slope variation is modest (σ<sub>len</sub><sub>reg</sub> ≈ 0.18; σ<sub>dist</sub><sub>reg</sub> ≈ 0.41). Posterior predictive checks on the fit sample track observed overall and by-register rates closely; the current fit has 2/1000 divergent transitions at adapt_delta = 0.95.
+
+Out-of-sample check (document-level holdout, 20% of documents stratified by register). Training uses 20,000 tokens; the held‑out set contains 4,819 tokens after dropping 181 unseen‑lemma tokens. Out-of-sample PPCs slightly underpredict written registers (written 1: obs 0.332 vs pred 0.305; written 2: obs 0.478 vs pred 0.454), while spoken is well aligned (obs 0.106 vs pred 0.106). Overall, the held‑out rate is 0.246 with a predicted median of 0.233; the average held‑out expected log predictive density (ELPD) is −0.477 per token.
 
 ### Figures
 Generated by `analysis/07_plot_diagnostics.R`.
 
-![Posterior predictive check: overall overt-*that* rate](results/figures/ppc_overall.png){fig-align="center" width="80%"}
+::: columns
+::: column
+![Posterior predictive check: overall *that*-content clause rate](results/figures/ppc_overall.png){width="100%"}
+:::
+::: column
+![Posterior predictive check (zoom): overall *that*-content clause rate](results/figures/ppc_overall_zoom.png){width="100%"}
+:::
+:::
 
-![Posterior predictive check by register (overt-*that* rate)](results/figures/ppc_by_register.png){fig-align="center" width="90%"}
+::: columns
+::: column
+![Posterior predictive check: spoken *that*-content clause rate (full)](results/figures/ppc_by_register_spoken.png){width="100%"}
+:::
+::: column
+![Posterior predictive check: spoken *that*-content clause rate (zoom)](results/figures/ppc_by_register_spoken_zoom.png){width="100%"}
+:::
+:::
 
-![Overt-*that* rate by register (top 12 by N)](results/figures/that_rate_by_register.png){fig-align="center" width="90%"}
+::: columns
+::: column
+![Posterior predictive check: written 1 *that*-content clause rate (full)](results/figures/ppc_by_register_written_1.png){width="100%"}
+:::
+::: column
+![Posterior predictive check: written 1 *that*-content clause rate (zoom)](results/figures/ppc_by_register_written_1_zoom.png){width="100%"}
+:::
+:::
 
-![Overt-*that* rate by head lemma (top 15 by N)](results/figures/that_rate_top_lemmas.png){fig-align="center" width="90%"}
+::: columns
+::: column
+![Posterior predictive check: written 2 *that*-content clause rate (full)](results/figures/ppc_by_register_written_2.png){width="100%"}
+:::
+::: column
+![Posterior predictive check: written 2 *that*-content clause rate (zoom)](results/figures/ppc_by_register_written_2_zoom.png){width="100%"}
+:::
+:::
+
+![*That*-content clause rate by register (top 12 by N)](results/figures/that_rate_by_register.png){fig-align="center" width="90%"}
+
+![*That*-content clause rate by head lemma (top 15 by N)](results/figures/that_rate_top_lemmas.png){fig-align="center" width="90%"}
+
+::: columns
+::: column
+![Out-of-sample posterior predictive check: overall *that*-content clause rate](results/figures/oos_ppc_overall.png){width="100%"}
+:::
+::: column
+![Out-of-sample posterior predictive check (zoom): overall *that*-content clause rate](results/figures/oos_ppc_overall_zoom.png){width="100%"}
+:::
+:::
+
+::: columns
+::: column
+![Out-of-sample posterior predictive check: spoken *that*-content clause rate (full)](results/figures/oos_ppc_by_register_spoken.png){width="100%"}
+:::
+::: column
+![Out-of-sample posterior predictive check: spoken *that*-content clause rate (zoom)](results/figures/oos_ppc_by_register_spoken_zoom.png){width="100%"}
+:::
+:::
+
+::: columns
+::: column
+![Out-of-sample posterior predictive check: written 1 *that*-content clause rate (full)](results/figures/oos_ppc_by_register_written_1.png){width="100%"}
+:::
+::: column
+![Out-of-sample posterior predictive check: written 1 *that*-content clause rate (zoom)](results/figures/oos_ppc_by_register_written_1_zoom.png){width="100%"}
+:::
+:::
+
+::: columns
+::: column
+![Out-of-sample posterior predictive check: written 2 *that*-content clause rate (full)](results/figures/oos_ppc_by_register_written_2.png){width="100%"}
+:::
+::: column
+![Out-of-sample posterior predictive check: written 2 *that*-content clause rate (zoom)](results/figures/oos_ppc_by_register_written_2_zoom.png){width="100%"}
+:::
+:::
+
+### Document-level PPCs
+Observed document‑level rates are compared to posterior predictive document‑level rates within each register (held‑out documents).
+
+![Out-of-sample doc-level PPC: spoken *that*-content clause rate](results/figures/oos_ppc_doc_by_register_spoken.png){fig-align="center" width="80%"}
+
+![Out-of-sample doc-level PPC: written 1 *that*-content clause rate](results/figures/oos_ppc_doc_by_register_written_1.png){fig-align="center" width="80%"}
+
+![Out-of-sample doc-level PPC: written 2 *that*-content clause rate](results/figures/oos_ppc_doc_by_register_written_2.png){fig-align="center" width="80%"}
 
 ## Discussion
-TBD.
+The baseline model recovers the broad distribution of *that*-content clause rates and highlights strong lexical heterogeneity, but the out‑of‑sample results show a consistent underprediction for written registers. That pattern suggests missing predictors or structure (e.g., additional clause types, discourse features, or richer register effects), but I leave those extensions for future work to keep the current draft focused and reproducible.
+
+I also note a narrow extraction scope: only \term{ccomp} clauses are included, and surprisal is computed only as a placeholder on a sampled subset. These choices are deliberate scaffolding rather than a final analytic commitment.
+
+## References
+
+::: {#refs}
+:::
 
 ## Notes
 

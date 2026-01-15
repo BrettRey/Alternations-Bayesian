@@ -27,3 +27,6 @@ surprisal:
 model:
   baseline_sample_n: 20000
   seed: 20260114
+  oos_doc_holdout_frac: 0.2
+  oos_train_n: 20000
+  oos_test_n: 5000

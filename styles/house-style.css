@@ -47,13 +47,16 @@ h6,
 }
 
 h2,
+h3,
 #toc-title {
   font-variant: small-caps;
   letter-spacing: 0.03em;
 }
 
-h3 {
-  font-style: italic;
+/* Semantic typography classes */
+.smallcaps {
+  font-variant: small-caps;
+  text-transform: lowercase;
 }
 
 .ipa,
@@ -62,8 +65,27 @@ span[lang="ipa"] {
   font-family: var(--font-ipa);
 }
 
+.abbr {
+  font-variant: small-caps;
+  text-transform: lowercase;
+  font-size: 0.9em;
+}
+
 .mentionh {
   font-style: normal;
+}
+
+/* Judgement markers */
+.ungram,
+.marg,
+.odd {
+  font-style: italic;
+}
+
+/* Cross-linguistic subscript */
+sub {
+  font-size: 0.7em;
+  vertical-align: sub;
 }
 
 blockquote {
@@ -72,20 +94,12 @@ blockquote {
   color: #3a2f30;
 }
 
-/* Hanging section numbers in main content. */
-.content h2,
-.content h3,
-.content h4,
-.content h5,
-.content h6 {
+/* Hanging section numbers in main content (sections only, not subsections). */
+.content h2 {
   position: relative;
 }
 
-.content h2 .header-section-number,
-.content h3 .header-section-number,
-.content h4 .header-section-number,
-.content h5 .header-section-number,
-.content h6 .header-section-number {
+.content h2 .header-section-number {
   position: absolute;
   left: -2.6em;
   width: 2.2em;

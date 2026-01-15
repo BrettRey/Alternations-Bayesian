@@ -1,6 +1,6 @@
 # Alternations-Bayesian
 
-Bayesian modeling of English alternations as constrained choice, with the initial test case being **subordinator realization** in finite declarative content clauses: overt subordinator *that* vs zero subordinator (CGEL terminology).
+Bayesian modeling of English alternations as constrained choice, with the initial test case being **subordinator realization** in finite declarative content clauses: overt subordinator *that* vs zero subordinator (*CGEL* terminology).
 
 ## What counts as a token
 A token is a **finite declarative content clause** functioning as a complement of a licensing head (verb/adjective/noun). The outcome is whether the subordinator is overt (*that*) or zero. See `analysis/data_dictionary.csv` and `analysis/feature-spec.md` for details.
