@@ -129,7 +129,7 @@ corpus quirks or individual stylistic whims; it's a regularity that supports
 inference to new cases.
 
 Usage-based approaches to grammar have long emphasized that probabilistic
-patterns can be grammaticalized—internalized as part of the language system
+patterns can be grammaticalized&nbsp;-- internalized as part of the language system
 rather than computed on the fly [@Tagliamonte2006; @BresnanFord2010; @Goldberg2006].
 The present analysis provides quantitative evidence for this view.
 
@@ -203,16 +203,16 @@ This extraction yields 302,522 tokens. @tbl-desc-register summarizes the distrib
 
 : Descriptive statistics by register {#tbl-desc-register}
 
-@tbl-desc-head breaks down the data by head category and grammatical function. Note that "Auxiliary" heads are primarily instances of *be*.
+@tbl-desc-head breaks down the data by head category and grammatical function.
 
-| Head Category | Function | N | *that*-rate (%) |
+| Head Category | Function | N | that-rate (%) |
 | :--- | :--- | :---: | :---: |
 | Verb | Complement | 231,695 | 24.2 |
-| Verb | Extraposed | 7,982 | 26.3 |
-| Auxiliary | Complement | 35,456 | 19.0 |
-| Auxiliary | Extraposed | 17,217 | 21.0 |
+| | Extraposed | 7,982 | 26.3 |
+| be | Complement | 35,456 | 19.0 |
+| | Extraposed | 17,217 | 21.0 |
 | Adjective | Complement | 6,360 | 39.5 |
-| Adjective | Extraposed | 103 | 56.3 |
+| | Extraposed | 103 | 56.3 |
 | Noun | Complement | 1,799 | 24.2 |
 
 : Descriptive statistics by head category and function {#tbl-desc-head}
@@ -400,7 +400,7 @@ Fifth, and most important from the perspective of kind-testing: replication on
 another corpus or variety would directly test the claims made here. If the
 conditioning factors and effect sizes replicate&nbsp;-- if verb identity, register, and
 clause length show similar weights in, say, British English or in a different
-American corpus—then the alternation constitutes a robust cross-variety kind,
+American corpus&nbsp;-- then the alternation constitutes a robust cross-variety kind,
 part of the shared linguistic knowledge of English speakers. If, however,
 substantial divergence appears, that would be informative too: it would suggest
 we're dealing with a historically local, institution-shaped human kind rather
