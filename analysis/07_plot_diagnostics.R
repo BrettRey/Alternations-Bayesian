@@ -115,8 +115,9 @@ if (!is.null(ppc_overall)) {
        xlab = expression(paste("Predicted ", italic(that), "-content clause rate")),
        xlim = ppc_xlim)
   abline(v = unique(ppc_overall$obs_rate)[1], col = "firebrick", lwd = 2)
-  legend("topright", legend = sprintf("Observed = %.3f", unique(ppc_overall$obs_rate)[1]),
-         lwd = 2, col = "firebrick", bty = "n")
+  legend("topright", legend = c("Posterior predictive", sprintf("Observed = %.3f", unique(ppc_overall$obs_rate)[1])),
+         fill = c("grey80", NA), border = c("grey80", NA),
+         lwd = c(NA, 2), col = c(NA, "firebrick"), bty = "n")
   dev.off()
 
   obs <- unique(ppc_overall$obs_rate)[1]
@@ -126,8 +127,9 @@ if (!is.null(ppc_overall)) {
        xlab = expression(paste("Predicted ", italic(that), "-content clause rate")),
        xlim = zoom_xlim(obs))
   abline(v = obs, col = "firebrick", lwd = 2)
-  legend("topright", legend = sprintf("Observed = %.3f", obs),
-         lwd = 2, col = "firebrick", bty = "n")
+  legend("topright", legend = c("Posterior predictive", sprintf("Observed = %.3f", obs)),
+         fill = c("grey80", NA), border = c("grey80", NA),
+         lwd = c(NA, 2), col = c(NA, "firebrick"), bty = "n")
   dev.off()
 }
 
@@ -189,8 +191,9 @@ if (!is.null(oos_ppc_overall)) {
        xlab = expression(paste("Predicted ", italic(that), "-content clause rate")),
        xlim = ppc_xlim)
   abline(v = unique(oos_ppc_overall$obs_rate)[1], col = "firebrick", lwd = 2)
-  legend("topright", legend = sprintf("Observed = %.3f", unique(oos_ppc_overall$obs_rate)[1]),
-         lwd = 2, col = "firebrick", bty = "n")
+  legend("topright", legend = c("Posterior predictive", sprintf("Observed = %.3f", unique(oos_ppc_overall$obs_rate)[1])),
+         fill = c("grey80", NA), border = c("grey80", NA),
+         lwd = c(NA, 2), col = c(NA, "firebrick"), bty = "n")
   dev.off()
 
   obs <- unique(oos_ppc_overall$obs_rate)[1]
@@ -200,8 +203,9 @@ if (!is.null(oos_ppc_overall)) {
        xlab = expression(paste("Predicted ", italic(that), "-content clause rate")),
        xlim = zoom_xlim(obs))
   abline(v = obs, col = "firebrick", lwd = 2)
-  legend("topright", legend = sprintf("Observed = %.3f", obs),
-         lwd = 2, col = "firebrick", bty = "n")
+  legend("topright", legend = c("Posterior predictive", sprintf("Observed = %.3f", obs)),
+         fill = c("grey80", NA), border = c("grey80", NA),
+         lwd = c(NA, 2), col = c(NA, "firebrick"), bty = "n")
   dev.off()
 }
 
