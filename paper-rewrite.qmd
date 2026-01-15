@@ -279,9 +279,7 @@ And how much variation exists among verbs beyond what register and length explai
 
 Different verbs have dramatically different *that*-rates. Among the frequent
 verbs, *think* shows a bare-clause rate above 90%, while *prove* shows a
-*that*-rate above 80%. The model captures this heterogeneity: the estimated
-standard deviation of verb intercepts (σ~lemma~) is approximately 1.77 on the
-log-odds scale, indicating substantial lexical specificity.
+*that*-rate above 80%. The model captures this heterogeneity through the parameter $\sigma_{\text{lemma}}$, which measures the standard deviation of verb intercepts. This value is estimated at approximately 1.77 on the log-odds scale, a large value indicating substantial lexical specificity. To put this in perspective: a shift of two standard deviations in verb identity (e.g., moving from an average verb to a strongly *that*-preferring one) changes the predicted probability more than the entire effect of register.
 
 Partial pooling matters most for rare verbs. A verb with only 15 tokens and an
 observed *that*-rate of 100% gets shrunk toward the population mean, reflecting
@@ -301,12 +299,9 @@ these requires additional data.
 
 ### Processing Effects are Modest But Consistent
 
-Longer clauses favour *that*, with an estimated coefficient around β~len~ ≈ 0.51.
-This effect is consistent with processing accounts: *that* may function as a cue
-that a clause boundary is coming, helping listeners parse complex material.
-
-The distance effect is negative (β~dist~ ≈ −0.50), meaning that greater distance
-between the matrix verb and the clause slightly disfavours *that*. This is
+Longer clauses favour *that*. The coefficient for clause length ($\beta_{\text{len}}$) estimates the change in log-odds for a one-standard-deviation increase in length. The model finds $\beta_{\text{len}} \approx 0.51$, meaning that as clauses get longer, the probability of *that* increases substantially. This effect is consistent with processing accounts: *that* may function as a cue that a clause boundary is coming, helping listeners parse complex material.
+ 
+ The distance effect is negative ($\beta_{\text{dist}} \approx -0.50$), meaning that greater distance between the matrix verb and the clause slightly disfavours *that*. This is
 unexpected and may reflect confounding with clause structure. I leave
 interpretation for future work.
 
