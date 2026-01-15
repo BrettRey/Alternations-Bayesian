@@ -120,7 +120,7 @@ Research on *that*-omission has typically identified four main classes of condit
 
 First, **lexical identity** is perhaps the strongest predictor. Individual matrix verbs differ sharply in their subordinator preferences. Classic studies have long noted that high-frequency "cognitive" verbs like *think*, *know*, *guess*, and *say* strongly favour bare clauses, often appearing in formulae that function essentially as epistemic parentheticals [@ThompsonMulac1991; @Tagliamonte2006]. In contrast, more formal or factive verbs like *prove*, *demonstrate*, and *ensure* typically require or strongly favour overt *that* [@BiberEtAl1999]. This lexical specificity suggests that speakers learn verb-by-verb probabilistic patterns, a view consistent with constructionist approaches to argument structure [@Goldberg2006].
 
-Second, **register** plays a crucial role. Quantitative corpus studies consistently find that spoken English uses bare clauses far more frequently than written English [@BiberEtAl1999]. Within written registers, informal genres (like fiction or personal letters) show higher rates of omission than academic prose or press reportage. These patterns likely reflect a combination of formality, planning time, and genre-specific conventions.
+Second, **register** plays a major role. Quantitative corpus studies consistently find that spoken English uses bare clauses far more frequently than written English [@BiberEtAl1999]. Within written registers, informal genres (like fiction or personal letters) show higher rates of omission than academic prose or press reportage. These patterns likely reflect a combination of formality, planning time, and genre-specific conventions.
 
 Third, **complexity** affects the choice. Under the *Complexity Principle* [@Rohdenburg1996], more explicit grammatical options (like overt *that*) are preferred in cognitively complex environments. Empirical work supports this: longer content clauses favour overt *that*, as do clauses separated from their matrix verb by intervening material. The subordinator is thought to function as a parsing cue, signalling a clause boundary and facilitating processing in difficult contexts [@BresnanFord2010].
 
@@ -174,7 +174,7 @@ Quantitative linguistic research has typically relied on significance tests. You
 
 Bayesian modeling offers a solution. Instead of a single "significant/non-significant" decision, it yields a [distribution]{.smallcaps} of plausible values, directly quantifying uncertainty. It lets us encode principled prior knowledge (e.g., that effects are likely small) to regularize estimates.
 
-Crucially, it solves the "rare verb" problem. Common verbs like *think* provide ample data, but rare verbs like *allege* appear only a few times. A naive model estimates rare verbs unreliably. Bayesian multilevel models use [partial pooling]{.smallcaps} to share information: they assume verbs come from a common population and "shrink" extreme estimates for rare verbs toward the overall mean. This mirrors the intuition that rare verbs probably behave like the rest of the lexicon unless we have strong evidence otherwise.
+It also solves the "rare verb" problem. Common verbs like *think* provide ample data, but rare verbs like *allege* appear only a few times. A naive model estimates rare verbs unreliably. Bayesian multilevel models use [partial pooling]{.smallcaps} to share information: they assume verbs come from a common population and "shrink" extreme estimates for rare verbs toward the overall mean. This mirrors the intuition that rare verbs probably behave like the rest of the lexicon unless we have strong evidence otherwise.
 
 ### Understanding the Output
 
@@ -252,7 +252,7 @@ Longer clauses favour *that*. The coefficient for clause length ($\beta_{\text{l
 unexpected and may reflect confounding with clause structure. I leave
 interpretation for future work.
 
-Crucially, processing effects are modest relative to lexical effects. Verb
+Importantly, processing effects are modest relative to lexical effects. Verb
 identity matters more than clause length. This suggests that speakers'
 internalized verb-specific preferences dominate contextual adjustment.
 
