@@ -1,6 +1,6 @@
 ---
 title: "When to Say *that*"
-subtitle: "Subordinator Realization as Grammatical Knowledge"
+subtitle: "Subordinator Realization as Morphosyntactic Knowledge"
 author: "TBD"
 date: "last-modified"
 format: html
@@ -11,16 +11,16 @@ abstract: |
   almost 90% of the time after *think*, but writers keep it in over 40% of
   academic content clauses. That isn't free variation: it's a learned
   probability distribution tied to verbs, registers, and processing load.
-  This paper argues that these probabilities are part of grammatical
+  This paper argues that these probabilities are part of morphosyntactic
   knowledge&nbsp;-- systematic, learnable, and predictively robust. They are
   causally entrenched and projectible: they recur across speakers and settings
   in ways that support reliable prediction and explanation. Using 302,522
   content clauses from the OANC and a Bayesian multilevel model with partial
   pooling over matrix verbs, I show that the model predicts held-out register
   rates within a few percentage points. Out-of-sample prediction provides the
-  evidential bridge from descriptive pattern to grammatical knowledge. English
-  grammar includes not just what's allowed, but how likely speakers are to
-  choose among allowed options.
+  evidential bridge from descriptive pattern to morphosyntactic knowledge. English
+  morphosyntax includes not just what's allowed, but how likely speakers are to
+  choose among well-formed options.
 ---
 
 ## Introduction
@@ -32,7 +32,9 @@ b. *I think she left early.*
 
 These sentences are propositionally near-equivalent&nbsp;-- close enough that speakers regularly choose between them under the same communicative circumstances. Yet they aren't interchangeable. After *think*, speakers in conversation omit *that* nearly 90% of the time. After *demonstrate*, writers in academic prose keep it over 80% of the time. This variation isn't noise: it's learned, verb-specific, register-sensitive, and predictively stable.
 
-**The central claim of this paper:** English grammar includes not just what's allowed, but how likely speakers are to choose among allowed options. Alternation probabilities are grammatical knowledge.
+**The central claim of this paper:** English morphosyntax includes not just what's allowed, but how likely speakers are to choose among well-formed options. Alternation probabilities are morphosyntactic knowledge.
+
+I use "morphosyntactic" rather than "grammatical" to avoid ambiguity. "Grammatical" sometimes means "well-formed" (acceptability), sometimes "morphosyntactic" (as opposed to phonological or lexical), and sometimes "part of linguistic competence." The claim here is that probabilistic preferences among well-formed structural alternatives are morphosyntactic knowledge -- systematic, shared, and predictive -- even though violating them doesn't trigger sharp unacceptability.
 
 The rest of the paper develops this claim. I first situate *that*-omission in *CGEL* and prior work, then model OANC data with a Bayesian multilevel logistic regression and validate out of sample.
 
@@ -329,9 +331,9 @@ The discrepancies are small and mixed in direction, suggesting the model capture
 
 ## Discussion
 
-### Alternation Probabilities are Grammatical Knowledge
+### Alternation Probabilities are Morphosyntactic Knowledge
 
-The patterns reported here support the claim that alternation probabilities are part of grammatical competence. The effects are systematic (conditioned by identifiable factors), learnable (the factors are present in the input), and predictive (the model generalizes to held-out data). Out-of-sample prediction is the key evidential bridge: it demonstrates that the patterns are projectible&nbsp;-- capable of supporting inference to new cases&nbsp;-- rather than artefacts of corpus idiosyncrasies.
+The patterns reported here support the claim that alternation probabilities are part of morphosyntactic competence. The effects are systematic (conditioned by identifiable factors), learnable (the factors are present in the input), and predictive (the model generalizes to held-out data). Out-of-sample prediction is the key evidential bridge: it demonstrates that the patterns are projectible&nbsp;-- capable of supporting inference to new cases&nbsp;-- rather than artefacts of corpus idiosyncrasies.
 
 This projectibility is what marks the phenomenon as a stable node in the causal
 network of linguistic knowledge. The alternation recurs across speakers and
@@ -340,7 +342,7 @@ complexity, lemma-specific routines); and it supports reliable prediction. These
 are the hallmarks of a natural kind in the sense relevant to scientific
 explanation.
 
-This doesn't mean traditional categorical grammar is wrong. Many aspects of English are all-or-nothing: *she left* is grammatical, *she leaved* isn't. But alternation phenomena like subordinator realization occupy a different part of the grammatical landscape&nbsp;-- a part where probabilities, not just possibilities, define what native speakers know.
+This doesn't mean traditional categorical syntax is wrong. Many aspects of English are all-or-nothing: *she left* is grammatical, *she leaved* isn't. But alternation phenomena like subordinator realization occupy a different part of the landscape&nbsp;-- a part where probabilities, not just possibilities, define what native speakers know.
 
 ### Relation to Prior Work
 
@@ -408,12 +410,12 @@ of what kind of thing subordinator realization patterns are.
 ## Conclusion
 
 This paper has argued that the choice between *that*-content clauses and bare
-content clauses isn't random variation or performance noise. It's grammatical
+content clauses isn't random variation or performance noise. It's morphosyntactic
 knowledge: systematic patterns learned from usage and conditioned by verb,
 register, and processing factors.
 
 The analysis demonstrates two things. First, alternation probabilities belong to
-the same explanatory domain as categorical grammatical rules. They're facts about
+the same explanatory domain as categorical morphosyntactic rules. They're facts about
 English that speakers know. Second, Bayesian multilevel modeling is well suited
 to capturing these probabilities, handling lexical heterogeneity and validating
 against held-out data.
@@ -421,7 +423,7 @@ against held-out data.
 Future work will extend this approach to other alternations&nbsp;-- the dative, the
 genitive, particle placement&nbsp;-- testing whether the same conditioning factors
 predict parallel patterns. If they do, we'll have evidence that alternations as
-a class reflect shared grammatical mechanisms.
+a class reflect shared morphosyntactic mechanisms.
 
 ## References
 
