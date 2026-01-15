@@ -1,6 +1,6 @@
 ---
 title: "When to Say *that*"
-subtitle: "Subordinator Realization as Morphosyntactic Knowledge"
+subtitle: "Subordinator Realization as Linguistic Knowledge"
 author: "TBD"
 date: "last-modified"
 format: html
@@ -11,15 +11,15 @@ abstract: |
   almost 90% of the time after *think*, but writers keep it in over 40% of
   academic content clauses. That isn't free variation: it's a learned
   probability distribution tied to verbs, registers, and processing load.
-  This paper argues that these probabilities are part of morphosyntactic
+  This paper argues that these probabilities are part of linguistic
   knowledge&nbsp;-- systematic, learnable, and predictively robust. They are
   causally entrenched and projectible: they recur across speakers and settings
   in ways that support reliable prediction and explanation. Using 302,522
   content clauses from the OANC and a Bayesian multilevel model with partial
   pooling over matrix verbs, I show that the model predicts held-out register
   rates within a few percentage points. Out-of-sample prediction provides the
-  evidential bridge from descriptive pattern to morphosyntactic knowledge. English
-  morphosyntax includes not just what's allowed, but how likely speakers are to
+  evidential bridge from descriptive pattern to linguistic knowledge. English
+  linguistic knowledge includes not just what's allowed, but how likely speakers are to
   choose among well-formed options.
 ---
 
@@ -32,9 +32,9 @@ b. *I think she left early.*
 
 These sentences are propositionally near-equivalent&nbsp;-- close enough that speakers regularly choose between them under the same communicative circumstances. Yet they aren't interchangeable. After *think*, speakers in conversation omit *that* nearly 90% of the time. After *demonstrate*, writers in academic prose keep it over 80% of the time. This variation isn't noise: it's learned, verb-specific, register-sensitive, and predictively stable.
 
-**The central claim of this paper:** English morphosyntax includes not just what's allowed, but how likely speakers are to choose among well-formed options. Alternation probabilities are morphosyntactic knowledge.
+**The central claim of this paper:** English linguistic knowledge includes not just what's allowed, but how likely speakers are to choose among well-formed options. Alternation probabilities are linguistic knowledge.
 
-I use "morphosyntactic" rather than "grammatical" to avoid ambiguity. "Grammatical" sometimes means "well-formed" (acceptability), sometimes "morphosyntactic" (as opposed to phonological or lexical), and sometimes "part of linguistic competence." The claim here is that probabilistic preferences among well-formed structural alternatives are morphosyntactic knowledge -- systematic, shared, and predictive -- even though violating them doesn't trigger sharp unacceptability.
+Specifically, they are **morphosyntactic knowledge**. I use "morphosyntactic" rather than "grammatical" to avoid ambiguity. "Grammatical" sometimes means "well-formed" (acceptability), sometimes "morphosyntactic" (as opposed to phonological or lexical), and sometimes "part of linguistic competence." The claim here is that probabilistic preferences among well-formed structural alternatives are morphosyntactic knowledge -- systematic, shared, and predictive -- even though violating them doesn't trigger sharp unacceptability.
 
 The rest of the paper develops this claim. I first situate *that*-omission in *CGEL* and prior work, then model OANC data with a Bayesian multilevel logistic regression and validate out of sample.
 
