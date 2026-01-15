@@ -260,15 +260,23 @@ internalized verb-specific preferences dominate contextual adjustment.
 
 ### Validation
 
-In-sample posterior predictive checks show that the model captures observed *that*-rates closely -- within percentage points for each register and for high-frequency verbs. The figure below compares observed rates (vertical line) to the distribution of rates predicted by the model: a good fit means the observed value falls within the predicted range.
+In-sample posterior predictive checks show that the model captures observed *that*-rates closely -- within percentage points for each register and for high-frequency verbs. The figures below compare observed rates (vertical line) to the distribution of rates predicted by the model: a good fit means the observed value falls within the predicted range. The right panel zooms in on the relevant range.
 
 ::: {layout-ncol=2}
-![Posterior predictive check: overall *that*-rate](results/figures/ppc_overall.png)
+![In-sample PPC: overall](results/figures/ppc_overall.png)
 
-![Out-of-sample PPC](results/figures/oos_ppc_overall.png)
+![In-sample PPC: zoomed](results/figures/ppc_overall_zoom.png)
 :::
 
-For out-of-sample validation, I hold out 20% of documents (stratified by register) and predict their *that*-rates from a model trained on the remaining 80%. The held-out predictions slightly underpredict written registers (observed 33.2% vs. predicted 30.5% for journalism; observed 47.8% vs. predicted 45.4% for academic), while spoken rates are well aligned. This underprediction suggests missing predictors -- perhaps discourse factors like givenness or information structure -- but the overall fit is strong.
+For out-of-sample validation, I hold out 20% of documents (stratified by register) and predict their *that*-rates from a model trained on the remaining 80%. The held-out predictions slightly underpredict written registers (observed 33.2% vs. predicted 30.5% for journalism; observed 47.8% vs. predicted 45.4% for academic), while spoken rates are well aligned.
+
+::: {layout-ncol=2}
+![Out-of-sample PPC: overall](results/figures/oos_ppc_overall.png)
+
+![Out-of-sample PPC: zoomed](results/figures/oos_ppc_overall_zoom.png)
+:::
+
+This underprediction suggests missing predictors -- perhaps discourse factors like givenness or information structure -- but the overall fit is strong.
 
 ## Discussion
 
@@ -380,18 +388,32 @@ Where:
 
 ### Diagnostics
 
-The model was fit using CmdStanR with 4 chains of 2000 iterations each (1000
-warmup). Divergent transitions: 2/1000 at adapt_delta = 0.95. All R-hat values
-< 1.01. Effective sample sizes > 400 for all parameters.
+The model was fit using CmdStanR with 4 chains of 2000 iterations each (1000 warmup). Divergent transitions: 2/1000 at adapt_delta = 0.95. All R-hat values < 1.01. Effective sample sizes > 400 for all parameters.
 
-### Figures
+The plots below provide finer-grained views of model fit by register. Each pair shows the full range (left) and zoomed view (right) of the posterior predictive distribution.
 
-The following figures provide additional detail on model diagnostics. The main PPC figures appear in the Results section.
+**Spoken register:**
 
 ::: {layout-ncol=2}
-![Posterior predictive check (zoom)](results/figures/ppc_overall_zoom.png)
+![PPC by register: spoken](results/figures/ppc_by_register_spoken.png)
 
-![Out-of-sample PPC (zoom)](results/figures/oos_ppc_overall_zoom.png)
+![PPC by register: spoken (zoom)](results/figures/ppc_by_register_spoken_zoom.png)
+:::
+
+**Written (journalism):**
+
+::: {layout-ncol=2}
+![PPC by register: journalism](results/figures/ppc_by_register_written_1.png)
+
+![PPC by register: journalism (zoom)](results/figures/ppc_by_register_written_1_zoom.png)
+:::
+
+**Written (academic):**
+
+::: {layout-ncol=2}
+![PPC by register: academic](results/figures/ppc_by_register_written_2.png)
+
+![PPC by register: academic (zoom)](results/figures/ppc_by_register_written_2_zoom.png)
 :::
 
 ```{r}
