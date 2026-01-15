@@ -23,7 +23,7 @@ TBD.
 TBD. (Will include prior predictive checks, posterior predictive checks, and out-of-sample validation.)
 
 ## Results
-TBD.
+Baseline summary (first pass). The extracted dataset contains 302,522 content-clause tokens with an overall overt-*that* rate of 0.239. A baseline hierarchical logistic model (lemma + register varying intercepts; standardized clause length and head–clause distance) fit to a 20,000‑token sample yields a positive length effect (β_len ≈ 0.51) and a negative distance effect (β_dist ≈ −0.53). Estimated heterogeneity is substantial at the lemma level (σ_lemma ≈ 1.78) and smaller but nontrivial by register (σ_reg ≈ 0.99). Diagnostics for the baseline fit show no divergences; PPC summaries are in `results/`.
 
 ## Discussion
 TBD.

@@ -10,6 +10,8 @@ R/Stan scripts, preprocessing, and reproducible notebooks live here. Keep runs d
 6) (Optional) `Rscript analysis/04_surprisal.R` to select a surprisal model.
 7) `Rscript analysis/05_fit_baseline.R` to fit a baseline hierarchical model.
 8) `Rscript analysis/06_baseline_diagnostics.R` to generate summaries and PPC outputs.
+9) `Rscript analysis/08_prepare_clause_text.R` to build clause text for surprisal (sampled).
+10) `Rscript analysis/09_compute_surprisal.R` to compute clause-level surprisal on that sample.
 
 ## Dependencies
 R packages: `yaml`, `spacyr`, `data.table`, `jsonlite`, `cmdstanr`, `posterior`.

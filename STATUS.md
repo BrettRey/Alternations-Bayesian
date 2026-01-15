@@ -18,6 +18,7 @@ Bayesian model of English alternations (subordinator realization as initial test
 - Fast-pass surprisal comparison run: Qwen2.5-1.5B outperforms Pythia-1.4B (perplexity)
 - Baseline hierarchical model fit completed (CmdStanR)
 - Diagnostics + PPC outputs generated in `results/`
+- Clause-level surprisal computed on a sampled subset (Qwen2.5‑1.5B, clause-only text)
 
 ## Next Steps
 1. Review diagnostics and PPC outputs; decide if baseline model needs revisions

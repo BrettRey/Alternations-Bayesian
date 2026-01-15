@@ -20,6 +20,9 @@ surprisal:
   sample_n: 20
   max_chars: 2000
   seed: 20260114
+  clause_model: Qwen/Qwen2.5-1.5B
+  clause_sample_n: 200
+  clause_max_chars: 1000
 
 model:
   baseline_sample_n: 20000
