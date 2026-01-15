@@ -205,21 +205,16 @@ other edge cases. This keeps the analysis clean at the cost of coverage.
 
 ## Model
 
-I fit a Bayesian logistic regression predicting *that*-realization from clause
-length (subtree size), head-clause distance (tokens between matrix verb and
-clause head), and extraposition status. The model includes:
+I fit a Bayesian logistic regression predicting *that*-realization from clause length (subtree size in tokens), head-clause distance (tokens between the matrix verb and the clause head), and extraposition status. The model has a multilevel structure that reflects the nested nature of the data:
 
-- Verb-level random intercepts (partial pooling over matrix verbs)
-- Register-specific intercepts (spoken vs. written registers)
-- Register-varying slopes for length and distance
-- A fixed effect for extraposition
+- **Verb-level random intercepts**: Each verb gets its own baseline *that*-rate, drawn from a shared population. This captures lexical specificity (e.g., *think* preferring bare, *prove* preferring *that*) while allowing partial pooling across verbs.
+- **Register-specific intercepts**: Spoken, journalism, and academic registers have distinct baselines, capturing the large observed differences in *that*-rate.
+- **Register-varying slopes for length and distance**: The effect of clause length on *that* may differ between spoken and written registers (e.g., complexity might matter more when planning time is limited). Rather than assuming a single global slope, the model estimates separate slopes for each register.
+- **A fixed effect for extraposition**: Extraposed clauses tend to favour overt *that*, so this binary indicator captures that tendency.
 
-Priors are weakly informative, encoding the expectation that effects are modest
-but non-zero. Technical specifications appear in the Appendix.
+The priors are weakly informative: they encode the broad expectation that effects are likely modest (not implying near-certainty) but allow the data to dominate. For instance, the prior on log-odds coefficients is $\mathcal{N}(0, 1)$, meaning effects larger than ~2 (which would shift probability from 50% to 88%) are treated as unlikely but not impossible. This regularization helps prevent overfitting, especially for rare verbs.
 
-In linguistic terms, the model asks: when you control for verb identity and
-register, do longer clauses favour *that*? Do more distant or extraposed clauses favour *that*?
-And how much variation exists among verbs beyond what register and length explain?
+In linguistic terms, the model asks: when you control for verb identity and register, do longer clauses favour *that*? Do more distant or extraposed clauses favour *that*? And how much variation exists among verbs beyond what register and processing factors explain?
 
 ## Results
 
