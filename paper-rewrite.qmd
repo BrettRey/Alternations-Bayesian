@@ -203,6 +203,21 @@ effect significant?" (yes/no), we can ask "How different are spoken and written
 registers?" (continuous) and "How confident are we?" (the spread of the
 distribution).
 
+### Interpreting Log-Odds
+
+The model reports effects in [log-odds]{.smallcaps} (logits), the standard scale for
+logistic regression. While less intuitive than probability, log-odds have the
+advantage of being additive: we can simply add up the effects of verb, register,
+and length to get a total score.
+
+To interpret them:
+- **0 log-odds** corresponds to a probability of 0.50 (50%).
+- **+2.2 log-odds** corresponds to approx. 0.90 (90%).
+- **−2.2 log-odds** corresponds to approx. 0.10 (10%).
+
+A coefficient of $+0.5$ means the predictor increases the log-odds by 0.5, which
+is a moderate but noticeable shift in probability (e.g., from 50% to 62%).
+
 ### Partial Pooling for Lexical Effects
 
 Suppose we want to estimate *that*-rates for 500 different verbs. For common
