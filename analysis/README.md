@@ -13,6 +13,16 @@ R/Stan scripts, preprocessing, and reproducible notebooks live here. Keep runs d
 9) `Rscript analysis/08_prepare_clause_text.R` to build clause text for surprisal (sampled).
 10) `Rscript analysis/09_compute_surprisal.R` to compute clause-level surprisal on that sample.
 
+## Gelman-style workflow checklist
+- Define the token and exclusion rules explicitly (see `analysis/data_dictionary.csv`).
+- Standardize continuous predictors before fitting.
+- Choose weakly informative priors and run prior predictive checks.
+- Fit a baseline multilevel model with partial pooling (lemma and register).
+- Run posterior predictive checks targeted to claims (overall, by register, by lemma).
+- Hold out whole documents or registers for validation (not random tokens).
+- Expand the model only if predictive performance or interpretability improves.
+- Record model versions and outputs in `results/`.
+
 ## Dependencies
 R packages: `yaml`, `spacyr`, `data.table`, `jsonlite`, `cmdstanr`, `posterior`.
 Python packages: `spacy`, `transformers`, `torch`.
