@@ -30,3 +30,4 @@ model:
   oos_doc_holdout_frac: 0.2
   oos_train_n: 20000
   oos_test_n: 5000
+  oos_adapt_delta: 0.99

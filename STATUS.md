@@ -49,3 +49,4 @@ Bayesian model of English alternations (subordinator realization as initial test
 ### 2026-01-15
 - Baseline and out-of-sample fits rerun with extraposition predictor
 - PPC figures and manuscript results updated
+- OOS fit rerun with adapt_delta = 0.99 (no divergences)
