@@ -195,7 +195,7 @@ I use the Open American National Corpus (OANC, GrAF release) [@IdeSuderman2004; 
 
 This extraction yields 302,522 tokens. @tbl-desc-register summarizes the distribution by register.
 
-| Register | N | *that*-rate (%) |
+| Register | N | that-rate (%) |
 | :--- | :---: | :---: |
 | Spoken | 136,283 | 10.4 |
 | Written (journalism) | 106,146 | 31.4 |
@@ -233,13 +233,13 @@ overall *that*-rate and obscure the conditioning factors that govern the choice
 in variable contexts. The envelope of variation is not arbitrary; it's where
 the category supports robust generalizations.
 
-A concern arises, however, about whether the UD-based extraction ([ccomp]{.smallcaps} +
-[mark]{.smallcaps} with lemma *that*) reliably tracks the theoretical phenomenon
+Does the UD-based extraction ([ccomp]{.smallcaps} +
+[mark]{.smallcaps} with lemma *that*) reliably track the theoretical phenomenon
 across registers and verb frequencies. To assess this, I hand-checked a stratified
 sample of 200 tokens (50 per register, balanced across high- and low-frequency
 verbs). The extraction showed 94% precision (6% false positives, mostly
 misanalyzed relative clauses) and 91% recall (9% false negatives, mostly bare
-clauses misparsed as other dependency types). Crucially, errors were not
+clauses misparsed as other dependency types). Errors were not
 systematically biased toward either variant or toward particular registers:
 false positives and false negatives occurred at similar rates in spoken and
 written data. This suggests that the operationalization is adequate for the
@@ -286,12 +286,11 @@ that spoken corpora happen to include more *think* and fewer *demonstrate*.
 The model estimates register intercepts (on the log-odds scale) of **−2.73** (90% CI: [−2.92, −2.55]) for spoken, **−1.75** (90% CI: [−1.93, −1.59]) for journalism, and **−1.44** (90% CI: [−1.61, −1.27]) for academic. These negative values (below 0 = 50%) reflect overall low *that*-rates, with spoken showing the strongest bare-clause preference.
 
 The register effect likely reflects multiple factors: formality, planning time,
-expectations about audience processing, and genre conventions. Importantly,
-written registers&nbsp;-- especially academic prose&nbsp;-- are norm-governed in ways that spoken
+expectations about audience processing, and genre conventions. Written registers&nbsp;-- especially academic prose&nbsp;-- are norm-governed in ways that spoken
 registers are not. Editorial intervention, pedagogical feedback, and publication
-practices all reinforce certain patterns. Part of what the model captures,
-therefore, is a socially stabilized convention: historically contingent but
-nonetheless learnable, shared, and predictive. This doesn't weaken the claim
+practices all reinforce certain patterns. Part of what the model captures
+is a socially stabilized convention: historically contingent but
+learnable, shared, and predictive. This doesn't weaken the claim
 that the patterns are grammatical; it clarifies what *kind* of grammatical
 knowledge is involved.
 
@@ -305,7 +304,7 @@ The distance effect is negative ($\beta_{\text{dist}} =$ **−0.58**, 90% CI: [�
 
 Extraposition shows a modest positive effect ($\beta_{\text{extrap}} =$ **0.31**, 90% CI: [0.18, 0.44]): extraposed clauses favour overt *that* compared to in-situ complements, consistent with the higher *that*-rates observed for adjective-headed extraposed constructions.
 
-Importantly, processing effects are modest relative to lexical effects. Verb
+Processing effects are modest relative to lexical effects. Verb
 identity matters more than clause length. This suggests that speakers'
 internalized verb-specific preferences dominate contextual adjustment.
 
@@ -401,8 +400,7 @@ another corpus or variety would directly test the claims made here. If the
 conditioning factors and effect sizes replicate&nbsp;-- if verb identity, register, and
 clause length show similar weights in, say, British English or in a different
 American corpus&nbsp;-- then the alternation constitutes a robust cross-variety kind,
-part of the shared linguistic knowledge of English speakers. If, however,
-substantial divergence appears, that would be informative too: it would suggest
+part of the shared linguistic knowledge of English speakers. If substantial divergence appears, that would be informative too: it would suggest
 we're dealing with a historically local, institution-shaped human kind rather
 than a stable linguistic universal. Either outcome advances our understanding
 of what kind of thing subordinator realization patterns are.
