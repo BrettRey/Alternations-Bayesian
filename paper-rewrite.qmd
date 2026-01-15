@@ -106,12 +106,7 @@ and verb complements around 24%. The extraction captures extraposition by
 detecting expletive *it* as subject of the matrix predicate, yielding about
 25,000 extraposed tokens (8% of the total).
 
-The present analysis focuses on complement content clauses -- the position where
-variation is most productive. This follows the variationist principle of
-defining an [envelope of variation]{.smallcaps}: we study alternation only where
-both variants genuinely compete. Including subject clauses, where *that* is
-near-obligatory, would inflate the *that*-rate and obscure the conditioning
-factors that govern the choice in variable contexts.
+The present analysis focuses on complement content clauses (both in situ and extraposed) -- the position where variation is most productive. This follows the variationist principle of defining an [envelope of variation]{.smallcaps}: we study alternation only where both variants genuinely compete. Including subject clauses, where *that* is near-obligatory, would inflate the *that*-rate and obscure the conditioning factors that govern the choice in variable contexts.
 
 This scoping decision isn't a limitation to be apologized for. It reflects the
 fact that grammar has two components: categorical constraints (subjects require
@@ -263,18 +258,19 @@ other edge cases. This keeps the analysis clean at the cost of coverage.
 ## Model
 
 I fit a Bayesian logistic regression predicting *that*-realization from clause
-length (subtree size) and head-clause distance (tokens between matrix verb and
-clause head). The model includes:
+length (subtree size), head-clause distance (tokens between matrix verb and
+clause head), and extraposition status. The model includes:
 
 - Verb-level random intercepts (partial pooling over matrix verbs)
 - Register-specific intercepts (spoken vs. written registers)
 - Register-varying slopes for length and distance
+- A fixed effect for extraposition
 
 Priors are weakly informative, encoding the expectation that effects are modest
 but non-zero. Technical specifications appear in the Appendix.
 
 In linguistic terms, the model asks: when you control for verb identity and
-register, do longer clauses favour *that*? Do more distant clauses favour *that*?
+register, do longer clauses favour *that*? Do more distant or extraposed clauses favour *that*?
 And how much variation exists among verbs beyond what register and length explain?
 
 ## Results
