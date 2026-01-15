@@ -190,23 +190,9 @@ A coefficient of **+0.5** represents a moderate shift (e.g., from 50% to 62%).
 
 ### Validating the Model
 
-We validate the model using [posterior predictive checks]{.smallcaps}. We ask: "If we simulate new data from our model, does it look like the real data?" If the simulated *that*-rates match the observed ones across registers and verbs, we can trust that the model captures the underlying grammatical system.
-formalizes and quantifies this intuition.
+Fitting a model is only half the job. We also need to ask: does the model capture the patterns in the data? We answer this using [posterior predictive checks]{.smallcaps}: we use the model to generate fake data and compare it to the real data.
 
-### Posterior Predictive Checks
-
-Fitting a model is only half the job. We also need to ask: does the model
-capture the patterns in the data? [Posterior predictive checks]{.smallcaps}
-answer this by using the model to generate fake data and comparing it to the
-real data.
-
-If our model captures *that*-realization well, the fake data should have similar
-*that*-rates by register, by verb, and overall. If it doesn't, we're missing
-something important, and we need to improve the model.
-
-This emphasis on prediction rather than significance distinguishes Bayesian
-workflow from traditional hypothesis testing. We're not asking "Is there an
-effect?" but "Does our model capture the phenomenon?"
+If our model captures *that*-realization well, the fake data should have similar *that*-rates by register, by verb, and overall. If it doesn't, we're missing something important. This emphasis on prediction rather than significance distinguishes Bayesian workflow from traditional hypothesis testing. We're not asking "Is there an effect?" but "Does our model capture the phenomenon?"
 
 ## Data
 
