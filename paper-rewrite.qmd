@@ -182,15 +182,15 @@ Bayesian multilevel models solve this through [partial pooling]{.smallcaps}. The
 
 ### Reading the Results
 
-To interpret the model's output, two concepts are helpful:
-
-First, effects are reported in [log-odds]{.smallcaps} (logits), the standard scale for logistic regression.
+To interpret the model's output, it helps to understand [log-odds]{.smallcaps} (logits), the standard scale for logistic regression.
 - **0** corresponds to 50% probability.
 - **+2.2** corresponds to ~90% probability (strong preference for *that*).
 - **−2.2** corresponds to ~10% probability (strong preference for bare).
 A coefficient of **+0.5** represents a moderate shift (e.g., from 50% to 62%).
 
-Second, we validate the model using [posterior predictive checks]{.smallcaps}. We ask: "If we simulate new data from our model, does it look like the real data?" If the simulated *that*-rates match the observed ones across registers and verbs, we can trust that the model captures the underlying grammatical system.
+### Validating the Model
+
+We validate the model using [posterior predictive checks]{.smallcaps}. We ask: "If we simulate new data from our model, does it look like the real data?" If the simulated *that*-rates match the observed ones across registers and verbs, we can trust that the model captures the underlying grammatical system.
 formalizes and quantifies this intuition.
 
 ### Posterior Predictive Checks
