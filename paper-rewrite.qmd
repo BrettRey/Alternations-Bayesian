@@ -63,24 +63,15 @@ Content clauses serve several grammatical functions, and the availability of the
 *that* ~ bare alternation differs across them.
 
 As [subjects]{.smallcaps}, content clauses strongly prefer overt *that*. Compare
-*That she left surprised everyone* with the marginal *She left surprised
-everyone*. The bare variant isn't ungrammatical in all analyses, but it's rare
-in usage and often sounds odd. Subject content clauses don't exhibit the robust
-variation we see elsewhere.
+*That she left surprised everyone* with the marginal *\*She left surprised
+everyone*. Subject content clauses don't exhibit the robust variation we see elsewhere.
 
 As [complements]{.smallcaps} of verbs, adjectives, and nouns, the alternation is
 productive. Both *I think that she left* and *I think she left* are fully
 acceptable, and the choice between them is conditioned by the factors discussed
 below. This is where the action is.
 
-In [extraposed]{.smallcaps} position, content clauses also show variation,
-though the patterns differ from non-extraposed complements. *It's clear that
-she left* and *It's clear she left* are both acceptable. In the present data,
-extraposed adjective complements show the highest *that*-rate of any
-construction (56%), while non-extraposed adjective complements run around 40%
-and verb complements around 24%. The extraction captures extraposition by
-detecting expletive *it* as subject of the matrix predicate, yielding about
-25,000 extraposed tokens (8% of the total).
+In [extraposed]{.smallcaps} position, content clauses also show variation, though the patterns differ from non-extraposed complements. *It's clear that she left* and *It's clear she left* are both acceptable. As detailed in the Data section, extraposed constructions generally show higher rates of overt *that* than their in-situ counterparts.
 
 The present analysis focuses on complement content clauses (both *in situ* and extraposed)~-- the position where variation is most productive. Subject clauses, where *that* is near-obligatory, are excluded. This scoping reflects the fact that grammar has two components: categorical constraints (subjects require *that*) and probabilistic preferences (complements vary). Both are grammatical knowledge. The categorical constraints aren't in dispute. The probabilistic preferences are less understood~-- and that's what we're investigating. The rationale for this scoping decision is discussed further under "Envelope of Variation" in the Data section.
 
@@ -205,6 +196,8 @@ This extraction yields 302,522 tokens distributed across three register groups:
 - Spoken: 136,283 tokens (10.4% *that*)
 - Written (journalism): 106,146 tokens (31.4% *that*)
 - Written (academic): 60,093 tokens (41.2% *that*)
+
+To capture extraposed clauses (e.g., *It is clear...*), I identify [ccomp]{.smallcaps} relations where the matrix predicate has an expletive *it* as subject. This yields approximately 25,000 extraposed tokens (8% of the total). Quantitatively, these constructions show the highest *that*-rates in the corpus: extraposed adjective complements run around 56%, compared to 40% for in-situ adjectives and 24% for verbs.
 
 The overall *that*-rate is 23.9%, but this masks substantial variation by
 register and by matrix verb. The extraction is deliberately narrow: I focus on
