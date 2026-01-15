@@ -81,6 +81,40 @@ reference grammars: they describe what's possible, not what's probable. The
 present analysis takes the next step, asking what determines the probability of
 each variant.
 
+### Functions of Content Clauses
+
+Content clauses serve several grammatical functions, and the availability of the
+*that* ~ bare alternation differs across them.
+
+As [subjects]{.smallcaps}, content clauses strongly prefer overt *that*. Compare
+*That she left surprised everyone* with the marginal *She left surprised
+everyone*. The bare variant isn't ungrammatical in all analyses, but it's rare
+in usage and often sounds odd. Subject content clauses don't exhibit the robust
+variation we see elsewhere.
+
+As [complements]{.smallcaps} of verbs, adjectives, and nouns, the alternation is
+productive. Both *I think that she left* and *I think she left* are fully
+acceptable, and the choice between them is conditioned by the factors discussed
+below. This is where the action is.
+
+In [extraposed]{.smallcaps} position, content clauses also show variation,
+though the patterns may differ from non-extraposed complements. *It's clear that
+she left* and *It's clear she left* are both acceptable, but the rate of *that*
+may differ from direct complements.
+
+The present analysis focuses on complement content clauses -- the position where
+variation is most productive. This follows the variationist principle of
+defining an [envelope of variation]{.smallcaps}: we study alternation only where
+both variants genuinely compete. Including subject clauses, where *that* is
+near-obligatory, would inflate the *that*-rate and obscure the conditioning
+factors that govern the choice in variable contexts.
+
+This scoping decision isn't a limitation to be apologized for. It reflects the
+fact that grammar has two components: categorical constraints (subjects require
+*that*) and probabilistic preferences (complements vary). Both are grammatical
+knowledge. The categorical constraints aren't in dispute. The probabilistic
+preferences are less understood, and that's what we're investigating.
+
 ### Conditioning Factors from Prior Research
 
 Research on *that*-omission has identified several conditioning factors.
