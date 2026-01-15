@@ -98,9 +98,13 @@ acceptable, and the choice between them is conditioned by the factors discussed
 below. This is where the action is.
 
 In [extraposed]{.smallcaps} position, content clauses also show variation,
-though the patterns may differ from non-extraposed complements. *It's clear that
-she left* and *It's clear she left* are both acceptable, but the rate of *that*
-may differ from direct complements.
+though the patterns differ from non-extraposed complements. *It's clear that
+she left* and *It's clear she left* are both acceptable. In the present data,
+extraposed adjective complements show the highest *that*-rate of any
+construction (56%), while non-extraposed adjective complements run around 40%
+and verb complements around 24%. The extraction captures extraposition by
+detecting expletive *it* as subject of the matrix predicate, yielding about
+25,000 extraposed tokens (8% of the total).
 
 The present analysis focuses on complement content clauses -- the position where
 variation is most productive. This follows the variationist principle of
