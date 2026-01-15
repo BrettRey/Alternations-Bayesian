@@ -12,7 +12,7 @@ abstract: |
   academic content clauses. That isn't free variation: it's a learned
   probability distribution tied to verbs, registers, and processing load.
   This paper argues that these probabilities are part of grammatical
-  knowledge~-- systematic, learnable, and predictively robust. They are
+  knowledge&nbsp;-- systematic, learnable, and predictively robust. They are
   causally entrenched and projectible: they recur across speakers and settings
   in ways that support reliable prediction and explanation. Using 302,522
   content clauses from the OANC and a Bayesian multilevel model with partial
@@ -30,7 +30,7 @@ A four-letter word separates these two sentences:
 a. *I think that she left early.*
 b. *I think she left early.*
 
-These sentences are propositionally near-equivalent~-- close enough that speakers regularly choose between them under the same communicative circumstances. Yet they aren't interchangeable. After *think*, speakers in conversation omit *that* nearly 90% of the time. After *demonstrate*, writers in academic prose keep it over 80% of the time. This variation isn't noise: it's learned, verb-specific, register-sensitive, and predictively stable.
+These sentences are propositionally near-equivalent&nbsp;-- close enough that speakers regularly choose between them under the same communicative circumstances. Yet they aren't interchangeable. After *think*, speakers in conversation omit *that* nearly 90% of the time. After *demonstrate*, writers in academic prose keep it over 80% of the time. This variation isn't noise: it's learned, verb-specific, register-sensitive, and predictively stable.
 
 **The central claim of this paper:** English grammar includes not just what's allowed, but how likely speakers are to choose among allowed options. Alternation probabilities are grammatical knowledge.
 
@@ -73,7 +73,7 @@ below. This is where the action is.
 
 In [extraposed]{.smallcaps} position, content clauses also show variation, though the patterns differ from non-extraposed complements. *It's clear that she left* and *It's clear she left* are both acceptable. As detailed in the Data section, extraposed constructions generally show higher rates of overt *that* than their in-situ counterparts.
 
-The present analysis focuses on complement content clauses (both *in situ* and extraposed)~-- the position where variation is most productive. Subject clauses, where *that* is near-obligatory, are excluded. This scoping reflects the fact that grammar has two components: categorical constraints (subjects require *that*) and probabilistic preferences (complements vary). Both are grammatical knowledge. The categorical constraints aren't in dispute. The probabilistic preferences are less understood~-- and that's what we're investigating. The rationale for this scoping decision is discussed further under "Envelope of Variation" in the Data section.
+The present analysis focuses on complement content clauses (both *in situ* and extraposed)&nbsp;-- the position where variation is most productive. Subject clauses, where *that* is near-obligatory, are excluded. This scoping reflects the fact that grammar has two components: categorical constraints (subjects require *that*) and probabilistic preferences (complements vary). Both are grammatical knowledge. The categorical constraints aren't in dispute. The probabilistic preferences are less understood&nbsp;-- and that's what we're investigating. The rationale for this scoping decision is discussed further under "Envelope of Variation" in the Data section.
 
 ### Conditioning Factors from Prior Research
 
@@ -98,7 +98,7 @@ factors.
 
 I propose that the probability of choosing *that* over a bare clause isn't
 performance noise or random variation. It's part of speakers' grammatical
-competence~-- knowledge they acquire from usage and carry with them as part of
+competence&nbsp;-- knowledge they acquire from usage and carry with them as part of
 knowing English.
 
 This claim has three components. First, the patterns are [systematic]{.smallcaps}:
@@ -120,8 +120,8 @@ phenomenon belongs to a stable node in the causal network that constitutes
 linguistic knowledge.
 
 Out-of-sample prediction provides the evidential bridge. If a model trained on
-one portion of the data successfully predicts held-out data~-- across registers,
-across verbs~-- then the patterns it captures are projectible in the sense that
+one portion of the data successfully predicts held-out data&nbsp;-- across registers,
+across verbs&nbsp;-- then the patterns it captures are projectible in the sense that
 matters for scientific generalization. The alternation isn't an artefact of
 corpus quirks or individual stylistic whims; it's a regularity that supports
 inference to new cases.
@@ -173,7 +173,7 @@ questions. Technical details appear in the Appendix. For broad introductions tai
 
 ### Why Bayesian?
 
-Rather than a binary *p* < .05 decision, a Bayesian model yields uncertainty intervals for effect sizes and shrinks sparse-verb estimates via partial pooling. This matters for alternations: common verbs like *think* provide ample data, but rare verbs like *allege* appear only a few times. A naive model estimates rare verbs unreliably. Partial pooling assumes all verbs come from a common population and "shrinks" extreme estimates toward the overall mean~-- a principled way to regularize without throwing out data.
+Rather than a binary *p* < .05 decision, a Bayesian model yields uncertainty intervals for effect sizes and shrinks sparse-verb estimates via partial pooling. This matters for alternations: common verbs like *think* provide ample data, but rare verbs like *allege* appear only a few times. A naive model estimates rare verbs unreliably. Partial pooling assumes all verbs come from a common population and "shrinks" extreme estimates toward the overall mean&nbsp;-- a principled way to regularize without throwing out data.
 
 ### Understanding the Output
 
@@ -191,11 +191,29 @@ Second, we validate the model using [posterior predictive checks]{.smallcaps}: w
 
 I use the Open American National Corpus (OANC, GrAF release) [@IdeSuderman2004; @OANC], which includes spoken and written registers. I parse documents with spaCy [@spacy] and identify finite content clauses via the Universal Dependencies [ccomp]{.smallcaps} relation [@NivreEtAl2016UD; @ZemanEtAl2020UDv2]. For each clause, I record whether the subordinator *that* is present (via the [mark]{.smallcaps} relation with lemma *that*).
 
-This extraction yields 302,522 tokens distributed across three register groups:
+This extraction yields 302,522 tokens. @tbl-desc-register summarizes the distribution by register.
 
-- Spoken: 136,283 tokens (10.4% *that*)
-- Written (journalism): 106,146 tokens (31.4% *that*)
-- Written (academic): 60,093 tokens (41.2% *that*)
+| Register | N | *that*-rate (%) |
+| :--- | :---: | :---: |
+| Spoken | 136,283 | 10.4 |
+| Written (journalism) | 106,146 | 31.4 |
+| Written (academic) | 60,093 | 41.2 |
+
+: Descriptive statistics by register {#tbl-desc-register}
+
+@tbl-desc-head breaks down the data by head category and grammatical function. Note that "Auxiliary" heads are primarily instances of *be*.
+
+| Head Category | Function | N | *that*-rate (%) |
+| :--- | :--- | :---: | :---: |
+| Verb | Complement | 231,695 | 24.2 |
+| Verb | Extraposed | 7,982 | 26.3 |
+| Auxiliary | Complement | 35,456 | 19.0 |
+| Auxiliary | Extraposed | 17,217 | 21.0 |
+| Adjective | Complement | 6,360 | 39.5 |
+| Adjective | Extraposed | 103 | 56.3 |
+| Noun | Complement | 1,799 | 24.2 |
+
+: Descriptive statistics by head category and function {#tbl-desc-head}
 
 To capture extraposed clauses (e.g., *It is clear...*), I identify [ccomp]{.smallcaps} relations where the matrix predicate has an expletive *it* as subject. This yields approximately 25,000 extraposed tokens (8% of the total). Quantitatively, these constructions show the highest *that*-rates in the corpus: extraposed adjective complements run around 56%, compared to 40% for in-situ adjectives and 24% for verbs.
 
@@ -206,8 +224,8 @@ other edge cases. This keeps the analysis clean at the cost of coverage.
 
 ### Envelope of Variation and Extraction Validity
 
-The decision to focus on complement clauses~-- where both *that* and bare variants
-genuinely compete~-- reflects a principled approach to defining the phenomenon.
+The decision to focus on complement clauses&nbsp;-- where both *that* and bare variants
+genuinely compete&nbsp;-- reflects a principled approach to defining the phenomenon.
 Including subject clauses, where *that* is near-obligatory, would inflate the
 overall *that*-rate and obscure the conditioning factors that govern the choice
 in variable contexts. The envelope of variation is not arbitrary; it's where
@@ -241,7 +259,7 @@ In linguistic terms, the model asks: when you control for verb identity and regi
 
 ## Results
 
-This section presents the main findings. For full technical details~-- model specification, priors, and diagnostics~-- see the Appendix.
+This section presents the main findings. For full technical details&nbsp;-- model specification, priors, and diagnostics&nbsp;-- see the Appendix.
 
 ### Lexical Conditioning is Strong
 
@@ -267,7 +285,7 @@ The model estimates register intercepts (on the log-odds scale) of **−2.73** (
 
 The register effect likely reflects multiple factors: formality, planning time,
 expectations about audience processing, and genre conventions. Importantly,
-written registers~-- especially academic prose~-- are norm-governed in ways that spoken
+written registers&nbsp;-- especially academic prose&nbsp;-- are norm-governed in ways that spoken
 registers are not. Editorial intervention, pedagogical feedback, and publication
 practices all reinforce certain patterns. Part of what the model captures,
 therefore, is a socially stabilized convention: historically contingent but
@@ -291,7 +309,7 @@ internalized verb-specific preferences dominate contextual adjustment.
 
 ### Validation
 
-In-sample posterior predictive checks show that the model captures observed *that*-rates closely~-- within percentage points for each register and for high-frequency verbs. The figures below compare observed rates (vertical line) to the distribution of rates predicted by the model: a good fit means the observed value falls within the predicted range. The right panel zooms in on the relevant range.
+In-sample posterior predictive checks show that the model captures observed *that*-rates closely&nbsp;-- within percentage points for each register and for high-frequency verbs. The figures below compare observed rates (vertical line) to the distribution of rates predicted by the model: a good fit means the observed value falls within the predicted range. The right panel zooms in on the relevant range.
 
 ::: {layout-ncol=2}
 ![In-sample PPC: overall](results/figures/ppc_overall.png)
@@ -307,13 +325,13 @@ For out-of-sample validation, I hold out 20% of documents (stratified by registe
 ![Out-of-sample PPC: zoomed](results/figures/oos_ppc_overall_zoom.png)
 :::
 
-The discrepancies are small and mixed in direction, suggesting the model captures the main effects well. The academic underprediction may reflect missing predictors~-- perhaps discourse factors like givenness or information structure that are more prominent in academic prose~-- but the overall fit is strong.
+The discrepancies are small and mixed in direction, suggesting the model captures the main effects well. The academic underprediction may reflect missing predictors&nbsp;-- perhaps discourse factors like givenness or information structure that are more prominent in academic prose&nbsp;-- but the overall fit is strong.
 
 ## Discussion
 
 ### Alternation Probabilities are Grammatical Knowledge
 
-The patterns reported here support the claim that alternation probabilities are part of grammatical competence. The effects are systematic (conditioned by identifiable factors), learnable (the factors are present in the input), and predictive (the model generalizes to held-out data). Out-of-sample prediction is the key evidential bridge: it demonstrates that the patterns are projectible~-- capable of supporting inference to new cases~-- rather than artefacts of corpus idiosyncrasies.
+The patterns reported here support the claim that alternation probabilities are part of grammatical competence. The effects are systematic (conditioned by identifiable factors), learnable (the factors are present in the input), and predictive (the model generalizes to held-out data). Out-of-sample prediction is the key evidential bridge: it demonstrates that the patterns are projectible&nbsp;-- capable of supporting inference to new cases&nbsp;-- rather than artefacts of corpus idiosyncrasies.
 
 This projectibility is what marks the phenomenon as a stable node in the causal
 network of linguistic knowledge. The alternation recurs across speakers and
@@ -322,7 +340,7 @@ complexity, lemma-specific routines); and it supports reliable prediction. These
 are the hallmarks of a natural kind in the sense relevant to scientific
 explanation.
 
-This doesn't mean traditional categorical grammar is wrong. Many aspects of English are all-or-nothing: *she left* is grammatical, *she leaved* isn't. But alternation phenomena like subordinator realization occupy a different part of the grammatical landscape~-- a part where probabilities, not just possibilities, define what native speakers know.
+This doesn't mean traditional categorical grammar is wrong. Many aspects of English are all-or-nothing: *she left* is grammatical, *she leaved* isn't. But alternation phenomena like subordinator realization occupy a different part of the grammatical landscape&nbsp;-- a part where probabilities, not just possibilities, define what native speakers know.
 
 ### Relation to Prior Work
 
@@ -330,17 +348,17 @@ The present findings confirm and extend previous research in several ways.
 
 First, the strong lexical conditioning aligns with @ThompsonMulac1991's observation that high-frequency cognitive verbs like *think* and *know* pattern distinctly from other matrix verbs. Their proposal that these forms function as epistemic parentheticals is consistent with our finding that such verbs show near-categorical bare-clause preferences. The partial pooling approach quantifies this: *think* is genuinely different from *demonstrate*, not just noisier.
 
-Second, the register effects confirm @BiberEtAl1999's corpus findings but go further. By modelling register as a grouping factor with varying slopes, we show that the *magnitude* of processing effects (clause length, distance) differs across registers~-- not just the baseline *that*-rate. This suggests that spoken and written production involve different weighting of the same cues, a prediction consistent with @BresnanFord2010's work on probabilistic grammar.
+Second, the register effects confirm @BiberEtAl1999's corpus findings but go further. By modelling register as a grouping factor with varying slopes, we show that the *magnitude* of processing effects (clause length, distance) differs across registers&nbsp;-- not just the baseline *that*-rate. This suggests that spoken and written production involve different weighting of the same cues, a prediction consistent with @BresnanFord2010's work on probabilistic grammar.
 
 Third, the complexity effects support @Rohdenburg1996's *Complexity Principle*: longer clauses favour the more explicit variant. The effect size ($\beta_{\text{len}} \approx 0.51$) is modest but robust, suggesting that *that* does function as a parsing cue, as proposed by @BresnanFord2010.
 
-One notable absence is surprisal. The uniform information density (UID) framework [@LevyJaeger2007; @Jaeger2010] predicts that *that* should be inserted when the clause onset is unpredictable. We don't test this directly~-- adding surprisal remains for future work~-- but the strong lexical effects are at least consistent with UID: low-surprisal verbs like *think* (which typically embed predictable material) may not need the cue.
+One notable absence is surprisal. The uniform information density (UID) framework [@LevyJaeger2007; @Jaeger2010] predicts that *that* should be inserted when the clause onset is unpredictable. We don't test this directly&nbsp;-- adding surprisal remains for future work&nbsp;-- but the strong lexical effects are at least consistent with UID: low-surprisal verbs like *think* (which typically embed predictable material) may not need the cue.
 
 ### Implications for Grammatical Theory
 
 If alternation probabilities are grammatical, then grammar isn't purely categorical. Usage-based and constructionist approaches have emphasized this for decades [@Bybee2010; @Goldberg2006], but the present analysis provides rigorous evidence: a quantitative model that captures the phenomenon and validates out of sample.
 
-The lexical specificity is striking. The difference between *think* and *demonstrate* isn't a difference in meaning or argument structure that would predict their *that*-preferences. It appears to be a difference in learned usage patterns~-- what @Goldberg2006 calls "surface generalizations" and what construction grammar emphasizes as item-specific knowledge. This is consistent with @Bybee2010's argument that high-frequency patterns become entrenched as units.
+The lexical specificity is striking. The difference between *think* and *demonstrate* isn't a difference in meaning or argument structure that would predict their *that*-preferences. It appears to be a difference in learned usage patterns&nbsp;-- what @Goldberg2006 calls "surface generalizations" and what construction grammar emphasizes as item-specific knowledge. This is consistent with @Bybee2010's argument that high-frequency patterns become entrenched as units.
 
 ### Implications for Methodology
 
@@ -353,7 +371,7 @@ attention on whether the model captures the phenomenon.
 
 This doesn't mean Bayesian methods are always necessary. For simple between-group
 comparisons with ample data, traditional approaches work fine. But for complex,
-hierarchical, sparse data~-- the norm in corpus linguistics~-- Bayesian
+hierarchical, sparse data&nbsp;-- the norm in corpus linguistics&nbsp;-- Bayesian
 multilevel models offer substantial advantages.
 
 ### Limitations and Future Work
@@ -378,7 +396,7 @@ by region or register.
 
 Fifth, and most important from the perspective of kind-testing: replication on
 another corpus or variety would directly test the claims made here. If the
-conditioning factors and effect sizes replicate~-- if verb identity, register, and
+conditioning factors and effect sizes replicate&nbsp;-- if verb identity, register, and
 clause length show similar weights in, say, British English or in a different
 American corpus—then the alternation constitutes a robust cross-variety kind,
 part of the shared grammatical knowledge of English speakers. If, however,
@@ -400,8 +418,8 @@ English that speakers know. Second, Bayesian multilevel modeling is well suited
 to capturing these probabilities, handling lexical heterogeneity and validating
 against held-out data.
 
-Future work will extend this approach to other alternations~-- the dative, the
-genitive, particle placement~-- testing whether the same conditioning factors
+Future work will extend this approach to other alternations&nbsp;-- the dative, the
+genitive, particle placement&nbsp;-- testing whether the same conditioning factors
 predict parallel patterns. If they do, we'll have evidence that alternations as
 a class reflect shared grammatical mechanisms.
 
@@ -427,6 +445,24 @@ Where:
 - $\alpha_{\text{lemma}[i]}$ is the verb-level random intercept
 - $\beta_{\text{len}}, \beta_{\text{dist}}$ are the population-level slopes
 - $b_{\text{len,reg}[i]}, b_{\text{dist,reg}[i]}$ are register-varying slopes
+
+### Model Coefficients
+
+@tbl-model-coef presents the full summary of the Bayesian multilevel model. Estimates are on the log-odds scale.
+
+| Parameter | Estimate | 90% CI | R-hat | Ess (Bulk) |
+| :--- | :---: | :---: | :---: | :---: |
+| Intercept (Spoken) | -2.73 | [-2.92, -2.55] | 1.02 | 83 |
+| Intercept (Journalism) | -1.75 | [-1.93, -1.59] | 1.03 | 75 |
+| Intercept (Academic) | -1.44 | [-1.61, -1.27] | 1.02 | 93 |
+| Length ($\beta_{\text{len}}$) | 0.55 | [0.24, 0.84] | 1.01 | 336 |
+| Distance ($\beta_{\text{dist}}$) | -0.58 | [-1.09, -0.06] | 1.00 | 424 |
+| Extraposition ($\beta_{\text{extrap}}$) | 0.31 | [0.18, 0.44] | 1.01 | 1602 |
+| $\sigma_{\text{lemma}}$ | 1.80 | [1.64, 1.97] | 1.02 | 103 |
+| $\sigma_{\text{len\_reg}}$ | 0.31 | [0.08, 0.87] | 1.00 | 322 |
+| $\sigma_{\text{dist\_reg}}$ | 0.57 | [0.21, 1.25] | 1.00 | 510 |
+
+: Model parameter summaries (Est = Mean) {#tbl-model-coef}
 
 ### Priors
 
