@@ -270,7 +270,7 @@ In-sample posterior predictive checks show that the model captures observed *tha
 ![In-sample PPC: zoomed](results/figures/ppc_overall_zoom.png)
 :::
 
-For out-of-sample validation, I hold out 20% of documents (stratified by register) and predict their *that*-rates from a model trained on the remaining 80%. The held-out predictions slightly underpredict written registers (observed 33.2% vs. predicted 30.5% for journalism; observed 47.8% vs. predicted 45.4% for academic), while spoken rates are well aligned (see Appendix for by-register figures).
+For out-of-sample validation, I hold out 20% of documents (stratified by register) and predict their *that*-rates from a model trained on the remaining 80%. The predictions are close to observed rates: for journalism, the model predicts 31.4% (observed 30.0%); for academic, it predicts 41.5% (observed 44.3%). Spoken rates are well aligned (observed 10.6%, predicted 10.0%). The academic register shows the largest discrepancy, with the model slightly underpredicting (see Appendix for by-register figures).
 
 ::: {layout-ncol=2}
 ![Out-of-sample PPC: overall](results/figures/oos_ppc_overall.png)
