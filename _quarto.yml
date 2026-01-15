@@ -3,6 +3,8 @@ project:
 
 format:
   html:
+    filters:
+      - filters/house-style.lua
     css: styles/house-style.css
     toc: true
     number-sections: true

@@ -62,6 +62,10 @@ span[lang="ipa"] {
   font-family: var(--font-ipa);
 }
 
+.mentionh {
+  font-style: normal;
+}
+
 blockquote {
   border-left: 3px solid #d3c1c6;
   padding-left: 1rem;
