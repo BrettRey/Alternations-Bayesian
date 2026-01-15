@@ -224,7 +224,7 @@ This section presents the main findings. For full technical details -- model spe
 
 Different verbs have dramatically different *that*-rates. Among the frequent
 verbs, *think* shows a bare-clause rate above 90%, while *prove* shows a
-*that*-rate above 80%. The model captures this heterogeneity through the parameter $\sigma_{\text{lemma}}$, which measures the standard deviation of verb intercepts. This value is estimated at approximately 1.77 on the log-odds scale, a large value indicating substantial lexical specificity. To put this in perspective: a shift of two standard deviations in verb identity (e.g., moving from an average verb to a strongly *that*-preferring one) changes the predicted probability more than the entire effect of register.
+*that*-rate above 80%. The model captures this heterogeneity through the parameter $\sigma_{\text{lemma}}$, which measures the standard deviation of verb intercepts. This value is estimated at **1.80** (90% CI: [1.64, 1.97]) on the log-odds scale, a large value indicating substantial lexical specificity. To put this in perspective: a shift of two standard deviations in verb identity (e.g., moving from an average verb to a strongly *that*-preferring one) changes the predicted probability more than the entire effect of register.
 
 Partial pooling matters most for rare verbs. A verb with only 15 tokens and an
 observed *that*-rate of 100% gets shrunk toward the population mean, reflecting
@@ -240,6 +240,8 @@ Register effects are large and consistent. Spoken registers have baseline
 threefold difference persists after controlling for verb identity: it isn't just
 that spoken corpora happen to include more *think* and fewer *prove*.
 
+The model estimates register intercepts (on the log-odds scale) of **−2.73** (90% CI: [−2.92, −2.55]) for spoken, **−1.75** (90% CI: [−1.93, −1.59]) for journalism, and **−1.44** (90% CI: [−1.61, −1.27]) for academic. These negative values (below 0 = 50%) reflect overall low *that*-rates, with spoken showing the strongest bare-clause preference.
+
 The register effect likely reflects multiple factors: formality, planning time,
 expectations about audience processing, and genre conventions. Disentangling
 these requires additional data.
@@ -248,11 +250,11 @@ these requires additional data.
 
 ### Processing Effects are Modest But Consistent
 
-Longer clauses favour *that*. The coefficient for clause length ($\beta_{\text{len}}$) estimates the change in log-odds for a one-standard-deviation increase in length. The model finds $\beta_{\text{len}} \approx 0.51$, meaning that as clauses get longer, the probability of *that* increases substantially. This effect is consistent with processing accounts: *that* may function as a cue that a clause boundary is coming, helping listeners parse complex material.
- 
- The distance effect is negative ($\beta_{\text{dist}} \approx -0.50$), meaning that greater distance between the matrix verb and the clause slightly disfavours *that*. This is
-unexpected and may reflect confounding with clause structure. I leave
-interpretation for future work.
+Longer clauses favour *that*. The coefficient for clause length ($\beta_{\text{len}}$) estimates the change in log-odds for a one-standard-deviation increase in length. The model finds $\beta_{\text{len}} =$ **0.55** (90% CI: [0.24, 0.84]), meaning that as clauses get longer, the probability of *that* increases substantially. This effect is consistent with processing accounts: *that* may function as a cue that a clause boundary is coming, helping listeners parse complex material.
+
+The distance effect is negative ($\beta_{\text{dist}} =$ **−0.58**, 90% CI: [−1.09, −0.06]), meaning that greater distance between the matrix verb and the clause slightly disfavours *that*. This is unexpected and may reflect confounding with clause structure. I leave interpretation for future work.
+
+Extraposition shows a modest positive effect ($\beta_{\text{extrap}} =$ **0.31**, 90% CI: [0.18, 0.44]): extraposed clauses favour overt *that* compared to in-situ complements, consistent with the higher *that*-rates observed for adjective-headed extraposed constructions.
 
 Importantly, processing effects are modest relative to lexical effects. Verb
 identity matters more than clause length. This suggests that speakers'
