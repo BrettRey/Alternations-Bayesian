@@ -6,7 +6,7 @@ results_dir <- "results"
 fig_dir <- file.path(results_dir, "figures")
 if (!dir.exists(fig_dir)) dir.create(fig_dir, recursive = TRUE, showWarnings = FALSE)
 ppc_xlim <- c(0, 0.5)
-ppc_zoom_width <- 0.05
+ppc_zoom_width <- 0.03
 
 zoom_xlim <- function(obs, full = ppc_xlim, width = ppc_zoom_width) {
   half <- width / 2
