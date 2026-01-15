@@ -186,7 +186,7 @@ we'd like to borrow information from similar verbs. Bayesian multilevel models
 do this automatically through [partial pooling]{.smallcaps}.
 
 Third, traditional approaches ignore prior knowledge. We know something about
-language before we analyze our data: effects bigger than 10 log-odds are
+language before we analyze our data: effects that imply absolute certainty are
 implausible, spoken and written registers differ, and so on. Bayesian methods
 let us encode this knowledge and update it with evidence.
 
