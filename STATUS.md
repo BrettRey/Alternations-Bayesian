@@ -2,7 +2,7 @@
 
 ## Project State
 **Phase**: Initial analysis pipeline
-**Last updated**: 2026-01-14
+**Last updated**: 2026-01-15
 
 ## Goal
 Bayesian model of English alternations (subordinator realization as initial test case), *CGEL*-compatible terminology, Gelman-style workflow.
@@ -20,7 +20,8 @@ Bayesian model of English alternations (subordinator realization as initial test
 - Baseline model updated with register-specific intercepts + register-varying slopes (CmdStanR)
 - Diagnostics + PPC outputs regenerated in `results/` (fit-sample PPCs align with observed rates)
 - Out-of-sample evaluation script added (document-level holdout with PPC + ELPD outputs)
-- Out-of-sample run completed (20% doc holdout; written registers slightly underpredicted)
+- Out-of-sample run completed (20% doc holdout; small register-specific miscalibration)
+- Extraposition flag added (expletive *it* subject) and baseline model updated to include extraposition
 - Clause-level surprisal computed on a sampled subset (Qwen2.5‑1.5B, clause-only text)
 
 ## Next Steps
@@ -44,3 +45,7 @@ Bayesian model of English alternations (subordinator realization as initial test
   - *CGEL*/Gelman model specification
 - OANC pipeline implemented and run
 - Baseline model + diagnostics completed
+
+### 2026-01-15
+- Baseline and out-of-sample fits rerun with extraposition predictor
+- PPC figures and manuscript results updated

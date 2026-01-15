@@ -37,6 +37,9 @@ if (!file.exists(in_path)) {
 DT <- data.table::as.data.table(readRDS(in_path))
 DT <- DT[!is.na(that_overt) & !is.na(head_lemma) & !is.na(register) &
            !is.na(clause_len_tokens) & !is.na(distance_tokens) & !is.na(doc_id)]
+if (!"extraposed" %in% names(DT)) {
+  stop("Missing extraposition flag. Run analysis/03b_add_extraposition.R first.")
+}
 
 if (nrow(DT) == 0) {
   stop("No valid tokens after filtering; cannot run out-of-sample evaluation.")
@@ -142,6 +145,7 @@ stan_data <- list(
   y = as.integer(train$that_overt),
   length_std = train$length_std,
   distance_std = train$distance_std,
+  extraposed = as.numeric(train$extraposed),
   J_lemma = length(lemma_levels),
   J_reg = length(reg_levels),
   lemma_id = train$lemma_id,
@@ -166,7 +170,7 @@ if (!dir.exists(csv_dir)) dir.create(csv_dir, recursive = TRUE, showWarnings = F
 file.copy(fit$output_files(), csv_dir, overwrite = TRUE)
 
 draws <- fit$draws(
-  c("alpha_reg", "beta_len", "beta_dist", "alpha_lemma", "beta_len_reg", "beta_dist_reg"),
+  c("alpha_reg", "beta_len", "beta_dist", "beta_extrap", "alpha_lemma", "beta_len_reg", "beta_dist_reg"),
   format = "draws_matrix"
 )
 
@@ -179,6 +183,7 @@ alpha_reg <- draws[, reg_cols, drop = FALSE]
 alpha_lemma <- draws[, lemma_cols, drop = FALSE]
 beta_len <- draws[, "beta_len"]
 beta_dist <- draws[, "beta_dist"]
+beta_extrap <- draws[, "beta_extrap"]
 beta_len_reg <- draws[, len_reg_cols, drop = FALSE]
 beta_dist_reg <- draws[, dist_reg_cols, drop = FALSE]
 
@@ -192,10 +197,12 @@ len_slope <- matrix(beta_len, nrow = n_draws, ncol = n_test) +
 dist_slope <- matrix(beta_dist, nrow = n_draws, ncol = n_test) +
   beta_dist_reg[, test$reg_id, drop = FALSE]
 
+extrap_mat <- matrix(test$extraposed, nrow = n_draws, ncol = n_test, byrow = TRUE)
 eta <- alpha_reg[, test$reg_id, drop = FALSE] +
   alpha_lemma[, test$lemma_id, drop = FALSE] +
   (len_slope * len_mat) +
-  (dist_slope * dist_mat)
+  (dist_slope * dist_mat) +
+  (matrix(beta_extrap, nrow = n_draws, ncol = n_test) * extrap_mat)
 
 probs <- plogis(eta)
 

@@ -37,6 +37,9 @@ set.seed(cfg$model$seed %||% 123)
 DT <- data.table::as.data.table(readRDS(in_path))
 DT <- DT[!is.na(that_overt) & !is.na(head_lemma) & !is.na(register)]
 DT <- DT[!is.na(clause_len_tokens) & !is.na(distance_tokens)]
+if (!"extraposed" %in% names(DT)) {
+  stop("Missing extraposition flag. Run analysis/03b_add_extraposition.R first.")
+}
 
 sample_n <- cfg$model$baseline_sample_n %||% 20000
 if (nrow(DT) > sample_n) {
@@ -58,6 +61,7 @@ stan_data <- list(
   y = as.integer(DT$that_overt),
   length_std = DT$length_std,
   distance_std = DT$distance_std,
+  extraposed = as.numeric(DT$extraposed),
   J_lemma = max(DT$lemma_id),
   J_reg = max(DT$reg_id),
   lemma_id = DT$lemma_id,

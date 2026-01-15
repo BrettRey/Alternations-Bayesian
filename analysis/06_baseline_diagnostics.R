@@ -77,6 +77,7 @@ if (file.exists(fit_path)) {
     "alpha_reg",
     "beta_len",
     "beta_dist",
+    "beta_extrap",
     "sigma_lemma",
     "sigma_len_reg",
     "sigma_dist_reg"
@@ -89,7 +90,7 @@ if (file.exists(fit_path)) {
 
   # Posterior predictive check (overall + by register for top 5)
   draws <- fit$draws(
-    c("alpha_reg", "beta_len", "beta_dist", "alpha_lemma", "beta_len_reg", "beta_dist_reg"),
+    c("alpha_reg", "beta_len", "beta_dist", "beta_extrap", "alpha_lemma", "beta_len_reg", "beta_dist_reg"),
     format = "draws_matrix"
   )
 
@@ -118,6 +119,7 @@ if (file.exists(fit_path)) {
 
   beta_len <- draws[, "beta_len"]
   beta_dist <- draws[, "beta_dist"]
+  beta_extrap <- draws[, "beta_extrap"]
   alpha_lemma <- draws[, lemma_cols, drop = FALSE]
   alpha_reg <- draws[, reg_cols, drop = FALSE]
   beta_len_reg <- draws[, len_reg_cols, drop = FALSE]
@@ -133,10 +135,12 @@ if (file.exists(fit_path)) {
     beta_len_reg[, DT_valid$reg_id, drop = FALSE]
   dist_slope <- matrix(beta_dist, nrow = n_draws, ncol = n_obs) +
     beta_dist_reg[, DT_valid$reg_id, drop = FALSE]
+  extrap_mat <- matrix(DT_valid$extraposed, nrow = n_draws, ncol = n_obs, byrow = TRUE)
   eta <- alpha_reg[, DT_valid$reg_id, drop = FALSE] +
     alpha_lemma[, DT_valid$lemma_id, drop = FALSE] +
     (len_slope * len_mat) +
-    (dist_slope * dist_mat)
+    (dist_slope * dist_mat) +
+    (matrix(beta_extrap, nrow = n_draws, ncol = n_obs) * extrap_mat)
 
   probs <- plogis(eta)
   pred_rate <- rowMeans(probs)
