@@ -168,76 +168,29 @@ Many linguists are unfamiliar with Bayesian statistics. This section explains
 the approach in plain language, emphasizing what it offers for linguistic
 questions. Technical details appear in the Appendix. For broad introductions tailored to social science, see @McElreath2020 and @GelmanHill2007.
 
-### Why Not Traditional Statistics?
+### Beyond Significance Testing
 
-Quantitative linguistic research has typically relied on significance tests. You fit a model, get a
-*p*-value, and conclude that the effect is "significant" or not. This approach
-has served linguistics well, but it has limitations.
+Quantitative linguistic research has typically relied on significance tests. You fit a model, get a *p*-value, and conclude that the effect is "significant" or not. While useful, this approach has limitations. First, it focuses on the existence of an effect rather than its size or our uncertainty about it. Second, it often treats categories (like verbs) in isolation, ignoring their similarities.
 
-First, *p*-values don't tell you what you want to know. A *p*-value says: "If
-there were no effect, how surprising would my data be?" But linguists usually
-want to ask: "How strong is the effect?" or "How confident should I be that
-*think* differs from *prove*?" Bayesian methods answer these questions directly.
+Bayesian modeling offers a different approach. Instead of a single "significant/non-significant" decision, it yields a [distribution]{.smallcaps} of plausible values for each effect. The model might say, "The effect of register is probably between 0.3 and 0.7, with the most likely value around 0.5." This directly answers the questions linguists care about: "How strong is the effect?" and "How confident are we?"
 
-Second, significance testing treats each verb (or register, or predictor) in
-isolation. But verbs aren't independent: *think* and *believe* might pattern
-similarly because they're both cognitive verbs. With sparse data for some verbs,
-we'd like to borrow information from similar verbs. Bayesian multilevel models
-do this automatically through [partial pooling]{.smallcaps}.
+### Handling Lexical Variation
 
-Third, traditional approaches ignore prior knowledge. We know something about
-language before we analyze our data: effects that imply absolute certainty are
-implausible, spoken and written registers differ, and so on. Bayesian methods
-let us encode this knowledge and update it with evidence.
+One of the biggest challenges in corpus linguistics is the "rare verb" problem. Common verbs like *think* provide ample data, but rare verbs like *allege* or *concede* appear only a few times. A naive model treats each verb independently, leading to noisy, unreliable estimates for rare items.
 
-### What Bayesian Modeling Gives You
+Bayesian multilevel models solve this through [partial pooling]{.smallcaps}. The model assumes that verbs come from a common population. It uses information from common verbs to improve estimates for rare ones, "shrinking" extreme outliers toward the overall mean. This mirrors the linguistic intuition that rare verbs probably behave like the rest of the lexicon unless there is strong evidence to the contrary.
 
-In a Bayesian analysis, the output isn't a single point estimate ("the effect is
-0.51") but a [distribution]{.smallcaps} of plausible values. The model says, "Based
-on the data and my prior assumptions, the effect is probably between 0.3 and 0.7,
-with the most likely value around 0.5." This distribution captures what we've
-learned and how uncertain we remain.
+### Reading the Results
 
-For linguistic questions, this is valuable. Instead of asking "Is the register
-effect significant?" (yes/no), we can ask "How different are spoken and written
-registers?" (continuous) and "How confident are we?" (the spread of the
-distribution).
+To interpret the model's output, two concepts are helpful:
 
-### Interpreting Log-Odds
+First, effects are reported in [log-odds]{.smallcaps} (logits), the standard scale for logistic regression.
+- **0** corresponds to 50% probability.
+- **+2.2** corresponds to ~90% probability (strong preference for *that*).
+- **−2.2** corresponds to ~10% probability (strong preference for bare).
+A coefficient of **+0.5** represents a moderate shift (e.g., from 50% to 62%).
 
-The model reports effects in [log-odds]{.smallcaps} (logits), the standard scale for
-logistic regression. While less intuitive than probability, log-odds have the
-advantage of being additive: we can simply add up the effects of verb, register,
-and length to get a total score.
-
-To interpret them:
-- **0 log-odds** corresponds to a probability of 0.50 (50%).
-- **+2.2 log-odds** corresponds to approx. 0.90 (90%).
-- **−2.2 log-odds** corresponds to approx. 0.10 (10%).
-
-A coefficient of $+0.5$ means the predictor increases the log-odds by 0.5, which
-is a moderate but noticeable shift in probability (e.g., from 50% to 62%).
-
-### Partial Pooling for Lexical Effects
-
-Suppose we want to estimate *that*-rates for 500 different verbs. For common
-verbs like *think*, we have thousands of tokens, so we can estimate their rates
-precisely. For rare verbs like *allege*, we might have only 20 tokens, so our
-estimates are noisy.
-
-A naive approach treats each verb independently. But this wastes information:
-rare verbs with wildly unusual estimates are probably showing noise, not real
-idiosyncrasy. A better approach pools information across verbs, shrinking
-extreme estimates toward the overall mean.
-
-Bayesian multilevel models do this through [partial pooling]{.smallcaps}. Common
-verbs get estimates close to their observed rates (little shrinkage). Rare verbs
-get estimates pulled toward the overall mean (more shrinkage). The amount of
-shrinkage is estimated from the data itself, based on how much true variability
-exists among verbs.
-
-This is what linguists do intuitively: we assume rare verbs probably behave like
-similar verbs unless we have strong evidence otherwise. Bayesian modeling
+Second, we validate the model using [posterior predictive checks]{.smallcaps}. We ask: "If we simulate new data from our model, does it look like the real data?" If the simulated *that*-rates match the observed ones across registers and verbs, we can trust that the model captures the underlying grammatical system.
 formalizes and quantifies this intuition.
 
 ### Posterior Predictive Checks
