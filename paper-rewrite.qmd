@@ -111,8 +111,8 @@ probabilities through exposure. Third, they're [predictive]{.smallcaps}: a model
 trained on one dataset generalizes to held-out data, showing that the patterns
 capture something stable rather than fitting noise.
 
-What makes this "morphosyntactic knowledge" rather than purely pragmatic or stylistic variation? The
-distinction isn't a sharp boundary. Rather, I argue that the alternation is
+What makes this "morphosyntactic knowledge" rather than purely pragmatic or stylistic variation? While the
+distinction is not sharp, I argue that the alternation is
 morphosyntactic insofar as it is *causally entrenched* and *projectible*: it recurs
 across speakers and settings in ways that support reliable prediction and
 explanation, and it is sensitive to manipulable variables (register/genre
