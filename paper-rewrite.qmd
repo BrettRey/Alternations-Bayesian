@@ -170,11 +170,11 @@ questions. Technical details appear in the Appendix. For broad introductions tai
 
 ### Why Bayesian?
 
-Quantitative linguistic research has typically relied on significance tests. You fit a model, get a *p*-value, and conclude that the effect is "significant" or not. While useful, this approach has limitations. First, it focuses on the existence of an effect rather than its size or our uncertainty about it. Second, it often treats categories (like verbs) in isolation, ignoring their similarities.
+Quantitative linguistic research has typically relied on significance tests. You fit a model, get a *p*-value, and conclude that the effect is "significant" or not. While useful, this approach has three key limitations. First, *p*-values don't tell us what we usually want to know: "How strong is the effect?" or "How certain are we?" Second, traditional methods often treat items (like verbs) in isolation, struggling with sparse data. Third, they ignore prior knowledge: we know that effects implying absolute certainty (e.g., 100 log-odds) are implausible, but frequentist methods can't easily encode this.
 
-Bayesian modeling offers a different approach. Instead of a single "significant/non-significant" decision, it yields a [distribution]{.smallcaps} of plausible values for each effect, directly answering: "How strong is the effect?" and "How confident are we?"
+Bayesian modeling offers a solution. Instead of a single "significant/non-significant" decision, it yields a [distribution]{.smallcaps} of plausible values, directly quantifying uncertainty. It lets us encode principled prior knowledge (e.g., that effects are likely small) to regularize estimates.
 
-It also solves the "rare verb" problem. Common verbs like *think* provide ample data, but rare verbs like *allege* appear only a few times. A naive model estimates rare verbs unreliably. Bayesian multilevel models use [partial pooling]{.smallcaps} to share information: they assume verbs come from a common population and "shrink" extreme estimates for rare verbs toward the overall mean. This mirrors the intuition that rare verbs probably behave like the rest of the lexicon unless we have strong evidence otherwise.
+Crucially, it solves the "rare verb" problem. Common verbs like *think* provide ample data, but rare verbs like *allege* appear only a few times. A naive model estimates rare verbs unreliably. Bayesian multilevel models use [partial pooling]{.smallcaps} to share information: they assume verbs come from a common population and "shrink" extreme estimates for rare verbs toward the overall mean. This mirrors the intuition that rare verbs probably behave like the rest of the lexicon unless we have strong evidence otherwise.
 
 ### Understanding the Output
 
