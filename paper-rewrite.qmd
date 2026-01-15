@@ -274,29 +274,27 @@ For out-of-sample validation, I hold out 20% of documents (stratified by registe
 
 ### Alternation Probabilities are Grammatical Knowledge
 
-The patterns reported here support the claim that alternation probabilities are
-part of grammatical competence. The effects are systematic (conditioned by
-identifiable factors), learnable (the factors are present in the input), and
-predictive (the model generalizes to held-out data).
+The patterns reported here support the claim that alternation probabilities are part of grammatical competence. The effects are systematic (conditioned by identifiable factors), learnable (the factors are present in the input), and predictive (the model generalizes to held-out data).
 
-This doesn't mean traditional categorical grammar is wrong. Many aspects of
-English are all-or-nothing: *she left* is grammatical, *she leaved* isn't. But
-alternation phenomena like subordinator realization occupy a different part of
-the grammatical landscape -- a part where probabilities, not just possibilities,
-define what native speakers know.
+This doesn't mean traditional categorical grammar is wrong. Many aspects of English are all-or-nothing: *she left* is grammatical, *she leaved* isn't. But alternation phenomena like subordinator realization occupy a different part of the grammatical landscape -- a part where probabilities, not just possibilities, define what native speakers know.
+
+### Relation to Prior Work
+
+The present findings confirm and extend previous research in several ways.
+
+First, the strong lexical conditioning aligns with @ThompsonMulac1991's observation that high-frequency cognitive verbs like *think* and *know* pattern distinctly from other matrix verbs. Their proposal that these forms function as epistemic parentheticals is consistent with our finding that such verbs show near-categorical bare-clause preferences. The partial pooling approach quantifies this: *think* is genuinely different from *prove*, not just noisier.
+
+Second, the register effects confirm @BiberEtAl1999's corpus findings but go further. By modelling register as a grouping factor with varying slopes, we show that the *magnitude* of processing effects (clause length, distance) differs across registers -- not just the baseline *that*-rate. This suggests that spoken and written production involve different weighting of the same cues, a prediction consistent with @BresnanFord2010's work on probabilistic grammar.
+
+Third, the complexity effects support @Rohdenburg1996's *Complexity Principle*: longer clauses favour the more explicit variant. The effect size ($\beta_{\text{len}} \approx 0.51$) is modest but robust, suggesting that *that* does function as a parsing cue, as proposed by @BresnanFord2010.
+
+One notable absence is surprisal. The uniform information density (UID) framework [@LevyJaeger2007; @Jaeger2010] predicts that *that* should be inserted when the clause onset is unpredictable. We don't test this directly -- adding surprisal remains for future work -- but the strong lexical effects are at least consistent with UID: low-surprisal verbs like *think* (which typically embed predictable material) may not need the cue.
 
 ### Implications for Grammatical Theory
 
-If alternation probabilities are grammatical, then grammar isn't purely
-categorical. Usage-based and constructionist approaches have emphasized this for
-decades, but the present analysis provides rigorous evidence: a quantitative
-model that captures the phenomenon and validates out of sample.
+If alternation probabilities are grammatical, then grammar isn't purely categorical. Usage-based and constructionist approaches have emphasized this for decades [@Bybee2010; @Goldberg2006], but the present analysis provides rigorous evidence: a quantitative model that captures the phenomenon and validates out of sample.
 
-The lexical specificity is striking. The difference between *think* and *prove*
-isn't a difference in meaning or argument structure that would predict their
-*that*-preferences. It appears to be a difference in learned usage patterns --
-what Goldberg calls "surface generalizations" and what construction grammar
-emphasizes as item-specific knowledge.
+The lexical specificity is striking. The difference between *think* and *prove* isn't a difference in meaning or argument structure that would predict their *that*-preferences. It appears to be a difference in learned usage patterns -- what @Goldberg2006 calls "surface generalizations" and what construction grammar emphasizes as item-specific knowledge. This is consistent with @Bybee2010's argument that high-frequency patterns become entrenched as units.
 
 ### Implications for Methodology
 
