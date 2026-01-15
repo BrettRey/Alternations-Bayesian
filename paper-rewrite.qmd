@@ -209,15 +209,14 @@ This extraction yields 302,522 tokens. @tbl-desc-register summarizes the distrib
 | :--- | :--- | :---: | :---: |
 | Verb | Complement | 231,695 | 24.2 |
 | | Extraposed | 7,982 | 26.3 |
-| be | Complement | 35,456 | 19.0 |
-| | Extraposed | 17,217 | 21.0 |
+| *be* | Complement | 35,456 | 19.0 |
 | Adjective | Complement | 6,360 | 39.5 |
 | | Extraposed | 103 | 56.3 |
 | Noun | Complement | 1,799 | 24.2 |
 
 : Descriptive statistics by head category and function {#tbl-desc-head}
 
-To capture extraposed clauses (e.g., *It is clear...*), I identify [ccomp]{.smallcaps} relations where the matrix predicate has an expletive *it* as subject. This yields approximately 25,000 extraposed tokens (8% of the total). Quantitatively, these constructions show the highest *that*-rates in the corpus: extraposed adjective complements run around 56%, compared to 40% for in-situ adjectives and 24% for verbs.
+To capture extraposed clauses (e.g., *It is clear...*), I identify [ccomp]{.smallcaps} relations where the matrix predicate has an expletive *it* as subject, excluding specificational *it is that...* constructions. This yields approximately 8,000 extraposed tokens. Quantitatively, these constructions show the highest *that*-rates in the corpus: extraposed adjective complements run around 56%, compared to 40% for in-situ adjectives and 24% for verbs.
 
 The overall *that*-rate is 23.9%, but this masks substantial variation by
 register and by matrix verb. The extraction is deliberately narrow: I focus on
