@@ -420,7 +420,7 @@ against held-out data.
 Future work extends to dative, genitive, particle placement&nbsp;-- testing whether the same factors predict the same patterns. If they do, we'll have evidence that alternations as
 a class reflect shared morphosyntactic mechanisms.
 
-##Acknowledgments
+## Acknowledgments
 
 This paper was developed with assistance from large language models, including OpenAI's ChatGPT 5.2 Pro, Anthropic's Claude Opus 4.5, and Google's Gemini 3. These tools were used for drafting, critique, code review, and iterative refinement of both prose and statistical analyses. I remain solely responsible for all claims, errors, and interpretations.
 
