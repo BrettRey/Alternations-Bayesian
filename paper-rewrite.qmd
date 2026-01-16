@@ -108,15 +108,9 @@ probabilities through exposure. Third, they're [predictive]{.smallcaps}: a model
 trained on one dataset generalizes to held-out data, showing that the patterns
 capture something stable rather than fitting noise.
 
-What makes this "morphosyntactic knowledge" rather than purely pragmatic or stylistic variation? While the
-distinction is not sharp, I argue that the alternation is
-morphosyntactic insofar as it's *causally entrenched* and *projectible*: it recurs
-across speakers and settings in ways that support reliable prediction and
-explanation, and it's sensitive to manipulable variables (register/genre
-practices, clause complexity, lemma-specific routines). The question isn't
-whether to draw a line between morphosyntax and pragmatics, but whether this
-phenomenon belongs to a stable node in the causal network that constitutes
-linguistic knowledge.
+What makes this "morphosyntactic knowledge" rather than purely pragmatic or stylistic variation? The claim is not just that probabilistic mappings exist in the data, but that speakers internalize them as part of their competence. Register, in this view, is not a contaminant to be filtered out but part of the input ecology. Speakers learn conditioned expectations over register just as they learn them over lexical items.
+
+I argue that the alternation is morphosyntactic insofar as it is *manipulable* and *projectible*. It is manipulable in a causal sense: if we intervene to lengthen a clause or extrapose it, the probability of *that* shifts in a predictable direction. It is projectible in the sense that the pattern recurs across speakers and settings, supporting reliable prediction to new cases [@Goodman1955]. The question isn't whether to draw a line between morphosyntax and pragmatics, but whether this phenomenon belongs to a stable node in the causal network that constituted linguistic knowledge.
 
 There's a further argument that the alternation is grammatical even in the acceptability-judgment sense. Complement selection is paradigmatically grammatical: *want* takes infinitival complements, not finite (*I want to leave* vs. *\*I want that I leave*); *wonder* takes interrogative complements, not declarative. The *that* ~ bare alternation is a case of complement selection&nbsp;-- choice between a marked and unmarked clause type. And in subject function, the choice *is* categorical: *\*She left surprised everyone* is sharply degraded. The same is true of *whether* vs. *if*, which alternate freely in some environments (*I wonder whether/if she left*) but not others (*the question of whether/\*if she left*). When does complement selection stop being grammatical? It doesn't. It becomes gradient.
 
@@ -290,7 +284,7 @@ practices all reinforce certain patterns. Part of what the model captures
 is a socially stabilized convention: historically contingent but
 learnable, shared, and predictive. This doesn't weaken the claim
 that the patterns are morphosyntactic; it clarifies what *kind* of morphosyntactic
-knowledge is involved.
+knowledge is involved. Speakers track register as a conditioning context, adjusting their baseline expectations much as they adjust for verb choice.
 
 ![*That*-rate by register (top 12 by N)](results/figures/that_rate_by_register.png){fig-align="center" width="90%"}
 
