@@ -7,7 +7,7 @@ format: html
 bibliography: references.bib
 citeproc: true
 abstract: |
-  A four-letter word is doing a lot of work in English. Speakers omit *that*
+  A four-letter word is doing a lot of work in English; it's the polite one. Speakers omit *that*
   almost 90% of the time after *think*, but writers keep it in over 40% of
   academic content clauses. That isn't free variation: it's a learned
   probability distribution tied to verbs, registers, and processing load.
@@ -19,8 +19,7 @@ abstract: |
   pooling over matrix verbs, I show that the model predicts held-out register
   rates within a few percentage points. Out-of-sample prediction provides the
   evidential bridge from descriptive pattern to linguistic knowledge. English
-  linguistic knowledge includes not just what's allowed, but how likely speakers are to
-  choose among well-formed options.
+  linguistic knowledge includes not just what's possible, but what's probable.
 ---
 
 ## Introduction
@@ -32,9 +31,9 @@ b. *I think she left early.*
 
 These sentences are propositionally near-equivalent&nbsp;-- close enough that speakers regularly choose between them under the same communicative circumstances. Yet they aren't interchangeable. After *think*, speakers in conversation omit *that* nearly 90% of the time. After *demonstrate*, writers in academic prose keep it over 80% of the time. This variation isn't noise: it's learned, verb-specific, register-sensitive, and predictively stable.
 
-**The central claim of this paper:** English linguistic knowledge includes not just what's allowed, but how likely speakers are to choose among well-formed options. Alternation probabilities are linguistic knowledge.
+**The central claim of this paper:** English linguistic knowledge includes not just what's possible, but what's probable. Alternation probabilities are linguistic knowledge.
 
-Specifically, they are **morphosyntactic knowledge**. I use "morphosyntactic" rather than "grammatical" to avoid ambiguity. "Grammatical" sometimes means "well-formed" (acceptability), sometimes "morphosyntactic" (as opposed to phonological or lexical), and sometimes "part of linguistic competence." The claim here is that probabilistic preferences among well-formed structural alternatives are morphosyntactic knowledge -- systematic, shared, and predictive -- even though violating them doesn't trigger sharp unacceptability.
+Specifically, they are **morphosyntactic knowledge**. I use [morphosyntactic]{.smallcaps} rather than "grammatical" to avoid ambiguity. In linguistics, *grammatical* is a three-way ambiguity in a trench coat: it sometimes means "well-formed" (acceptability), sometimes "morphosyntactic" (as opposed to phonological or lexical), and sometimes "part of linguistic competence." The claim here is that probabilistic preferences among well-formed structural alternatives are morphosyntactic knowledge -- systematic, shared, and predictive -- even though violating them doesn't trigger sharp unacceptability.
 
 The rest of the paper develops this claim. I first situate *that*-omission in *CGEL* and prior work, then model OANC data with a Bayesian multilevel logistic regression and validate out of sample.
 
@@ -51,17 +50,15 @@ Both function as complements of verbs (*think*, *say*, *demonstrate*), adjective
 "complementizer," but the terminological difference is immaterial to the present
 analysis.) The key point: *CGEL* describes the alternation but does not quantify
 it. That's what the present analysis supplies.
-report don't depend on it.
 
 *CGEL* notes that *that* is "often optional" in content clauses but doesn't
-systematically characterize the conditioning factors. This is typical of
-reference grammars: they describe what's possible, not what's probable. The
+systematically characterize the conditioning factors. Reference grammars are excellent maps; they're just not traffic reports. They describe what's possible, not what's probable. The
 present analysis takes the next step, asking what determines the probability of
 each variant.
 
 ### Functions of content clauses
 
-Content clauses serve several grammatical functions, and the availability of the
+Content clauses serve several syntactic functions, and the availability of the
 *that* ~ bare alternation differs across them.
 
 As [subjects]{.smallcaps}, content clauses strongly prefer overt *that*. Compare
@@ -85,7 +82,7 @@ First, **lexical identity** is perhaps the strongest predictor. Individual matri
 
 Second, **register** plays a major role. Quantitative corpus studies consistently find that spoken English uses bare clauses far more frequently than written English [@BiberEtAl1999]. Within written registers, informal genres (like fiction or personal letters) show higher rates of omission than academic prose or press reportage. These patterns likely reflect a combination of formality, planning time, and genre-specific conventions.
 
-Third, **complexity** affects the choice. Under the *Complexity Principle* [@Rohdenburg1996], more explicit grammatical options (like overt *that*) are preferred in cognitively complex environments. Empirical work supports this: longer content clauses favour overt *that*, as do clauses separated from their matrix verb by intervening material. The subordinator is thought to function as a parsing cue, signalling a clause boundary and facilitating processing in difficult contexts [@BresnanFord2010].
+Third, **complexity** affects the choice. Under the *Complexity Principle* [@Rohdenburg1996], more explicit morphosyntactic options (like overt *that*) are preferred in cognitively complex environments. Empirical work supports this: longer content clauses favour overt *that*, as do clauses separated from their matrix verb by intervening material. The subordinator is thought to function as a parsing cue, signalling a clause boundary and facilitating processing in difficult contexts [@BresnanFord2010].
 
 Fourth, **information-theoretic** accounts invoke surprisal. The *Uniform Information Density* (UID) hypothesis predicts that speakers manage information flow by inserting optional function words when the onset of the embedded clause is unpredictable [@LevyJaeger2007; @Jaeger2010; @Levy2008]. If the content clause is highly predictable given the matrix verb (e.g., after *I think*), *that* is redundant and likely omitted. If the clause is unexpected, *that* is inserted to smooth the information profile.
 
@@ -113,13 +110,15 @@ capture something stable rather than fitting noise.
 
 What makes this "morphosyntactic knowledge" rather than purely pragmatic or stylistic variation? While the
 distinction is not sharp, I argue that the alternation is
-morphosyntactic insofar as it is *causally entrenched* and *projectible*: it recurs
+morphosyntactic insofar as it's *causally entrenched* and *projectible*: it recurs
 across speakers and settings in ways that support reliable prediction and
-explanation, and it is sensitive to manipulable variables (register/genre
+explanation, and it's sensitive to manipulable variables (register/genre
 practices, clause complexity, lemma-specific routines). The question isn't
 whether to draw a line between morphosyntax and pragmatics, but whether this
 phenomenon belongs to a stable node in the causal network that constitutes
 linguistic knowledge.
+
+There's a further argument that the alternation is grammatical even in the acceptability-judgment sense. Complement selection is paradigmatically grammatical: *want* takes infinitival complements, not finite (*I want to leave* vs. *\*I want that I leave*); *wonder* takes interrogative complements, not declarative. The *that* ~ bare alternation is a case of complement selection&nbsp;-- choice between a marked and unmarked clause type. And in subject function, the choice *is* categorical: *\*She left surprised everyone* is sharply degraded. The same is true of *whether* vs. *if*, which alternate freely in some environments (*I wonder whether/if she left*) but not others (*the question of whether/\*if she left*). When does complement selection stop being grammatical? It doesn't. It becomes gradient.
 
 Out-of-sample prediction provides the evidential bridge. If a model trained on
 one portion of the data successfully predicts held-out data&nbsp;-- across registers,
@@ -141,8 +140,8 @@ incomplete. At minimum, three classes of causal factors appear to be at work:
 
 1. **Lemma-level entrenchment**: Individual verbs develop baseline omission rates
    through frequency and formulaicity. High-frequency cognitive verbs like *think*
-   and *know* occur in routinized epistemic constructions that favour bare clauses;
-   this preference becomes entrenched through repetition.
+   and *know* occur in routinized epistemic constructions that favour bare clauses.
+   Frequency drives entrenchment. Entrenchment shapes preference. Preference becomes knowledge.
 
 2. **Genre institutions**: Written registers, especially academic prose, are
    subject to editing norms, pedagogical intervention, and publication practices
@@ -175,7 +174,7 @@ questions. Technical details appear in the Appendix. For broad introductions tai
 
 ### Why Bayesian?
 
-Rather than a binary *p* < .05 decision, a Bayesian model yields uncertainty intervals for effect sizes and shrinks sparse-verb estimates via partial pooling. This matters for alternations: common verbs like *think* provide ample data, but rare verbs like *allege* appear only a few times. A naive model estimates rare verbs unreliably. Partial pooling assumes all verbs come from a common population and "shrinks" extreme estimates toward the overall mean&nbsp;-- a principled way to regularize without throwing out data.
+The binary threshold is good at declaring victories; it's less good at describing landscapes. Rather than a binary *p* < .05 decision, a Bayesian model yields uncertainty intervals for effect sizes and shrinks sparse-verb estimates via partial pooling. This matters for alternations: common verbs like *think* provide ample data, but rare verbs like *allege* appear only a few times. A naive model estimates rare verbs unreliably. Partial pooling assumes all verbs come from a common population and "shrinks" extreme estimates toward the overall mean&nbsp;-- a principled way to regularize without throwing out data.
 
 ### Understanding the output
 
@@ -203,7 +202,7 @@ This extraction yields 302,522 tokens. @tbl-desc-register summarizes the distrib
 
 : Descriptive statistics by register {#tbl-desc-register}
 
-@tbl-desc-head breaks down the data by head category and grammatical function.
+@tbl-desc-head breaks down the data by head category and syntactic function.
 
 | Head Category | Function | N | that-rate (%) |
 | :--- | :--- | :---: | :---: |
@@ -216,7 +215,7 @@ This extraction yields 302,522 tokens. @tbl-desc-register summarizes the distrib
 
 : Descriptive statistics by head category and function {#tbl-desc-head}
 
-To capture extraposed clauses (e.g., *It is clear...*), I identify [ccomp]{.smallcaps} relations where the matrix predicate has an expletive *it* as subject, excluding specificational *it is that...* constructions. This yields approximately 8,000 extraposed tokens. Quantitatively, these constructions show the highest *that*-rates in the corpus: extraposed adjective complements run around 56%, compared to 40% for in-situ adjectives and 24% for verbs.
+To capture extraposed clauses (e.g., *It's clear...*), I identify [ccomp]{.smallcaps} relations where the matrix predicate has an expletive *it* as subject, excluding specificational *it's that...* constructions. This yields approximately 8,000 extraposed tokens. Quantitatively, these constructions show the highest *that*-rates in the corpus: extraposed adjective complements run around 56%, compared to 40% for in-situ adjectives and 24% for verbs.
 
 The overall *that*-rate is 23.9%, but this masks substantial variation by
 register and by matrix verb. The extraction is deliberately narrow: I focus on
@@ -225,9 +224,9 @@ other edge cases. This keeps the analysis clean at the cost of coverage.
 
 ### Envelope of variation and extraction validity
 
-The decision to focus on complement clauses&nbsp;-- where both *that* and bare variants
+The decision to focus on complement and extraposed clauses&nbsp;-- where both *that* and bare variants
 genuinely compete&nbsp;-- reflects a principled approach to defining the phenomenon.
-Including subject clauses, where *that* is near-obligatory, would inflate the
+Including subject clauses, where *that* is near-obligatory, would be like predicting that stop signs will be red: true, but not illuminating. It would inflate the
 overall *that*-rate and obscure the conditioning factors that govern the choice
 in variable contexts. The envelope of variation is not arbitrary; it's where
 the category supports robust generalizations.
@@ -290,7 +289,7 @@ registers are not. Editorial intervention, pedagogical feedback, and publication
 practices all reinforce certain patterns. Part of what the model captures
 is a socially stabilized convention: historically contingent but
 learnable, shared, and predictive. This doesn't weaken the claim
-that the patterns are grammatical; it clarifies what *kind* of grammatical
+that the patterns are morphosyntactic; it clarifies what *kind* of morphosyntactic
 knowledge is involved.
 
 ![*That*-rate by register (top 12 by N)](results/figures/that_rate_by_register.png){fig-align="center" width="90%"}
@@ -299,13 +298,12 @@ knowledge is involved.
 
 Longer clauses favour *that*. The coefficient for clause length ($\beta_{\text{len}}$) estimates the change in log-odds for a one-standard-deviation increase in length. The model finds $\beta_{\text{len}} =$ **0.55** (90% CI: [0.24, 0.84]). In concrete terms: moving from a short clause (1 SD below mean) to a long clause (1 SD above) shifts the predicted *that*-rate from roughly 20% to 30% in spoken registers, and from 35% to 45% in academic prose. This effect is consistent with processing accounts: *that* may function as a cue that a clause boundary is coming, helping listeners parse complex material.
 
-The distance effect is negative ($\beta_{\text{dist}} =$ **−0.58**, 90% CI: [−1.09, −0.06]), meaning that greater distance between the matrix verb and the clause slightly disfavours *that*. This is unexpected. One possibility: high-distance contexts co-occur with parenthetical uses (e.g., "She left early, I think"), where *that* is near-categorical absent. If so, the effect is real but reflects a confounded construction type rather than a pure processing mechanism.
+The distance effect is negative ($\beta_{\text{dist}} =$ **−0.58**, 90% CI: [−1.09, −0.06]), meaning that greater distance between the matrix verb and the clause slightly disfavours *that*. The data declines to play the role it was cast for. This is unexpected. One possibility: high-distance contexts co-occur with parenthetical uses (e.g., "She left early, I think"), where *that* is near-categorical absent. If so, the effect is real but reflects a confounded construction type rather than a pure processing mechanism.
 
 Extraposition shows a modest positive effect ($\beta_{\text{extrap}} =$ **0.31**, 90% CI: [0.18, 0.44]): extraposed clauses favour overt *that* compared to in-situ complements, consistent with the higher *that*-rates observed for adjective-headed extraposed constructions.
 
 Processing effects are modest relative to lexical effects. Verb
-identity matters more than clause length. This suggests that speakers'
-internalized verb-specific preferences dominate contextual adjustment.
+identity matters more than clause length. Speakers' internalized verb-specific preferences dominate contextual adjustment.
 
 ### Validation
 
@@ -331,16 +329,16 @@ The discrepancies are small and mixed in direction, suggesting the model capture
 
 ### Alternation probabilities are morphosyntactic knowledge
 
-The patterns reported here support the claim that alternation probabilities are part of morphosyntactic competence. The effects are systematic (conditioned by identifiable factors), learnable (the factors are present in the input), and predictive (the model generalizes to held-out data). Out-of-sample prediction is the key evidential bridge: it demonstrates that the patterns are projectible&nbsp;-- capable of supporting inference to new cases&nbsp;-- rather than artefacts of corpus idiosyncrasies.
+The patterns reported here demonstrate that alternation probabilities are part of morphosyntactic competence. The effects are systematic (conditioned by identifiable factors), learnable (the factors are present in the input), and predictive (the model generalizes to held-out data). Out-of-sample prediction is the key evidential bridge: it demonstrates that the patterns are projectible&nbsp;-- capable of supporting inference to new cases&nbsp;-- rather than artefacts of corpus idiosyncrasies.
 
 This projectibility is what marks the phenomenon as a stable node in the causal
 network of linguistic knowledge. The alternation recurs across speakers and
-settings; it is sensitive to manipulable variables (register practices, clause
+settings; it's sensitive to manipulable variables (register practices, clause
 complexity, lemma-specific routines); and it supports reliable prediction. These
 are the hallmarks of a natural kind in the sense relevant to scientific
 explanation.
 
-This doesn't mean traditional categorical syntax is wrong. Many aspects of English are all-or-nothing: *she left* is grammatical, *she leaved* isn't. But alternation phenomena like subordinator realization occupy a different part of the landscape&nbsp;-- a part where probabilities, not just possibilities, define what native speakers know.
+This doesn't mean traditional categorical syntax is wrong. Many aspects of English are all-or-nothing: *she left* is grammatical, *she leaved* isn't. Categorical constraints define what speakers can't say; gradient preferences define what speakers don't. Alternation phenomena like subordinator realization occupy the gradient part of the landscape&nbsp;-- where probabilities, not just possibilities, define what native speakers know.
 
 ### Relation to prior work
 
@@ -356,7 +354,7 @@ One notable absence is surprisal. The uniform information density (UID) framewor
 
 ### Implications for grammatical theory
 
-If alternation probabilities are grammatical, then grammar isn't purely categorical. Usage-based and constructionist approaches have emphasized this for decades [@Bybee2010; @Goldberg2006], but the present analysis provides rigorous evidence: a quantitative model that captures the phenomenon and validates out of sample.
+If alternation probabilities are morphosyntactic, then grammar isn't purely categorical. Usage-based and constructionist approaches have emphasized this for decades [@Bybee2010; @Goldberg2006], but the present analysis provides rigorous evidence: a quantitative model that captures the phenomenon and validates out of sample.
 
 The lexical specificity is striking. The difference between *think* and *demonstrate* isn't a difference in meaning or argument structure that would predict their *that*-preferences. It appears to be a difference in learned usage patterns&nbsp;-- what @Goldberg2006 calls "surface generalizations" and what construction grammar emphasizes as item-specific knowledge. This is consistent with @Bybee2010's argument that high-frequency patterns become entrenched as units.
 
@@ -406,10 +404,10 @@ of what kind of thing subordinator realization patterns are.
 
 ## Conclusion
 
-This paper has argued that the choice between *that*-content clauses and bare
+The choice between *that*-content clauses and bare
 content clauses isn't random variation or performance noise. It's morphosyntactic
 knowledge: systematic patterns learned from usage and conditioned by verb,
-register, and processing factors.
+register, and processing factors. English speakers know more about *that* than they think&nbsp;-- often while omitting it.
 
 The analysis demonstrates two things. First, alternation probabilities belong to
 the same explanatory domain as categorical morphosyntactic rules. They're facts about
@@ -417,10 +415,12 @@ English that speakers know. Second, Bayesian multilevel modeling is well suited
 to capturing these probabilities, handling lexical heterogeneity and validating
 against held-out data.
 
-Future work will extend this approach to other alternations&nbsp;-- the dative, the
-genitive, particle placement&nbsp;-- testing whether the same conditioning factors
-predict parallel patterns. If they do, we'll have evidence that alternations as
+Future work extends to dative, genitive, particle placement&nbsp;-- testing whether the same factors predict the same patterns. If they do, we'll have evidence that alternations as
 a class reflect shared morphosyntactic mechanisms.
+
+##Acknowledgments
+
+This paper was developed with assistance from large language models, including OpenAI's ChatGPT 5.2 Pro, Anthropic's Claude Opus 4.5, and Google's Gemini 3. These tools were used for drafting, critique, code review, and iterative refinement of both prose and statistical analyses. I remain solely responsible for all claims, errors, and interpretations.
 
 ## References
 
