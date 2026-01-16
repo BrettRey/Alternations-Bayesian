@@ -1,3 +1,9 @@
+> [!IMPORTANT]
+> **URGENT HANDOFF: READ THIS FIRST**
+> A comprehensive statistical refinement plan is waiting for you in **[NEXT_STEPS.md](NEXT_STEPS.md)**.
+> This file contains the complete Phase 2 instructions for hierarchical modelling and validation.
+> **Please execute the plan in `NEXT_STEPS.md` before starting new tasks.**
+
 # Repository Guidelines
 
 ## Project Structure & Module Organization
