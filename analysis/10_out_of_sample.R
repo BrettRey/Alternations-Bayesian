@@ -40,6 +40,8 @@ DT <- DT[!is.na(that_overt) & !is.na(head_lemma) & !is.na(register) &
 if (!"extraposed" %in% names(DT)) {
   stop("Missing extraposition flag. Run analysis/03b_add_extraposition.R first.")
 }
+# Treat "it + be" specificational/cleft cases as non-extraposed complements.
+DT[head_lemma == "be" & extraposed == TRUE, extraposed := FALSE]
 
 if (nrow(DT) == 0) {
   stop("No valid tokens after filtering; cannot run out-of-sample evaluation.")

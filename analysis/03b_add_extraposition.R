@@ -21,6 +21,11 @@ if (!file.exists(clauses_path)) {
 clauses <- readRDS(clauses_path)
 message("Loaded ", nrow(clauses), " clause tokens")
 
+# Drop any prior extraposition flag so we can recompute cleanly.
+if ("extraposed" %in% names(clauses)) {
+  clauses$extraposed <- NULL
+}
+
 # Load all token shards
 parts <- list.files(tokens_dir, pattern = "\\.rds$", full.names = TRUE)
 tokens_list <- lapply(parts, readRDS)
@@ -78,12 +83,17 @@ clauses <- merge(clauses,
 
 clauses[is.na(extraposed), extraposed := FALSE]
 
+# Reclassify specificational/cleft "it + be" cases as non-extraposed complements.
+reclass_n <- sum(clauses$head_lemma == "be" & clauses$extraposed)
+clauses[head_lemma == "be" & extraposed == TRUE, extraposed := FALSE]
+
 # Summary
 message("\nExtraposition summary:")
 message("  Total clauses: ", nrow(clauses))
 message("  Extraposed: ", sum(clauses$extraposed), 
         " (", round(100 * mean(clauses$extraposed), 1), "%)")
 message("  Non-extraposed: ", sum(!clauses$extraposed))
+message("  Reclassified it+be as non-extraposed: ", reclass_n)
 
 message("\nThat-rate by extraposition:")
 message("  Extraposed: ", round(mean(clauses$that_overt[clauses$extraposed]), 3))

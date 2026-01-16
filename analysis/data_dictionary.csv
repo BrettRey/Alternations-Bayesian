@@ -10,7 +10,7 @@ that_overt,int,1 if that-content clause; 0 if bare content clause,annotation,
 clause_len_tokens,int,Length of content clause (tokens),derived,
 distance_tokens,int,Tokens between head and clause onset,derived,
 intervening_len,int,Intervening material length,derived,Can equal distance_tokens
-extraposed,int,1 if expletive "it" is subject of matrix head; 0 otherwise,derived,
+extraposed,int,1 if expletive "it" is subject of matrix head (excluding it+be specificational/cleft); 0 otherwise,derived,
 surprisal,float,Surprisal of upcoming clause material,computed,Specify LM + context
 speaker_id,string,Speaker ID (if available),metadata,
 year,int,Year of source,metadata,

@@ -206,16 +206,16 @@ This extraction yields 302,522 tokens. @tbl-desc-register summarizes the distrib
 
 | Head Category | Function | N | that-rate (%) |
 | :--- | :--- | :---: | :---: |
-| Verb | Complement | 231,695 | 24.2 |
-| | Extraposed | 7,982 | 26.3 |
-| *be* | Complement | 35,456 | 19.0 |
+| Verb | Complement | 230,058 | 24.3 |
+| | Extraposed | 7,977 | 26.3 |
+| *be* | Complement | 52,953 | 19.8 |
 | Adjective | Complement | 6,360 | 39.5 |
 | | Extraposed | 103 | 56.3 |
 | Noun | Complement | 1,799 | 24.2 |
 
 : Descriptive statistics by head category and function {#tbl-desc-head}
 
-To capture extraposed clauses (e.g., *It's clear...*), I identify [ccomp]{.smallcaps} relations where the matrix predicate has an expletive *it* as subject, excluding specificational *it's that...* constructions. This yields approximately 8,000 extraposed tokens. Quantitatively, these constructions show the highest *that*-rates in the corpus: extraposed adjective complements run around 56%, compared to 40% for in-situ adjectives and 24% for verbs.
+To capture extraposed clauses (e.g., *It's clear...*), I identify [ccomp]{.smallcaps} relations where the matrix predicate has an expletive *it* as subject, excluding specificational *it* + *be* constructions (treated as complements)^[Specificational constructions with *it* (e.g., *It is that...*, *It's just that...*) are distinct from extraposition. In the corpus, these cases (N $\approx$ 17,000) show a low *that*-rate (~20%) similar to other *be*-complements. Excluding them reduces the sample size for extraposition but ensures the category reflects the relevant heavy-subject alternation, preventing specificational semantics from confounding the structural heavy-shift effect.]. This yields 8,186 extraposed tokens. Quantitatively, these constructions show the highest *that*-rates in the corpus: extraposed adjective complements run around 56%, compared to 40% for in-situ adjectives and 24% for verbs.
 
 The overall *that*-rate is 23.9%, but this masks substantial variation by
 register and by matrix verb. The extraction is deliberately narrow: I focus on
@@ -265,7 +265,7 @@ This section presents the main findings. For full technical details&nbsp;-- mode
 
 Different verbs have dramatically different *that*-rates. Among the frequent
 verbs, *think* shows a bare-clause rate above 90%, while *demonstrate* shows a
-*that*-rate above 80%. The model captures this heterogeneity through the parameter $\sigma_{\text{lemma}}$, which measures the standard deviation of verb intercepts. This value is estimated at **1.80** (90% CI: [1.64, 1.97]) on the log-odds scale, a large value indicating substantial lexical specificity. To put this in perspective: a shift of two standard deviations in verb identity (e.g., moving from an average verb to a strongly *that*-preferring one) changes the predicted probability more than the entire effect of register.
+*that*-rate above 80%. The model captures this heterogeneity through the parameter $\sigma_{\text{lemma}}$, which measures the standard deviation of verb intercepts. This value is estimated at **1.77** (90% CI: [1.61, 1.94]) on the log-odds scale, a large value indicating substantial lexical specificity. To put this in perspective: a shift of two standard deviations in verb identity (e.g., moving from an average verb to a strongly *that*-preferring one) changes the predicted probability more than the entire effect of register.
 
 Partial pooling matters most for rare verbs. A verb with only 15 tokens and an
 observed *that*-rate of 100% gets shrunk toward the population mean, reflecting
@@ -281,7 +281,7 @@ Register effects are large and consistent. Spoken registers have baseline
 threefold difference persists after controlling for verb identity: it isn't just
 that spoken corpora happen to include more *think* and fewer *demonstrate*.
 
-The model estimates register intercepts (on the log-odds scale) of **−2.73** (90% CI: [−2.92, −2.55]) for spoken, **−1.75** (90% CI: [−1.93, −1.59]) for journalism, and **−1.44** (90% CI: [−1.61, −1.27]) for academic. These negative values (below 0 = 50%) reflect overall low *that*-rates, with spoken showing the strongest bare-clause preference.
+The model estimates register intercepts (on the log-odds scale) of **−2.70** (90% CI: [−2.87, −2.52]) for spoken, **−1.74** (90% CI: [−1.90, −1.57]) for journalism, and **−1.42** (90% CI: [−1.59, −1.24]) for academic. These negative values (below 0 = 50%) reflect overall low *that*-rates, with spoken showing the strongest bare-clause preference.
 
 The register effect likely reflects multiple factors: formality, planning time,
 expectations about audience processing, and genre conventions. Written registers&nbsp;-- especially academic prose&nbsp;-- are norm-governed in ways that spoken
@@ -296,11 +296,11 @@ knowledge is involved.
 
 ### Processing effects are modest but consistent
 
-Longer clauses favour *that*. The coefficient for clause length ($\beta_{\text{len}}$) estimates the change in log-odds for a one-standard-deviation increase in length. The model finds $\beta_{\text{len}} =$ **0.55** (90% CI: [0.24, 0.84]). In concrete terms: moving from a short clause (1 SD below mean) to a long clause (1 SD above) shifts the predicted *that*-rate from roughly 20% to 30% in spoken registers, and from 35% to 45% in academic prose. This effect is consistent with processing accounts: *that* may function as a cue that a clause boundary is coming, helping listeners parse complex material.
+Longer clauses favour *that*. The coefficient for clause length ($\beta_{\text{len}}$) estimates the change in log-odds for a one-standard-deviation increase in length. The model finds $\beta_{\text{len}} =$ **0.57** (90% CI: [0.28, 0.84]). In concrete terms: moving from a short clause (1 SD below mean) to a long clause (1 SD above) shifts the predicted *that*-rate from roughly 20% to 30% in spoken registers, and from 35% to 45% in academic prose. This effect is consistent with processing accounts: *that* may function as a cue that a clause boundary is coming, helping listeners parse complex material.
 
-The distance effect is negative ($\beta_{\text{dist}} =$ **−0.58**, 90% CI: [−1.09, −0.06]), meaning that greater distance between the matrix verb and the clause slightly disfavours *that*. The data declines to play the role it was cast for. This is unexpected. One possibility: high-distance contexts co-occur with parenthetical uses (e.g., "She left early, I think"), where *that* is near-categorical absent. If so, the effect is real but reflects a confounded construction type rather than a pure processing mechanism.
+The distance effect is weakly negative ($\beta_{\text{dist}} =$ **−0.53**, 90% CI: [−1.03, 0.11]), meaning that greater distance between the matrix verb and the clause slightly disfavours *that*, but with substantial uncertainty. The data declines to play the role it was cast for. One possibility: high-distance contexts co-occur with parenthetical uses (e.g., "She left early, I think"), where *that* is near-categorical absent. If so, the effect is real but reflects a confounded construction type rather than a pure processing mechanism.
 
-Extraposition shows a modest positive effect ($\beta_{\text{extrap}} =$ **0.31**, 90% CI: [0.18, 0.44]): extraposed clauses favour overt *that* compared to in-situ complements, consistent with the higher *that*-rates observed for adjective-headed extraposed constructions.
+Extraposition shows a modest positive effect ($\beta_{\text{extrap}} =$ **0.30**, 90% CI: [0.06, 0.53]): extraposed clauses favour overt *that* compared to in-situ complements, consistent with the higher *that*-rates observed for adjective-headed extraposed constructions.
 
 Processing effects are modest relative to lexical effects. Verb
 identity matters more than clause length. Speakers' internalized verb-specific preferences dominate contextual adjustment.
@@ -315,7 +315,7 @@ In-sample posterior predictive checks show that the model captures observed *tha
 ![In-sample PPC: zoomed](results/figures/ppc_overall_zoom.png)
 :::
 
-For out-of-sample validation, I hold out 20% of documents (stratified by register) and predict their *that*-rates from a model trained on the remaining 80%. The predictions are close to observed rates: for journalism, the model predicts 31.4% (observed 30.0%); for academic, it predicts 41.5% (observed 44.3%). Spoken rates are well aligned (observed 10.6%, predicted 10.0%). The academic register shows the largest discrepancy, with the model slightly underpredicting (see Appendix for by-register figures).
+For out-of-sample validation, I hold out 20% of documents (stratified by register) and predict their *that*-rates from a model trained on the remaining 80%. The predictions are close to observed rates: for journalism, the model predicts 31.4% (observed 30.0%); for academic, it predicts 41.4% (observed 44.3%). Spoken rates are well aligned (observed 10.6%, predicted 10.0%). The academic register shows the largest discrepancy, with the model slightly underpredicting (see Appendix for by-register figures).
 
 ::: {layout-ncol=2}
 ![Out-of-sample PPC: overall](results/figures/oos_ppc_overall.png)
@@ -434,7 +434,7 @@ This paper was developed with assistance from large language models, including O
 The model is a Bayesian logistic regression:
 
 $$
-\text{logit}(P(y_i = 1)) = \alpha + \alpha_{\text{reg}[i]} + \alpha_{\text{lemma}[i]} + (\beta_{\text{len}} + b_{\text{len,reg}[i]}) \cdot \text{len}_i + (\beta_{\text{dist}} + b_{\text{dist,reg}[i]}) \cdot \text{dist}_i
+\text{logit}(P(y_i = 1)) = \alpha + \alpha_{\text{reg}[i]} + \alpha_{\text{lemma}[i]} + (\beta_{\text{len}} + b_{\text{len,reg}[i]}) \cdot \text{len}_i + (\beta_{\text{dist}} + b_{\text{dist,reg}[i]}) \cdot \text{dist}_i + \beta_{\text{extrap}} \cdot \text{extrap}_i
 $$
 
 Where:
@@ -442,7 +442,7 @@ Where:
 - $\alpha$ is the overall intercept
 - $\alpha_{\text{reg}[i]}$ is the register-specific intercept
 - $\alpha_{\text{lemma}[i]}$ is the verb-level random intercept
-- $\beta_{\text{len}}, \beta_{\text{dist}}$ are the population-level slopes
+- $\beta_{\text{len}}, \beta_{\text{dist}}, \beta_{\text{extrap}}$ are the population-level slopes
 - $b_{\text{len,reg}[i]}, b_{\text{dist,reg}[i]}$ are register-varying slopes
 
 ### Model coefficients
@@ -451,15 +451,15 @@ Where:
 
 | Parameter | Estimate | 90% CI | R-hat | Ess (Bulk) |
 | :--- | :---: | :---: | :---: | :---: |
-| Intercept (Spoken) | -2.73 | [-2.92, -2.55] | 1.02 | 83 |
-| Intercept (Journalism) | -1.75 | [-1.93, -1.59] | 1.03 | 75 |
-| Intercept (Academic) | -1.44 | [-1.61, -1.27] | 1.02 | 93 |
-| Length ($\beta_{\text{len}}$) | 0.55 | [0.24, 0.84] | 1.01 | 336 |
-| Distance ($\beta_{\text{dist}}$) | -0.58 | [-1.09, -0.06] | 1.00 | 424 |
-| Extraposition ($\beta_{\text{extrap}}$) | 0.31 | [0.18, 0.44] | 1.01 | 1602 |
-| $\sigma_{\text{lemma}}$ | 1.80 | [1.64, 1.97] | 1.02 | 103 |
-| $\sigma_{\text{len\_reg}}$ | 0.31 | [0.08, 0.87] | 1.00 | 322 |
-| $\sigma_{\text{dist\_reg}}$ | 0.57 | [0.21, 1.25] | 1.00 | 510 |
+| Intercept (Spoken) | -2.70 | [-2.87, -2.52] | 1.02 | 112 |
+| Intercept (Journalism) | -1.74 | [-1.90, -1.57] | 1.02 | 101 |
+| Intercept (Academic) | -1.42 | [-1.59, -1.24] | 1.02 | 106 |
+| Length ($\beta_{\text{len}}$) | 0.57 | [0.28, 0.84] | 1.01 | 297 |
+| Distance ($\beta_{\text{dist}}$) | -0.53 | [-1.03, 0.11] | 1.00 | 314 |
+| Extraposition ($\beta_{\text{extrap}}$) | 0.30 | [0.06, 0.53] | 1.00 | 1024 |
+| $\sigma_{\text{lemma}}$ | 1.77 | [1.61, 1.94] | 1.00 | 91 |
+| $\sigma_{\text{len\_reg}}$ | 0.28 | [0.08, 0.77] | 1.01 | 426 |
+| $\sigma_{\text{dist\_reg}}$ | 0.57 | [0.20, 1.21] | 1.00 | 499 |
 
 : Model parameter summaries (Est = Mean) {#tbl-model-coef}
 
@@ -472,7 +472,7 @@ Where:
 
 ### Diagnostics
 
-The model was fit using CmdStanR with 4 chains of 2000 iterations each (1000 warmup). Divergent transitions: 2/1000 at adapt_delta = 0.95. All R-hat values < 1.01. Effective sample sizes > 400 for all parameters.
+The model was fit using CmdStanR with 2 chains of 1000 iterations each (500 warmup). Divergent transitions: 0/1000 at adapt_delta = 0.95. All R-hat values ≤ 1.02. Effective sample sizes > 90 for all parameters.
 
 ### Robustness to envelope choices
 

@@ -76,9 +76,9 @@ span[lang="ipa"] {
 }
 
 /* Judgement markers */
-.ungram,
-.marg,
-.odd {
+span.ungram,
+span.marg,
+span.odd {
   font-style: italic;
 }
 

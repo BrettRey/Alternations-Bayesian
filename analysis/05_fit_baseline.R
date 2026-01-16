@@ -40,6 +40,8 @@ DT <- DT[!is.na(clause_len_tokens) & !is.na(distance_tokens)]
 if (!"extraposed" %in% names(DT)) {
   stop("Missing extraposition flag. Run analysis/03b_add_extraposition.R first.")
 }
+# Treat "it + be" specificational/cleft cases as non-extraposed complements.
+DT[head_lemma == "be" & extraposed == TRUE, extraposed := FALSE]
 
 sample_n <- cfg$model$baseline_sample_n %||% 20000
 if (nrow(DT) > sample_n) {
