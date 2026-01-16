@@ -298,7 +298,7 @@ knowledge is involved.
 
 Longer clauses favour *that*. The coefficient for clause length ($\beta_{\text{len}}$) estimates the change in log-odds for a one-standard-deviation increase in length. The model finds $\beta_{\text{len}} =$ **0.57** (90% CI: [0.28, 0.84]). In concrete terms: moving from a short clause (1 SD below mean) to a long clause (1 SD above) shifts the predicted *that*-rate from roughly 20% to 30% in spoken registers, and from 35% to 45% in academic prose. This effect is consistent with processing accounts: *that* may function as a cue that a clause boundary is coming, helping listeners parse complex material.
 
-![Effect of clause length on predicted *that*-rate](results/figures/effects_length.png){#fig-effects-length width="80%" fig-align="center"}
+![Processing effects: Clause length strongly predicts *that* use (Panel A), while distance between head and clause shows a weaker, negative effect (Panel B).](results/figures/effects_combined.png){#fig-effects width="100%" fig-align="center"}
 
 The distance effect is weakly negative ($\beta_{\text{dist}} =$ **−0.53**, 90% CI: [−1.03, 0.11]), meaning that greater distance between the matrix verb and the clause slightly disfavours *that*, but with substantial uncertainty. The data declines to play the role it was cast for. One possibility: high-distance contexts co-occur with parenthetical uses (e.g., "She left early, I think"), where *that* is near-categorical absent. If so, the effect is real but reflects a confounded construction type rather than a pure processing mechanism.
 

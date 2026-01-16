@@ -2,70 +2,73 @@
 # 1. Load Data for Scaling Info
 clauses <- readRDS("data/processed/oanc-clauses.rds")
 
-# Calculate scaling params
-log_len <- log(clauses$clause_len)
-mean_log_len <- mean(log_len)
-sd_log_len <- sd(log_len)
+# Calculate scaling params (LINEAR SCALING as per 05_fit_baseline.R)
+mean_len <- mean(clauses$clause_len_tokens, na.rm = TRUE)
+sd_len <- sd(clauses$clause_len_tokens, na.rm = TRUE)
+
+mean_dist <- mean(clauses$distance_tokens, na.rm = TRUE)
+sd_dist <- sd(clauses$distance_tokens, na.rm = TRUE)
 
 # 2. Load Model Summary
 params <- read.csv("results/baseline_param_summary.csv", stringsAsFactors = FALSE)
 
 get_param <- function(name) {
   val <- params$mean[params$variable == name]
-  # Exact match logic
   if (length(val) == 0) stop("Parameter not found: ", name)
   val
 }
 
-# No global alpha, model uses register intercepts directly
 beta_len <- get_param("beta_len")
+beta_dist <- get_param("beta_dist")
 
-# Register intercepts
 alpha_reg_spoken <- get_param("alpha_reg[1]")
 alpha_reg_acad <- get_param("alpha_reg[3]")
 
-# 3. Create Prediction Grid
-# We want to plot Clause Length (words) from e.g. 2 to 30.
-len_seq <- seq(2, 40, length.out = 100)
-len_scaled <- (log(len_seq) - mean_log_len) / sd_log_len
-
+# 3. Create Prediction Grids
 # Function to compute prob
 logit2prob <- function(l) 1 / (1 + exp(-l))
 
-# Prediction for Spoken (Intercept + slope)
-pred_spoken <- logit2prob(alpha_reg_spoken + beta_len * len_scaled)
+# -- Grid for Length --
+len_seq <- seq(2, 40, length.out = 100)
+len_scaled <- (len_seq - mean_len) / sd_len # Linear scaling
+# Hold distance at mean (0 in scaled units)
+pred_len_spoken <- logit2prob(alpha_reg_spoken + beta_len * len_scaled)
+pred_len_acad <- logit2prob(alpha_reg_acad + beta_len * len_scaled)
 
-# Prediction for Academic
-pred_acad <- logit2prob(alpha_reg_acad + beta_len * len_scaled)
+# -- Grid for Distance --
+dist_seq <- seq(0, 15, length.out = 100)
+dist_scaled <- (dist_seq - mean_dist) / sd_dist
+# Hold length at mean (0 in scaled units)
+pred_dist_spoken <- logit2prob(alpha_reg_spoken + beta_dist * dist_scaled)
+pred_dist_acad <- logit2prob(alpha_reg_acad + beta_dist * dist_scaled)
 
-# 4. Plot
-png("results/figures/effects_length.png", width = 1200, height = 900, res = 150)
+# 4. Plot (Combined)
+png("results/figures/effects_combined.png", width = 2000, height = 900, res = 150)
+par(mfrow = c(1, 2), mar = c(5, 4, 3, 1) + 0.1)
 
-# Setup empty plot
-# Find range for ylim (Spoken starts low ~6%, Acad starts higher)
-ylim_range <- c(0, max(pred_acad) * 1.1)
-ylim_range <- c(0, 0.6) # Standardize to 60% for readability
+# Common ylim
+ylim_range <- c(0, 0.6)
 
-plot(len_seq, pred_acad, type = "n",
-     ylim = ylim_range,
-     xlab = "Clause Length (words)",
-     ylab = "Predicted Probability of 'that'",
-     main = "Effect of Clause Length on that-use",
-     cex.main = 1.2, cex.lab = 1.1, las = 1)
-
-# Add grid
-grid(nx = NULL, ny = NULL, col = "gray90", lty = "dotted")
-
-# Add lines
-lines(len_seq, pred_spoken, col = "#E7298A", lwd = 3) # Pink/Purple
-lines(len_seq, pred_acad, col = "#1B9E77", lwd = 3)   # Green
-
-# Add Legend
+# Panel A: Clause Length
+plot(len_seq, pred_len_acad, type = "n", ylim = ylim_range,
+     xlab = "Clause Length (words)", ylab = "Predicted Probability of 'that'",
+     main = "A. Effect of Clause Length", cex.main = 1.2, cex.lab = 1.1, las = 1)
+grid(col = "gray90", lty = "dotted")
+lines(len_seq, pred_len_spoken, col = "#E7298A", lwd = 3) # Spoken
+lines(len_seq, pred_len_acad, col = "#1B9E77", lwd = 3)   # Academic
+text(35, pred_len_acad[length(len_seq)] + 0.02, expression(paste("Longer favour ", italic("that"))), 
+     pos = 2, col = "gray40", cex = 0.9)
 legend("topleft", legend = c("Academic", "Spoken"),
        col = c("#1B9E77", "#E7298A"), lwd = 3, bty = "n", cex = 1.1)
 
-# Add text annotation
-# Add text annotation
-text(35, pred_acad[length(len_seq)] + 0.02, expression(paste("Longer clauses favour ", italic("that"))), pos = 2, col = "gray40", cex = 0.9)
+# Panel B: Distance
+plot(dist_seq, pred_dist_acad, type = "n", ylim = ylim_range,
+     xlab = "Distance (words)", ylab = "",
+     main = "B. Effect of Distance", cex.main = 1.2, cex.lab = 1.1, las = 1)
+grid(col = "gray90", lty = "dotted")
+lines(dist_seq, pred_dist_spoken, col = "#E7298A", lwd = 3)
+lines(dist_seq, pred_dist_acad, col = "#1B9E77", lwd = 3)
+text(14, pred_dist_acad[length(dist_seq)] + 0.02, expression(paste("Distance disfavours ", italic("that"))), 
+     pos = 2, col = "gray40", cex = 0.9)
 
 dev.off()
