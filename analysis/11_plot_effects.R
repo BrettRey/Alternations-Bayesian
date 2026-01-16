@@ -65,6 +65,7 @@ legend("topleft", legend = c("Academic", "Spoken"),
        col = c("#1B9E77", "#E7298A"), lwd = 3, bty = "n", cex = 1.1)
 
 # Add text annotation
-text(35, pred_acad[length(len_seq)] + 0.02, "Longer clauses\nfavor 'that'", pos = 2, col = "gray40", cex = 0.9)
+# Add text annotation
+text(35, pred_acad[length(len_seq)] + 0.02, expression(paste("Longer clauses favour ", italic("that"))), pos = 2, col = "gray40", cex = 0.9)
 
 dev.off()
