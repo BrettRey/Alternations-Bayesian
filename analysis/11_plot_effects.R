@@ -49,6 +49,9 @@ par(mfrow = c(1, 2), mar = c(5, 4, 3, 1) + 0.1)
 # Common ylim
 ylim_range <- c(0, 0.6)
 
+# Common Y for annotation (match Panel A height)
+text_y <- pred_len_acad[length(len_seq)] + 0.02
+
 # Panel A: Clause Length
 plot(len_seq, pred_len_acad, type = "n", ylim = ylim_range,
      xlab = "Clause Length (words)", ylab = "Predicted Probability of 'that'",
@@ -56,7 +59,7 @@ plot(len_seq, pred_len_acad, type = "n", ylim = ylim_range,
 grid(col = "gray90", lty = "dotted")
 lines(len_seq, pred_len_spoken, col = "#E7298A", lwd = 3) # Spoken
 lines(len_seq, pred_len_acad, col = "#1B9E77", lwd = 3)   # Academic
-text(35, pred_len_acad[length(len_seq)] + 0.02, expression(paste("Longer favour ", italic("that"))), 
+text(35, text_y, expression(paste("Longer favour ", italic("that"))), 
      pos = 2, col = "gray40", cex = 0.9)
 legend("topleft", legend = c("Academic", "Spoken"),
        col = c("#1B9E77", "#E7298A"), lwd = 3, bty = "n", cex = 1.1)
@@ -68,7 +71,7 @@ plot(dist_seq, pred_dist_acad, type = "n", ylim = ylim_range,
 grid(col = "gray90", lty = "dotted")
 lines(dist_seq, pred_dist_spoken, col = "#E7298A", lwd = 3)
 lines(dist_seq, pred_dist_acad, col = "#1B9E77", lwd = 3)
-text(14, pred_dist_acad[length(dist_seq)] + 0.02, expression(paste("Distance disfavours ", italic("that"))), 
+text(14, text_y, expression(paste("Distance disfavours ", italic("that"))), 
      pos = 2, col = "gray40", cex = 0.9)
 
 dev.off()
