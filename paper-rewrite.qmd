@@ -246,10 +246,10 @@ strengthen the case.
 
 ## Model
 
-I fit a Bayesian logistic regression predicting *that*-realization from clause length (subtree size in tokens), head-clause distance (tokens between the matrix verb and the clause head), and extraposition status. The model has a multilevel structure that reflects the nested nature of the data:
+I fit a Bayesian logistic regression predicting *that*-realization from clause length (subtree size in tokens), head-clause distance (tokens between the matrix predicate and the clause head), and extraposition status. Continuous predictors are standardized (z-scored: mean 0, SD 1). The model has a multilevel structure that reflects the nested nature of the data:
 
-- **Verb-level random intercepts**: Each verb gets its own baseline *that*-rate, drawn from a shared population. This captures lexical specificity (e.g., *think* preferring bare, *demonstrate* preferring *that*) while allowing partial pooling across verbs.
-- **Register-specific intercepts**: Spoken, journalism, and academic registers have distinct baselines, capturing the large observed differences in *that*-rate.
+- **Lemma-level random intercepts**: Each lemma (verb, adjective, or noun) gets its own baseline *that*-rate, drawn from a shared population. This captures lexical specificity (e.g., *think* preferring bare, *demonstrate* preferring *that*) while allowing partial pooling across high- and low-frequency items.
+- **Register-specific intercepts**: Spoken, journalism, and academic registers have distinct baselines, capturing the large observed differences in *that*-rate. These are estimated as absolute means (log-odds) for an average lemma in an in-situ context.
 - **Register-varying slopes for length and distance**: The effect of clause length on *that* may differ between spoken and written registers (e.g., complexity might matter more when planning time is limited). Rather than assuming a single global slope, the model estimates separate slopes for each register.
 - **A fixed effect for extraposition**: Extraposed clauses tend to favour overt *that*, so this binary indicator captures that tendency.
 
@@ -302,7 +302,7 @@ Longer clauses favour *that*. The coefficient for clause length ($\beta_{\text{l
 
 The distance effect is weakly negative ($\beta_{\text{dist}} =$ **−0.53**, 90% CI: [−1.03, 0.11]), meaning that greater distance between the matrix verb and the clause slightly disfavours *that*, but with substantial uncertainty. The data declines to play the role it was cast for. One possibility: high-distance contexts co-occur with parenthetical uses (e.g., "She left early, I think"), where *that* is near-categorical absent. If so, the effect is real but reflects a confounded construction type rather than a pure processing mechanism.
 
-Extraposition shows a modest positive effect ($\beta_{\text{extrap}} =$ **0.30**, 90% CI: [0.06, 0.53]): extraposed clauses favour overt *that* compared to in-situ complements, consistent with the higher *that*-rates observed for adjective-headed extraposed constructions.
+Extraposition shows a modest positive effect ($\beta_{\text{extrap}} =$ **0.30**, 90% CI: [0.06, 0.53]): extraposed clauses favour overt *that* compared to in-situ complements, consistent with the higher *that*-rates observed for adjective-headed extraposed constructions. (The remaining N=106 extraposed tokens not shown in @tbl-desc-head include nouns and adverbs, which are included in the model.)
 
 Processing effects are modest relative to lexical effects. Verb
 identity matters more than clause length. Speakers' internalized verb-specific preferences dominate contextual adjustment.
@@ -350,7 +350,7 @@ First, the strong lexical conditioning aligns with @ThompsonMulac1991's observat
 
 Second, the register effects confirm @BiberEtAl1999's corpus findings but go further. By modelling register as a grouping factor with varying slopes, we show that the *magnitude* of processing effects (clause length, distance) differs across registers&nbsp;-- not just the baseline *that*-rate. This suggests that spoken and written production involve different weighting of the same cues, a prediction consistent with @BresnanFord2010's work on probabilistic grammar.
 
-Third, the complexity effects support @Rohdenburg1996's *Complexity Principle*: longer clauses favour the more explicit variant. The effect size ($\beta_{\text{len}} \approx 0.51$) is modest but robust, suggesting that *that* does function as a parsing cue, as proposed by @BresnanFord2010.
+Third, the complexity effects support @Rohdenburg1996's *Complexity Principle*: longer clauses favour the more explicit variant. The effect size ($\beta_{\text{len}} \approx 0.57$) is modest but robust, suggesting that *that* does function as a parsing cue, as proposed by @BresnanFord2010.
 
 One notable absence is surprisal. The uniform information density (UID) framework [@LevyJaeger2007; @Jaeger2010] predicts that *that* should be inserted when the clause onset is unpredictable. We don't test this directly&nbsp;-- adding surprisal remains for future work&nbsp;-- but the strong lexical effects are at least consistent with UID: low-surprisal verbs like *think* (which typically embed predictable material) may not need the cue.
 
@@ -377,9 +377,7 @@ multilevel models offer substantial advantages.
 ### Limitations and future work
 
 The present analysis has several limitations. First, the extraction is narrow:
-only [ccomp]{.smallcaps} clauses are included. Extending to clausal subjects,
-extraposed clauses, and clauses with other matrix categories (adjectives, nouns)
-remains for future work.
+only [ccomp]{.smallcaps} clauses are included. Extending to clausal subjects remains for future work.
 
 Second, I don't yet include surprisal as a predictor. The uniform information
 density hypothesis predicts that subordinator insertion should increase when the
